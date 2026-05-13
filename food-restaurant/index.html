@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Harvest Table Kitchen | Food & Restaurant Website Demo</title>
+  <meta name="description" content="A clean one-page food and restaurant website demo by Built by Sammie." />
+
+  <style>
+    :root {
+      --bg: #fbf4ea;
+      --text: #1f1710;
+      --muted: #74685d;
+      --dark: #18110c;
+      --cream: #fffaf2;
+      --green: #3f7d4b;
+      --green-dark: #245431;
+      --orange: #d47b34;
+      --line: rgba(31, 23, 16, 0.12);
+      --card: rgba(255, 250, 242, 0.78);
+      --shadow: 0 24px 70px rgba(24, 17, 12, 0.12);
+      --max: 1160px;
+      --radius: 28px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(63, 125, 75, 0.18), transparent 34rem),
+        radial-gradient(circle at top right, rgba(212, 123, 52, 0.16), transparent 30rem),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      width: min(100% - 32px, var(--max));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(251, 244, 234, 0.84);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      min-height: 74px;
+      width: min(100% - 32px, var(--max));
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 14px;
+      background: var(--green);
+      color: white;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      box-shadow: 0 12px 26px rgba(63, 125, 75, 0.22);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      color: var(--muted);
+      font-weight: 750;
+      font-size: 0.92rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .nav-cta {
+      padding: 11px 17px;
+      border-radius: 999px;
+      background: var(--dark);
+      color: var(--cream);
+      font-weight: 900;
+      box-shadow: 0 14px 32px rgba(24, 17, 12, 0.18);
+    }
+
+    .hero {
+      padding: 82px 0 56px;
+      display: grid;
+      grid-template-columns: 1.02fr 0.98fr;
+      gap: 44px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 13px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 250, 242, 0.72);
+      color: var(--green-dark);
+      font-size: 0.78rem;
+      font-weight: 950;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+
+    .eyebrow span {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--green);
+      box-shadow: 0 0 0 6px rgba(63, 125, 75, 0.15);
+    }
+
+    h1 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(3.1rem, 7.5vw, 7rem);
+      line-height: 0.9;
+      letter-spacing: -0.075em;
+      margin-bottom: 24px;
+    }
+
+    .hero-copy {
+      color: var(--muted);
+      font-size: clamp(1.02rem, 2vw, 1.22rem);
+      max-width: 650px;
+      margin-bottom: 32px;
+      font-weight: 540;
+    }
+
+    .hero-copy strong {
+      color: var(--text);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 34px;
+    }
+
+    .btn {
+      min-height: 52px;
+      padding: 0 22px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn.primary {
+      background: var(--green);
+      color: white;
+      box-shadow: 0 18px 38px rgba(63, 125, 75, 0.24);
+    }
+
+    .btn.secondary {
+      border: 1px solid var(--line);
+      background: rgba(255, 250, 242, 0.72);
+    }
+
+    .trust-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .trust-card {
+      border: 1px solid var(--line);
+      background: rgba(255, 250, 242, 0.68);
+      border-radius: 20px;
+      padding: 16px;
+    }
+
+    .trust-card strong {
+      display: block;
+      font-size: 1.2rem;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .trust-card span {
+      color: var(--muted);
+      font-size: 0.84rem;
+      font-weight: 700;
+    }
+
+    .hero-panel {
+      min-height: 560px;
+      border-radius: 40px;
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, rgba(24, 17, 12, 0.04), rgba(24, 17, 12, 0.72)),
+        radial-gradient(circle at 36% 25%, #f6cf90, transparent 15rem),
+        radial-gradient(circle at 78% 70%, #6ea36e, transparent 14rem),
+        linear-gradient(135deg, #7a4b2f, #18110c);
+      box-shadow: var(--shadow);
+      position: relative;
+      padding: 24px;
+      color: white;
+    }
+
+    .grain {
+      position: absolute;
+      inset: 0;
+      opacity: 0.18;
+      background:
+        linear-gradient(120deg, transparent 0 47%, rgba(255,255,255,0.22) 48% 52%, transparent 53%),
+        linear-gradient(30deg, transparent 0 47%, rgba(255,255,255,0.16) 48% 52%, transparent 53%);
+      background-size: 130px 130px;
+    }
+
+    .panel-content {
+      position: relative;
+      z-index: 1;
+      min-height: 512px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .panel-pill {
+      align-self: flex-start;
+      border: 1px solid rgba(255,255,255,0.22);
+      background: rgba(255,255,255,0.1);
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: 0.78rem;
+      font-weight: 900;
+    }
+
+    .feature-card {
+      background: rgba(255, 250, 242, 0.13);
+      border: 1px solid rgba(255, 250, 242, 0.18);
+      backdrop-filter: blur(12px);
+      border-radius: 30px;
+      padding: 24px;
+    }
+
+    .feature-card h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.2rem, 4vw, 4rem);
+      line-height: 0.98;
+      letter-spacing: -0.06em;
+      margin-bottom: 14px;
+    }
+
+    .feature-card p {
+      color: rgba(255, 250, 242, 0.76);
+      max-width: 420px;
+      font-weight: 540;
+    }
+
+    section {
+      padding: 62px 0;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 24px;
+      margin-bottom: 28px;
+    }
+
+    .kicker {
+      color: var(--green-dark);
+      font-size: 0.78rem;
+      font-weight: 950;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.35rem, 4.5vw, 4.8rem);
+      line-height: 1;
+      letter-spacing: -0.065em;
+    }
+
+    .section-desc {
+      max-width: 470px;
+      color: var(--muted);
+      font-weight: 560;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .menu-card {
+      min-height: 260px;
+      border: 1px solid var(--line);
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: 0 14px 42px rgba(24, 17, 12, 0.06);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .menu-card h3 {
+      font-size: 1.24rem;
+      letter-spacing: -0.035em;
+      margin-bottom: 10px;
+    }
+
+    .menu-card p {
+      color: var(--muted);
+      font-weight: 540;
+      font-size: 0.95rem;
+    }
+
+    .menu-card span {
+      color: var(--green-dark);
+      font-weight: 950;
+      font-size: 0.9rem;
+      margin-top: 22px;
+    }
+
+    .order-panel {
+      border-radius: 38px;
+      background: var(--dark);
+      color: var(--cream);
+      padding: 38px;
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 34px;
+      align-items: center;
+      box-shadow: var(--shadow);
+    }
+
+    .order-panel h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.4rem, 4vw, 4.7rem);
+      line-height: 0.98;
+      letter-spacing: -0.06em;
+      margin-bottom: 16px;
+    }
+
+    .order-panel p {
+      color: rgba(255, 250, 242, 0.68);
+      max-width: 520px;
+    }
+
+    .order-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .order-item {
+      border: 1px solid rgba(255, 250, 242, 0.14);
+      background: rgba(255, 250, 242, 0.07);
+      border-radius: 22px;
+      padding: 18px;
+    }
+
+    .order-item strong {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .order-item span {
+      color: rgba(255, 250, 242, 0.62);
+      font-size: 0.92rem;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-auto-rows: 230px;
+      gap: 16px;
+    }
+
+    .gallery-item {
+      border-radius: 28px;
+      overflow: hidden;
+      position: relative;
+      border: 1px solid rgba(24, 17, 12, 0.08);
+      box-shadow: 0 18px 48px rgba(24, 17, 12, 0.08);
+      background: var(--dark);
+    }
+
+    .gallery-item:nth-child(1) {
+      grid-row: span 2;
+      background: radial-gradient(circle at 50% 34%, #f4c473, transparent 12rem), linear-gradient(135deg, #6e452c, #18110c);
+    }
+
+    .gallery-item:nth-child(2) {
+      background: radial-gradient(circle at 50% 42%, #7eaa63, transparent 10rem), linear-gradient(135deg, #4c3a2d, #18110c);
+    }
+
+    .gallery-item:nth-child(3) {
+      background: radial-gradient(circle at 55% 42%, #d47b34, transparent 10rem), linear-gradient(135deg, #523421, #18110c);
+    }
+
+    .gallery-item:nth-child(4) {
+      background: radial-gradient(circle at 48% 42%, #f0d7a2, transparent 10rem), linear-gradient(135deg, #604832, #18110c);
+    }
+
+    .gallery-item:nth-child(5) {
+      background: radial-gradient(circle at 45% 42%, #3f7d4b, transparent 10rem), linear-gradient(135deg, #2e2a1f, #18110c);
+    }
+
+    .gallery-label {
+      position: absolute;
+      left: 18px;
+      bottom: 18px;
+      color: var(--cream);
+      font-weight: 950;
+      letter-spacing: -0.03em;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .step-card {
+      border: 1px solid var(--line);
+      background: rgba(255, 250, 242, 0.68);
+      border-radius: 24px;
+      padding: 22px;
+      min-height: 210px;
+    }
+
+    .step {
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: var(--green);
+      color: white;
+      font-weight: 950;
+      margin-bottom: 20px;
+    }
+
+    .step-card h3 {
+      letter-spacing: -0.03em;
+      margin-bottom: 8px;
+    }
+
+    .step-card p {
+      color: var(--muted);
+      font-size: 0.92rem;
+      font-weight: 540;
+    }
+
+    .testimonials {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .quote-card {
+      border: 1px solid var(--line);
+      background: rgba(255, 250, 242, 0.72);
+      border-radius: var(--radius);
+      padding: 24px;
+      min-height: 230px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .quote-card p {
+      color: var(--muted);
+      font-weight: 560;
+      margin-bottom: 24px;
+    }
+
+    .quote-card strong {
+      letter-spacing: -0.03em;
+    }
+
+    .contact-box {
+      border-radius: 42px;
+      background:
+        radial-gradient(circle at top right, rgba(63, 125, 75, 0.2), transparent 22rem),
+        rgba(255, 250, 242, 0.78);
+      border: 1px solid var(--line);
+      box-shadow: 0 18px 55px rgba(24, 17, 12, 0.08);
+      padding: 42px;
+      display: grid;
+      grid-template-columns: 1fr 0.85fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .contact-box h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.5rem, 5vw, 5.5rem);
+      line-height: 0.95;
+      letter-spacing: -0.07em;
+      margin-bottom: 16px;
+    }
+
+    .contact-box p {
+      color: var(--muted);
+      font-size: 1.04rem;
+      font-weight: 560;
+      max-width: 560px;
+    }
+
+    .contact-actions {
+      display: grid;
+      gap: 12px;
+    }
+
+    .contact-link {
+      border: 1px solid var(--line);
+      background: rgba(251, 244, 234, 0.72);
+      border-radius: 22px;
+      padding: 16px 18px;
+    }
+
+    .contact-link span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 950;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .contact-link strong {
+      letter-spacing: -0.02em;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 26px 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+      font-weight: 650;
+    }
+
+    .footer-inner {
+      width: min(100% - 32px, var(--max));
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 980px) {
+      .hero,
+      .order-panel,
+      .contact-box {
+        grid-template-columns: 1fr;
+      }
+
+      .menu-grid,
+      .testimonials {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .steps {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .hero-panel {
+        min-height: 480px;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav {
+        min-height: 68px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 54px;
+      }
+
+      .hero-actions {
+        align-items: stretch;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .trust-row,
+      .menu-grid,
+      .testimonials,
+      .steps {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-panel {
+        min-height: 420px;
+        border-radius: 30px;
+      }
+
+      .panel-content {
+        min-height: 372px;
+      }
+
+      section {
+        padding: 48px 0;
+      }
+
+      .section-head {
+        flex-direction: column;
+        align-items: start;
+      }
+
+      .gallery {
+        grid-template-columns: 1fr;
+        grid-auto-rows: 230px;
+      }
+
+      .gallery-item:nth-child(1) {
+        grid-row: span 1;
+      }
+
+      .order-panel,
+      .contact-box {
+        padding: 24px;
+        border-radius: 30px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav class="nav">
+      <a href="../" class="brand">
+        <span class="brand-mark">H</span>
+        <span>Harvest Table Kitchen</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#menu">Menu</a>
+        <a href="#order">Order</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact" class="nav-cta">Order Now</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page hero">
+      <div>
+        <div class="eyebrow"><span></span> Food & Restaurant Website Demo</div>
+
+        <h1>Fresh meals, warm service, and easy ordering.</h1>
+
+        <p class="hero-copy">
+          A clean food and restaurant website concept built for menus, reservations, takeout, delivery, customer trust, and quick <strong>order action</strong>.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#contact" class="btn primary">Order Now</a>
+          <a href="#menu" class="btn secondary">View Menu</a>
+        </div>
+
+        <div class="trust-row">
+          <div class="trust-card">
+            <strong>Fresh</strong>
+            <span>Made daily</span>
+          </div>
+          <div class="trust-card">
+            <strong>Dine-in</strong>
+            <span>Warm restaurant experience</span>
+          </div>
+          <div class="trust-card">
+            <strong>Takeout</strong>
+            <span>Pickup and delivery</span>
+          </div>
+        </div>
+      </div>
+
+      <aside class="hero-panel">
+        <div class="grain"></div>
+        <div class="panel-content">
+          <div class="panel-pill">Restaurant • Takeout • Delivery • Catering</div>
+
+          <div class="feature-card">
+            <h2>Built for hungry visitors who need to choose fast.</h2>
+            <p>
+              Restaurant websites should make the menu easy to scan, show what looks good, and guide visitors toward ordering, booking, or visiting without confusion.
+            </p>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="page" id="menu">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Menu Highlights</div>
+          <h2 class="section-title">Popular dishes.</h2>
+        </div>
+        <p class="section-desc">
+          A good restaurant site does not hide the menu. It shows bestsellers clearly and makes the next step obvious.
+        </p>
+      </div>
+
+      <div class="menu-grid">
+        <article class="menu-card">
+          <div>
+            <h3>Signature Rice Bowls</h3>
+            <p>Warm bowls with seasoned rice, grilled protein, vegetables, house sauce, and fresh toppings.</p>
+          </div>
+          <span>From $12</span>
+        </article>
+
+        <article class="menu-card">
+          <div>
+            <h3>Loaded Wraps</h3>
+            <p>Soft wraps filled with chicken, veggies, sauces, herbs, and quick lunch-friendly flavor.</p>
+          </div>
+          <span>From $10</span>
+        </article>
+
+        <article class="menu-card">
+          <div>
+            <h3>Chef’s Plates</h3>
+            <p>Hearty plates with grilled mains, roasted sides, seasonal vegetables, and house seasoning.</p>
+          </div>
+          <span>From $16</span>
+        </article>
+
+        <article class="menu-card">
+          <div>
+            <h3>Fresh Salads</h3>
+            <p>Crunchy greens, grains, vegetables, protein add-ons, and dressings made for light meals.</p>
+          </div>
+          <span>From $11</span>
+        </article>
+
+        <article class="menu-card">
+          <div>
+            <h3>Smoothies & Juices</h3>
+            <p>Fresh blends, fruit juices, green smoothies, ginger shots, and refreshing add-ons.</p>
+          </div>
+          <span>From $6</span>
+        </article>
+
+        <article class="menu-card">
+          <div>
+            <h3>Catering Trays</h3>
+            <p>Larger trays and meal bundles for families, office lunches, small gatherings, and weekend orders.</p>
+          </div>
+          <span>Custom</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="page" id="order">
+      <div class="order-panel">
+        <div>
+          <div class="kicker">Order Flow</div>
+          <h2>Restaurant websites should remove friction.</h2>
+          <p>
+            Customers want to know what is available, how much it costs, where the restaurant is, and how quickly they can order, reserve, or visit.
+          </p>
+        </div>
+
+        <div class="order-list">
+          <div class="order-item">
+            <strong>Clear menu sections</strong>
+            <span>The page separates bowls, wraps, plates, drinks, and catering so customers can decide quickly.</span>
+          </div>
+
+          <div class="order-item">
+            <strong>Ordering buttons repeated</strong>
+            <span>The order action appears in the hero, navigation, and contact section so it is never hidden.</span>
+          </div>
+
+          <div class="order-item">
+            <strong>Dine-in and delivery details</strong>
+            <span>The page gives space for location, hours, delivery radius, reservations, and direct contact options.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="gallery">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Food Preview</div>
+          <h2 class="section-title">Visual menu layout.</h2>
+        </div>
+        <p class="section-desc">
+          Real restaurants should use actual food photography. This demo uses styled placeholders to show the layout.
+        </p>
+      </div>
+
+      <div class="gallery">
+        <div class="gallery-item"><span class="gallery-label">Signature Bowl</span></div>
+        <div class="gallery-item"><span class="gallery-label">Fresh Wraps</span></div>
+        <div class="gallery-item"><span class="gallery-label">Chef’s Plate</span></div>
+        <div class="gallery-item"><span class="gallery-label">Juices</span></div>
+        <div class="gallery-item"><span class="gallery-label">Catering Tray</span></div>
+      </div>
+    </section>
+
+    <section class="page">
+      <div class="section-head">
+        <div>
+          <div class="kicker">How It Works</div>
+          <h2 class="section-title">Simple customer journey.</h2>
+        </div>
+        <p class="section-desc">
+          This kind of page is built so customers can go from hunger to order without thinking too hard.
+        </p>
+      </div>
+
+      <div class="steps">
+        <div class="step-card">
+          <div class="step">1</div>
+          <h3>Choose meal</h3>
+          <p>The customer scans the menu, bestsellers, prices, and available meal options.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step">2</div>
+          <h3>Order or reserve</h3>
+          <p>They call, message, reserve a table, or use the order button depending on the business setup.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step">3</div>
+          <h3>Pickup, delivery, or dine-in</h3>
+          <p>The customer chooses pickup, delivery, or dining in and confirms timing or location details.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step">4</div>
+          <h3>Enjoy and return</h3>
+          <p>The restaurant delivers a smooth experience and encourages repeat orders or future visits.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="page">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Testimonials</div>
+          <h2 class="section-title">Customer words.</h2>
+        </div>
+        <p class="section-desc">
+          For a real restaurant, this section should use real reviews, food photos, and location proof.
+        </p>
+      </div>
+
+      <div class="testimonials">
+        <article class="quote-card">
+          <p>“The food was fresh, easy to order, and ready when I arrived. The bowl was filling without feeling heavy.”</p>
+          <strong>Sample Lunch Customer</strong>
+        </article>
+
+        <article class="quote-card">
+          <p>“We ordered catering trays for the weekend and everything was packaged neatly. The flavors were great.”</p>
+          <strong>Sample Catering Order</strong>
+        </article>
+
+        <article class="quote-card">
+          <p>“The menu was simple to understand and the pickup process was quick. I’ll definitely order again.”</p>
+          <strong>Sample Pickup Customer</strong>
+        </article>
+      </div>
+    </section>
+
+    <section class="page" id="contact">
+      <div class="contact-box">
+        <div>
+          <h2>Hungry? Place your order.</h2>
+          <p>
+            Send your meal choice, pickup or delivery preference, and preferred time. For dine-in, ask about table availability.
+          </p>
+        </div>
+
+        <div class="contact-actions">
+          <a class="contact-link" href="tel:+15550000000">
+            <span>Call</span>
+            <strong>(555) 000-0000</strong>
+          </a>
+
+          <a class="contact-link" href="mailto:hello@example.com">
+            <span>Email</span>
+            <strong>hello@example.com</strong>
+          </a>
+
+          <a class="contact-link" href="../">
+            <span>Portfolio</span>
+            <strong>Back to Built by Sammie</strong>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span>Food & restaurant website demo by Built by Sammie.</span>
+      <span>One-page concept for portfolio use.</span>
+    </div>
+  </footer>
+</body>
+</html>
