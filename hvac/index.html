@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>NorthAir HVAC | HVAC Website Demo</title>
+  <meta name="description" content="A clean one-page HVAC company website demo by Built by Sammie." />
+
+  <style>
+    :root {
+      --bg: #f2f6f7;
+      --text: #101416;
+      --muted: #637176;
+      --dark: #0d161a;
+      --cream: #faffff;
+      --blue: #2478c7;
+      --ice: #8bd5ff;
+      --warm: #e56d3f;
+      --line: rgba(16, 20, 22, 0.12);
+      --card: rgba(250, 255, 255, 0.78);
+      --shadow: 0 24px 70px rgba(13, 22, 26, 0.13);
+      --max: 1160px;
+      --radius: 28px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(36, 120, 199, 0.18), transparent 34rem),
+        radial-gradient(circle at top right, rgba(229, 109, 63, 0.13), transparent 30rem),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      width: min(100% - 32px, var(--max));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(242, 246, 247, 0.84);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      min-height: 74px;
+      width: min(100% - 32px, var(--max));
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 14px;
+      background: var(--dark);
+      color: var(--cream);
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      box-shadow: 0 12px 26px rgba(13, 22, 26, 0.18);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      color: var(--muted);
+      font-weight: 750;
+      font-size: 0.92rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .nav-cta {
+      padding: 11px 17px;
+      border-radius: 999px;
+      background: var(--blue);
+      color: white;
+      font-weight: 900;
+      box-shadow: 0 14px 32px rgba(36, 120, 199, 0.24);
+    }
+
+    .hero {
+      padding: 82px 0 56px;
+      display: grid;
+      grid-template-columns: 1.02fr 0.98fr;
+      gap: 44px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 13px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(250, 255, 255, 0.72);
+      color: #15568d;
+      font-size: 0.78rem;
+      font-weight: 950;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+
+    .eyebrow span {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--blue);
+      box-shadow: 0 0 0 6px rgba(36, 120, 199, 0.15);
+    }
+
+    h1 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(3.1rem, 7.5vw, 7rem);
+      line-height: 0.9;
+      letter-spacing: -0.075em;
+      margin-bottom: 24px;
+    }
+
+    .hero-copy {
+      color: var(--muted);
+      font-size: clamp(1.02rem, 2vw, 1.22rem);
+      max-width: 650px;
+      margin-bottom: 32px;
+      font-weight: 540;
+    }
+
+    .hero-copy strong {
+      color: var(--text);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 34px;
+    }
+
+    .btn {
+      min-height: 52px;
+      padding: 0 22px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn.primary {
+      background: var(--blue);
+      color: white;
+      box-shadow: 0 18px 38px rgba(36, 120, 199, 0.24);
+    }
+
+    .btn.secondary {
+      border: 1px solid var(--line);
+      background: rgba(250, 255, 255, 0.72);
+    }
+
+    .trust-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .trust-card {
+      border: 1px solid var(--line);
+      background: rgba(250, 255, 255, 0.68);
+      border-radius: 20px;
+      padding: 16px;
+    }
+
+    .trust-card strong {
+      display: block;
+      font-size: 1.2rem;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .trust-card span {
+      color: var(--muted);
+      font-size: 0.84rem;
+      font-weight: 700;
+    }
+
+    .hero-panel {
+      min-height: 560px;
+      border-radius: 40px;
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, rgba(13, 22, 26, 0.05), rgba(13, 22, 26, 0.72)),
+        radial-gradient(circle at 30% 20%, rgba(139, 213, 255, 0.8), transparent 15rem),
+        radial-gradient(circle at 80% 72%, rgba(229, 109, 63, 0.75), transparent 14rem),
+        linear-gradient(135deg, #213c4d, #0d161a);
+      box-shadow: var(--shadow);
+      position: relative;
+      padding: 24px;
+      color: white;
+    }
+
+    .air-lines {
+      position: absolute;
+      inset: 0;
+      opacity: 0.22;
+      background:
+        linear-gradient(110deg, transparent 0 47%, rgba(255,255,255,0.22) 48% 52%, transparent 53%),
+        linear-gradient(20deg, transparent 0 47%, rgba(255,255,255,0.16) 48% 52%, transparent 53%);
+      background-size: 130px 130px;
+    }
+
+    .panel-content {
+      position: relative;
+      z-index: 1;
+      min-height: 512px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .panel-pill {
+      align-self: flex-start;
+      border: 1px solid rgba(255,255,255,0.22);
+      background: rgba(255,255,255,0.1);
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: 0.78rem;
+      font-weight: 900;
+    }
+
+    .estimate-card {
+      background: rgba(250, 255, 255, 0.13);
+      border: 1px solid rgba(250, 255, 255, 0.18);
+      backdrop-filter: blur(12px);
+      border-radius: 30px;
+      padding: 24px;
+    }
+
+    .estimate-card h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.2rem, 4vw, 4rem);
+      line-height: 0.98;
+      letter-spacing: -0.06em;
+      margin-bottom: 14px;
+    }
+
+    .estimate-card p {
+      color: rgba(250, 255, 255, 0.74);
+      max-width: 420px;
+      font-weight: 540;
+    }
+
+    section {
+      padding: 62px 0;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 24px;
+      margin-bottom: 28px;
+    }
+
+    .kicker {
+      color: #15568d;
+      font-size: 0.78rem;
+      font-weight: 950;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.35rem, 4.5vw, 4.8rem);
+      line-height: 1;
+      letter-spacing: -0.065em;
+    }
+
+    .section-desc {
+      max-width: 470px;
+      color: var(--muted);
+      font-weight: 560;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .service-card {
+      min-height: 250px;
+      border: 1px solid var(--line);
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: 0 14px 42px rgba(13, 22, 26, 0.06);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .service-card h3 {
+      font-size: 1.24rem;
+      letter-spacing: -0.035em;
+      margin-bottom: 10px;
+    }
+
+    .service-card p {
+      color: var(--muted);
+      font-weight: 540;
+      font-size: 0.95rem;
+    }
+
+    .service-card span {
+      color: #15568d;
+      font-weight: 950;
+      font-size: 0.9rem;
+      margin-top: 22px;
+    }
+
+    .season-panel {
+      border-radius: 38px;
+      background: var(--dark);
+      color: var(--cream);
+      padding: 38px;
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 34px;
+      align-items: center;
+      box-shadow: var(--shadow);
+    }
+
+    .season-panel h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.4rem, 4vw, 4.7rem);
+      line-height: 0.98;
+      letter-spacing: -0.06em;
+      margin-bottom: 16px;
+    }
+
+    .season-panel p {
+      color: rgba(250, 255, 255, 0.68);
+      max-width: 520px;
+    }
+
+    .season-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .season-item {
+      border: 1px solid rgba(250, 255, 255, 0.14);
+      background: rgba(250, 255, 255, 0.07);
+      border-radius: 22px;
+      padding: 18px;
+    }
+
+    .season-item strong {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .season-item span {
+      color: rgba(250, 255, 255, 0.62);
+      font-size: 0.92rem;
+    }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .process-card {
+      border: 1px solid var(--line);
+      background: rgba(250, 255, 255, 0.68);
+      border-radius: 24px;
+      padding: 22px;
+      min-height: 210px;
+    }
+
+    .step {
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: var(--blue);
+      color: white;
+      font-weight: 950;
+      margin-bottom: 20px;
+    }
+
+    .process-card h3 {
+      letter-spacing: -0.03em;
+      margin-bottom: 8px;
+    }
+
+    .process-card p {
+      color: var(--muted);
+      font-size: 0.92rem;
+      font-weight: 540;
+    }
+
+    .plans {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .plan-card {
+      border: 1px solid var(--line);
+      background: rgba(250, 255, 255, 0.72);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: 0 14px 42px rgba(13, 22, 26, 0.06);
+    }
+
+    .plan-card.featured {
+      background: var(--dark);
+      color: var(--cream);
+      border-color: rgba(250, 255, 255, 0.14);
+      transform: translateY(-8px);
+    }
+
+    .plan-card h3 {
+      font-size: 1.2rem;
+      letter-spacing: -0.035em;
+      margin-bottom: 8px;
+    }
+
+    .price {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 2.35rem;
+      letter-spacing: -0.055em;
+      margin: 14px 0;
+    }
+
+    .plan-card p,
+    .plan-card li {
+      color: var(--muted);
+      font-weight: 540;
+      font-size: 0.94rem;
+    }
+
+    .plan-card.featured p,
+    .plan-card.featured li {
+      color: rgba(250, 255, 255, 0.68);
+    }
+
+    ul {
+      list-style: none;
+      display: grid;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    li::before {
+      content: "•";
+      color: var(--blue);
+      font-weight: 900;
+      margin-right: 8px;
+    }
+
+    .testimonials {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .quote-card {
+      border: 1px solid var(--line);
+      background: rgba(250, 255, 255, 0.72);
+      border-radius: var(--radius);
+      padding: 24px;
+      min-height: 230px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .quote-card p {
+      color: var(--muted);
+      font-weight: 560;
+      margin-bottom: 24px;
+    }
+
+    .quote-card strong {
+      letter-spacing: -0.03em;
+    }
+
+    .contact-box {
+      border-radius: 42px;
+      background:
+        radial-gradient(circle at top right, rgba(36, 120, 199, 0.18), transparent 22rem),
+        rgba(250, 255, 255, 0.78);
+      border: 1px solid var(--line);
+      box-shadow: 0 18px 55px rgba(13, 22, 26, 0.08);
+      padding: 42px;
+      display: grid;
+      grid-template-columns: 1fr 0.85fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .contact-box h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.5rem, 5vw, 5.5rem);
+      line-height: 0.95;
+      letter-spacing: -0.07em;
+      margin-bottom: 16px;
+    }
+
+    .contact-box p {
+      color: var(--muted);
+      font-size: 1.04rem;
+      font-weight: 560;
+      max-width: 560px;
+    }
+
+    .contact-actions {
+      display: grid;
+      gap: 12px;
+    }
+
+    .contact-link {
+      border: 1px solid var(--line);
+      background: rgba(242, 246, 247, 0.72);
+      border-radius: 22px;
+      padding: 16px 18px;
+    }
+
+    .contact-link span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 950;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .contact-link strong {
+      letter-spacing: -0.02em;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 26px 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+      font-weight: 650;
+    }
+
+    .footer-inner {
+      width: min(100% - 32px, var(--max));
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 980px) {
+      .hero,
+      .season-panel,
+      .contact-box {
+        grid-template-columns: 1fr;
+      }
+
+      .services-grid,
+      .testimonials,
+      .plans {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .process-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .hero-panel {
+        min-height: 480px;
+      }
+
+      .plan-card.featured {
+        transform: none;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav {
+        min-height: 68px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 54px;
+      }
+
+      .hero-actions {
+        align-items: stretch;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .trust-row,
+      .services-grid,
+      .testimonials,
+      .process-grid,
+      .plans {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-panel {
+        min-height: 420px;
+        border-radius: 30px;
+      }
+
+      .panel-content {
+        min-height: 372px;
+      }
+
+      section {
+        padding: 48px 0;
+      }
+
+      .section-head {
+        flex-direction: column;
+        align-items: start;
+      }
+
+      .season-panel,
+      .contact-box {
+        padding: 24px;
+        border-radius: 30px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav class="nav">
+      <a href="../" class="brand">
+        <span class="brand-mark">N</span>
+        <span>NorthAir HVAC</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#process">Process</a>
+        <a href="#plans">Plans</a>
+        <a href="#contact" class="nav-cta">Book Service</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page hero">
+      <div>
+        <div class="eyebrow"><span></span> HVAC Website Demo</div>
+
+        <h1>Heating and cooling service that keeps homes comfortable.</h1>
+
+        <p class="hero-copy">
+          A clean HVAC website concept built for AC repair, heating service, maintenance plans, seasonal tune-ups, and quick <strong>appointment requests</strong>.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#contact" class="btn primary">Schedule HVAC Service</a>
+          <a href="#services" class="btn secondary">View Services</a>
+        </div>
+
+        <div class="trust-row">
+          <div class="trust-card">
+            <strong>Same-day</strong>
+            <span>Repair appointments</span>
+          </div>
+          <div class="trust-card">
+            <strong>AC + Heat</strong>
+            <span>Full comfort service</span>
+          </div>
+          <div class="trust-card">
+            <strong>Plans</strong>
+            <span>Maintenance available</span>
+          </div>
+        </div>
+      </div>
+
+      <aside class="hero-panel">
+        <div class="air-lines"></div>
+        <div class="panel-content">
+          <div class="panel-pill">Cooling • Heating • Maintenance</div>
+
+          <div class="estimate-card">
+            <h2>Built for comfort problems that need quick action.</h2>
+            <p>
+              HVAC visitors usually need help because their AC or heat has failed, their home is uncomfortable, or they want preventive maintenance.
+            </p>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="page" id="services">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Services</div>
+          <h2 class="section-title">HVAC services.</h2>
+        </div>
+        <p class="section-desc">
+          The page separates cooling, heating, installation, and maintenance so homeowners can find the right service quickly.
+        </p>
+      </div>
+
+      <div class="services-grid">
+        <article class="service-card">
+          <div>
+            <h3>AC Repair</h3>
+            <p>Cooling problems, weak airflow, warm air, thermostat issues, refrigerant concerns, and system breakdowns.</p>
+          </div>
+          <span>Fast cooling help</span>
+        </article>
+
+        <article class="service-card">
+          <div>
+            <h3>Heating Repair</h3>
+            <p>Furnace issues, heat pump repairs, uneven heating, strange noises, and no-heat emergency calls.</p>
+          </div>
+          <span>Warmth restored</span>
+        </article>
+
+        <article class="service-card">
+          <div>
+            <h3>System Installation</h3>
+            <p>New AC units, furnace replacements, heat pumps, ductless mini-splits, and full comfort upgrades.</p>
+          </div>
+          <span>Better efficiency</span>
+        </article>
+
+        <article class="service-card">
+          <div>
+            <h3>Maintenance Tune-Up</h3>
+            <p>Seasonal inspections, filter checks, coil cleaning, performance reviews, and preventive system care.</p>
+          </div>
+          <span>Prevent breakdowns</span>
+        </article>
+
+        <article class="service-card">
+          <div>
+            <h3>Indoor Air Quality</h3>
+            <p>Air purifiers, humidity control, ventilation checks, filter upgrades, and cleaner home air solutions.</p>
+          </div>
+          <span>Healthier air</span>
+        </article>
+
+        <article class="service-card">
+          <div>
+            <h3>Thermostats</h3>
+            <p>Smart thermostat setup, calibration, wiring checks, programming support, and comfort automation.</p>
+          </div>
+          <span>Smarter comfort</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="page">
+      <div class="season-panel">
+        <div>
+          <div class="kicker">Seasonal Strategy</div>
+          <h2>HVAC sites should sell urgent repairs and maintenance.</h2>
+          <p>
+            HVAC businesses need two kinds of customers: people with immediate comfort problems and people who can be sold preventive maintenance before breakdowns happen.
+          </p>
+        </div>
+
+        <div class="season-list">
+          <div class="season-item">
+            <strong>Emergency repair CTA</strong>
+            <span>The hero makes it easy to schedule service for AC or heating issues right away.</span>
+          </div>
+
+          <div class="season-item">
+            <strong>Maintenance plan visibility</strong>
+            <span>The page includes recurring service plans because HVAC companies can earn stable monthly or seasonal revenue from them.</span>
+          </div>
+
+          <div class="season-item">
+            <strong>Seasonal language</strong>
+            <span>The content works for summer cooling campaigns, winter heating campaigns, and yearly tune-ups.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="process">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Process</div>
+          <h2 class="section-title">Simple service process.</h2>
+        </div>
+        <p class="section-desc">
+          A process section reassures homeowners before they book, especially when they are worried about cost or system failure.
+        </p>
+      </div>
+
+      <div class="process-grid">
+        <div class="process-card">
+          <div class="step">1</div>
+          <h3>Schedule service</h3>
+          <p>The customer chooses AC, heat, maintenance, or installation and shares basic system details.</p>
+        </div>
+
+        <div class="process-card">
+          <div class="step">2</div>
+          <h3>Inspect system</h3>
+          <p>The technician checks performance, airflow, thermostat, parts, and the cause of the issue.</p>
+        </div>
+
+        <div class="process-card">
+          <div class="step">3</div>
+          <h3>Explain options</h3>
+          <p>The homeowner gets repair, maintenance, or replacement recommendations with clear next steps.</p>
+        </div>
+
+        <div class="process-card">
+          <div class="step">4</div>
+          <h3>Restore comfort</h3>
+          <p>The work is completed, the system is tested, and the homeowner knows how to prevent future issues.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="plans">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Maintenance Plans</div>
+          <h2 class="section-title">Comfort care plans.</h2>
+        </div>
+        <p class="section-desc">
+          For real HVAC businesses, maintenance plans can improve recurring revenue and reduce emergency breakdowns for customers.
+        </p>
+      </div>
+
+      <div class="plans">
+        <article class="plan-card">
+          <h3>Basic Tune-Up</h3>
+          <p>For homeowners who want a simple seasonal system check before heavy usage.</p>
+          <div class="price">From $99</div>
+          <ul>
+            <li>System inspection</li>
+            <li>Filter check</li>
+            <li>Performance review</li>
+            <li>Basic recommendations</li>
+          </ul>
+        </article>
+
+        <article class="plan-card featured">
+          <h3>Comfort Plan</h3>
+          <p>For homeowners who want preventive care, priority scheduling, and seasonal tune-ups.</p>
+          <div class="price">Monthly</div>
+          <ul>
+            <li>Two seasonal visits</li>
+            <li>Priority appointments</li>
+            <li>Discounted repairs</li>
+            <li>System health report</li>
+          </ul>
+        </article>
+
+        <article class="plan-card">
+          <h3>Replacement Consult</h3>
+          <p>For older HVAC systems that may need better efficiency or full replacement.</p>
+          <div class="price">Custom</div>
+          <ul>
+            <li>System review</li>
+            <li>Efficiency guidance</li>
+            <li>Equipment options</li>
+            <li>Installation estimate</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="page">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Testimonials</div>
+          <h2 class="section-title">Homeowner reviews.</h2>
+        </div>
+        <p class="section-desc">
+          For a real HVAC client, this section should include real Google reviews, seasonal feedback, and location-based proof.
+        </p>
+      </div>
+
+      <div class="testimonials">
+        <article class="quote-card">
+          <p>“Our AC stopped cooling and they diagnosed the issue quickly. The booking process was simple and the house was comfortable again.”</p>
+          <strong>Sample AC Repair Client</strong>
+        </article>
+
+        <article class="quote-card">
+          <p>“The tune-up helped us catch a small issue before summer. The technician explained everything clearly.”</p>
+          <strong>Sample Maintenance Client</strong>
+        </article>
+
+        <article class="quote-card">
+          <p>“We needed a new system and they walked us through the options without pressuring us.”</p>
+          <strong>Sample Installation Client</strong>
+        </article>
+      </div>
+    </section>
+
+    <section class="page" id="contact">
+      <div class="contact-box">
+        <div>
+          <h2>Need heating or cooling help?</h2>
+          <p>
+            Tell us what system you have, what problem you are seeing, and whether you need repair, maintenance, or installation guidance.
+          </p>
+        </div>
+
+        <div class="contact-actions">
+          <a class="contact-link" href="tel:+15550000000">
+            <span>Call</span>
+            <strong>(555) 000-0000</strong>
+          </a>
+
+          <a class="contact-link" href="mailto:hello@example.com">
+            <span>Email</span>
+            <strong>hello@example.com</strong>
+          </a>
+
+          <a class="contact-link" href="../">
+            <span>Portfolio</span>
+            <strong>Back to Built by Sammie</strong>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span>HVAC website demo by Built by Sammie.</span>
+      <span>One-page concept for portfolio use.</span>
+    </div>
+  </footer>
+</body>
+</html>
