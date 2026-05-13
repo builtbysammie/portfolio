@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Maison Bloom Events | Event Decor Website Demo</title>
+  <meta name="description" content="A premium one-page event decor website demo by Built by Sammie." />
+
+  <style>
+    :root {
+      --bg: #f8f1ea;
+      --text: #201714;
+      --muted: #756761;
+      --dark: #1b1210;
+      --cream: #fffaf5;
+      --blush: #c98886;
+      --blush-dark: #8a4a48;
+      --gold: #b99157;
+      --line: rgba(32, 23, 20, 0.12);
+      --card: rgba(255, 250, 245, 0.78);
+      --shadow: 0 24px 70px rgba(27, 18, 16, 0.12);
+      --max: 1160px;
+      --radius: 28px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(201, 136, 134, 0.22), transparent 34rem),
+        radial-gradient(circle at top right, rgba(185, 145, 87, 0.18), transparent 30rem),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      width: min(100% - 32px, var(--max));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(248, 241, 234, 0.84);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      min-height: 74px;
+      width: min(100% - 32px, var(--max));
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 14px;
+      background: var(--dark);
+      color: var(--cream);
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      box-shadow: 0 12px 26px rgba(27, 18, 16, 0.18);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      color: var(--muted);
+      font-weight: 750;
+      font-size: 0.92rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .nav-cta {
+      padding: 11px 17px;
+      border-radius: 999px;
+      background: var(--dark);
+      color: var(--cream);
+      font-weight: 900;
+      box-shadow: 0 14px 32px rgba(27, 18, 16, 0.18);
+    }
+
+    .hero {
+      padding: 82px 0 56px;
+      display: grid;
+      grid-template-columns: 1.02fr 0.98fr;
+      gap: 44px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 13px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 250, 245, 0.72);
+      color: var(--blush-dark);
+      font-size: 0.78rem;
+      font-weight: 950;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+
+    .eyebrow span {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--blush);
+      box-shadow: 0 0 0 6px rgba(201, 136, 134, 0.15);
+    }
+
+    h1 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(3.1rem, 7.5vw, 7rem);
+      line-height: 0.9;
+      letter-spacing: -0.075em;
+      margin-bottom: 24px;
+    }
+
+    .hero-copy {
+      color: var(--muted);
+      font-size: clamp(1.02rem, 2vw, 1.22rem);
+      max-width: 650px;
+      margin-bottom: 32px;
+      font-weight: 540;
+    }
+
+    .hero-copy strong {
+      color: var(--text);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 34px;
+    }
+
+    .btn {
+      min-height: 52px;
+      padding: 0 22px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn.primary {
+      background: var(--dark);
+      color: var(--cream);
+      box-shadow: 0 18px 38px rgba(27, 18, 16, 0.2);
+    }
+
+    .btn.secondary {
+      border: 1px solid var(--line);
+      background: rgba(255, 250, 245, 0.72);
+    }
+
+    .trust-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .trust-card {
+      border: 1px solid var(--line);
+      background: rgba(255, 250, 245, 0.68);
+      border-radius: 20px;
+      padding: 16px;
+    }
+
+    .trust-card strong {
+      display: block;
+      font-size: 1.2rem;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .trust-card span {
+      color: var(--muted);
+      font-size: 0.84rem;
+      font-weight: 700;
+    }
+
+    .hero-panel {
+      min-height: 560px;
+      border-radius: 40px;
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, rgba(27, 18, 16, 0.04), rgba(27, 18, 16, 0.72)),
+        radial-gradient(circle at 45% 24%, #f2c8c5, transparent 15rem),
+        radial-gradient(circle at 80% 72%, #b99157, transparent 14rem),
+        linear-gradient(135deg, #805956, #1b1210);
+      box-shadow: var(--shadow);
+      position: relative;
+      padding: 24px;
+      color: white;
+    }
+
+    .decor-lines {
+      position: absolute;
+      inset: 0;
+      opacity: 0.18;
+      background:
+        linear-gradient(120deg, transparent 0 47%, rgba(255,255,255,0.22) 48% 52%, transparent 53%),
+        linear-gradient(30deg, transparent 0 47%, rgba(255,255,255,0.16) 48% 52%, transparent 53%);
+      background-size: 130px 130px;
+    }
+
+    .panel-content {
+      position: relative;
+      z-index: 1;
+      min-height: 512px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .panel-pill {
+      align-self: flex-start;
+      border: 1px solid rgba(255,255,255,0.22);
+      background: rgba(255,255,255,0.1);
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: 0.78rem;
+      font-weight: 900;
+    }
+
+    .feature-card {
+      background: rgba(255, 250, 245, 0.13);
+      border: 1px solid rgba(255, 250, 245, 0.18);
+      backdrop-filter: blur(12px);
+      border-radius: 30px;
+      padding: 24px;
+    }
+
+    .feature-card h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.2rem, 4vw, 4rem);
+      line-height: 0.98;
+      letter-spacing: -0.06em;
+      margin-bottom: 14px;
+    }
+
+    .feature-card p {
+      color: rgba(255, 250, 245, 0.76);
+      max-width: 420px;
+      font-weight: 540;
+    }
+
+    section {
+      padding: 62px 0;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 24px;
+      margin-bottom: 28px;
+    }
+
+    .kicker {
+      color: var(--blush-dark);
+      font-size: 0.78rem;
+      font-weight: 950;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.35rem, 4.5vw, 4.8rem);
+      line-height: 1;
+      letter-spacing: -0.065em;
+    }
+
+    .section-desc {
+      max-width: 470px;
+      color: var(--muted);
+      font-weight: 560;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .service-card {
+      min-height: 250px;
+      border: 1px solid var(--line);
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: 0 14px 42px rgba(27, 18, 16, 0.06);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .service-card h3 {
+      font-size: 1.24rem;
+      letter-spacing: -0.035em;
+      margin-bottom: 10px;
+    }
+
+    .service-card p {
+      color: var(--muted);
+      font-weight: 540;
+      font-size: 0.95rem;
+    }
+
+    .service-card span {
+      color: var(--blush-dark);
+      font-weight: 950;
+      font-size: 0.9rem;
+      margin-top: 22px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-auto-rows: 230px;
+      gap: 16px;
+    }
+
+    .gallery-item {
+      border-radius: 28px;
+      overflow: hidden;
+      position: relative;
+      border: 1px solid rgba(27, 18, 16, 0.08);
+      box-shadow: 0 18px 48px rgba(27, 18, 16, 0.08);
+      background: var(--dark);
+    }
+
+    .gallery-item:nth-child(1) {
+      grid-row: span 2;
+      background: radial-gradient(circle at 50% 34%, #f1c7c4, transparent 12rem), linear-gradient(135deg, #805956, #1b1210);
+    }
+
+    .gallery-item:nth-child(2) {
+      background: radial-gradient(circle at 50% 42%, #f7e1d3, transparent 10rem), linear-gradient(135deg, #9b6d66, #1b1210);
+    }
+
+    .gallery-item:nth-child(3) {
+      background: radial-gradient(circle at 55% 42%, #b99157, transparent 10rem), linear-gradient(135deg, #5a403b, #1b1210);
+    }
+
+    .gallery-item:nth-child(4) {
+      background: radial-gradient(circle at 48% 42%, #d9b7ad, transparent 10rem), linear-gradient(135deg, #76514c, #1b1210);
+    }
+
+    .gallery-item:nth-child(5) {
+      background: radial-gradient(circle at 45% 42%, #c98886, transparent 10rem), linear-gradient(135deg, #3b2825, #1b1210);
+    }
+
+    .gallery-label {
+      position: absolute;
+      left: 18px;
+      bottom: 18px;
+      color: var(--cream);
+      font-weight: 950;
+      letter-spacing: -0.03em;
+    }
+
+    .experience-panel {
+      border-radius: 38px;
+      background: var(--dark);
+      color: var(--cream);
+      padding: 38px;
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 34px;
+      align-items: center;
+      box-shadow: var(--shadow);
+    }
+
+    .experience-panel h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.4rem, 4vw, 4.7rem);
+      line-height: 0.98;
+      letter-spacing: -0.06em;
+      margin-bottom: 16px;
+    }
+
+    .experience-panel p {
+      color: rgba(255, 250, 245, 0.68);
+      max-width: 520px;
+    }
+
+    .experience-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .experience-item {
+      border: 1px solid rgba(255, 250, 245, 0.14);
+      background: rgba(255, 250, 245, 0.07);
+      border-radius: 22px;
+      padding: 18px;
+    }
+
+    .experience-item strong {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .experience-item span {
+      color: rgba(255, 250, 245, 0.62);
+      font-size: 0.92rem;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .step-card {
+      border: 1px solid var(--line);
+      background: rgba(255, 250, 245, 0.68);
+      border-radius: 24px;
+      padding: 22px;
+      min-height: 210px;
+    }
+
+    .step {
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: var(--dark);
+      color: var(--cream);
+      font-weight: 950;
+      margin-bottom: 20px;
+    }
+
+    .step-card h3 {
+      letter-spacing: -0.03em;
+      margin-bottom: 8px;
+    }
+
+    .step-card p {
+      color: var(--muted);
+      font-size: 0.92rem;
+      font-weight: 540;
+    }
+
+    .packages {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .package-card {
+      border: 1px solid var(--line);
+      background: rgba(255, 250, 245, 0.72);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: 0 14px 42px rgba(27, 18, 16, 0.06);
+    }
+
+    .package-card.featured {
+      background: var(--dark);
+      color: var(--cream);
+      border-color: rgba(255, 250, 245, 0.14);
+      transform: translateY(-8px);
+    }
+
+    .package-card h3 {
+      font-size: 1.2rem;
+      letter-spacing: -0.035em;
+      margin-bottom: 8px;
+    }
+
+    .price {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 2.35rem;
+      letter-spacing: -0.055em;
+      margin: 14px 0;
+    }
+
+    .package-card p,
+    .package-card li {
+      color: var(--muted);
+      font-weight: 540;
+      font-size: 0.94rem;
+    }
+
+    .package-card.featured p,
+    .package-card.featured li {
+      color: rgba(255, 250, 245, 0.68);
+    }
+
+    ul {
+      list-style: none;
+      display: grid;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    li::before {
+      content: "•";
+      color: var(--blush);
+      font-weight: 900;
+      margin-right: 8px;
+    }
+
+    .testimonials {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .quote-card {
+      border: 1px solid var(--line);
+      background: rgba(255, 250, 245, 0.72);
+      border-radius: var(--radius);
+      padding: 24px;
+      min-height: 230px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .quote-card p {
+      color: var(--muted);
+      font-weight: 560;
+      margin-bottom: 24px;
+    }
+
+    .quote-card strong {
+      letter-spacing: -0.03em;
+    }
+
+    .contact-box {
+      border-radius: 42px;
+      background:
+        radial-gradient(circle at top right, rgba(201, 136, 134, 0.22), transparent 22rem),
+        rgba(255, 250, 245, 0.78);
+      border: 1px solid var(--line);
+      box-shadow: 0 18px 55px rgba(27, 18, 16, 0.08);
+      padding: 42px;
+      display: grid;
+      grid-template-columns: 1fr 0.85fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .contact-box h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.5rem, 5vw, 5.5rem);
+      line-height: 0.95;
+      letter-spacing: -0.07em;
+      margin-bottom: 16px;
+    }
+
+    .contact-box p {
+      color: var(--muted);
+      font-size: 1.04rem;
+      font-weight: 560;
+      max-width: 560px;
+    }
+
+    .contact-actions {
+      display: grid;
+      gap: 12px;
+    }
+
+    .contact-link {
+      border: 1px solid var(--line);
+      background: rgba(248, 241, 234, 0.72);
+      border-radius: 22px;
+      padding: 16px 18px;
+    }
+
+    .contact-link span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 950;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .contact-link strong {
+      letter-spacing: -0.02em;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 26px 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+      font-weight: 650;
+    }
+
+    .footer-inner {
+      width: min(100% - 32px, var(--max));
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 980px) {
+      .hero,
+      .experience-panel,
+      .contact-box {
+        grid-template-columns: 1fr;
+      }
+
+      .services-grid,
+      .testimonials,
+      .packages {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .steps {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .hero-panel {
+        min-height: 480px;
+      }
+
+      .package-card.featured {
+        transform: none;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav {
+        min-height: 68px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 54px;
+      }
+
+      .hero-actions {
+        align-items: stretch;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .trust-row,
+      .services-grid,
+      .testimonials,
+      .steps,
+      .packages {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-panel {
+        min-height: 420px;
+        border-radius: 30px;
+      }
+
+      .panel-content {
+        min-height: 372px;
+      }
+
+      section {
+        padding: 48px 0;
+      }
+
+      .section-head {
+        flex-direction: column;
+        align-items: start;
+      }
+
+      .gallery {
+        grid-template-columns: 1fr;
+        grid-auto-rows: 230px;
+      }
+
+      .gallery-item:nth-child(1) {
+        grid-row: span 1;
+      }
+
+      .experience-panel,
+      .contact-box {
+        padding: 24px;
+        border-radius: 30px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav class="nav">
+      <a href="../" class="brand">
+        <span class="brand-mark">M</span>
+        <span>Maison Bloom Events</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#packages">Packages</a>
+        <a href="#contact" class="nav-cta">Book Consultation</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page hero">
+      <div>
+        <div class="eyebrow"><span></span> Event Decor Website Demo</div>
+
+        <h1>Elegant event styling for beautiful, unforgettable moments.</h1>
+
+        <p class="hero-copy">
+          A premium event decor website concept built for weddings, birthdays, corporate events, installations, rental styling, and direct <strong>consultation booking</strong>.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#contact" class="btn primary">Book a Consultation</a>
+          <a href="#portfolio" class="btn secondary">View Decor Style</a>
+        </div>
+
+        <div class="trust-row">
+          <div class="trust-card">
+            <strong>Weddings</strong>
+            <span>Ceremony and reception styling</span>
+          </div>
+          <div class="trust-card">
+            <strong>Birthdays</strong>
+            <span>Personalized celebration decor</span>
+          </div>
+          <div class="trust-card">
+            <strong>Corporate</strong>
+            <span>Launches, dinners, and brand events</span>
+          </div>
+        </div>
+      </div>
+
+      <aside class="hero-panel">
+        <div class="decor-lines"></div>
+        <div class="panel-content">
+          <div class="panel-pill">Florals • Backdrops • Tablescapes • Rentals</div>
+
+          <div class="feature-card">
+            <h2>Built for clients who need to see taste before they trust.</h2>
+            <p>
+              Event decor websites must feel visual, polished, and organized because clients are buying atmosphere, detail, reliability, and memory.
+            </p>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="page" id="services">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Services</div>
+          <h2 class="section-title">Event styling services.</h2>
+        </div>
+        <p class="section-desc">
+          The page separates decor services clearly so visitors can understand whether the team handles their kind of event.
+        </p>
+      </div>
+
+      <div class="services-grid">
+        <article class="service-card">
+          <div>
+            <h3>Wedding Decor</h3>
+            <p>Ceremony setups, reception styling, floral direction, sweetheart tables, aisle styling, and full room design.</p>
+          </div>
+          <span>Elegant celebrations</span>
+        </article>
+
+        <article class="service-card">
+          <div>
+            <h3>Birthday Styling</h3>
+            <p>Personalized backdrops, balloon installations, themed tables, photo areas, and celebration styling.</p>
+          </div>
+          <span>Personal moments</span>
+        </article>
+
+        <article class="service-card">
+          <div>
+            <h3>Corporate Events</h3>
+            <p>Brand launches, private dinners, networking events, stage styling, and polished guest experiences.</p>
+          </div>
+          <span>Professional presentation</span>
+        </article>
+
+        <article class="service-card">
+          <div>
+            <h3>Backdrops & Installations</h3>
+            <p>Photo walls, floral installations, balloon features, entrance moments, and statement decor pieces.</p>
+          </div>
+          <span>Visual impact</span>
+        </article>
+
+        <article class="service-card">
+          <div>
+            <h3>Tablescapes</h3>
+            <p>Place settings, centerpieces, candles, linens, chargers, menu styling, and guest table presentation.</p>
+          </div>
+          <span>Beautiful details</span>
+        </article>
+
+        <article class="service-card">
+          <div>
+            <h3>Decor Rentals</h3>
+            <p>Selected rentals for backdrops, stands, vases, props, table pieces, and event styling support.</p>
+          </div>
+          <span>Flexible options</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="page" id="portfolio">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Portfolio</div>
+          <h2 class="section-title">Decor style preview.</h2>
+        </div>
+        <p class="section-desc">
+          Real event decorators need strong photos. This demo uses styled placeholders to show how work can be displayed.
+        </p>
+      </div>
+
+      <div class="gallery">
+        <div class="gallery-item"><span class="gallery-label">Wedding Tablescape</span></div>
+        <div class="gallery-item"><span class="gallery-label">Floral Backdrop</span></div>
+        <div class="gallery-item"><span class="gallery-label">Birthday Styling</span></div>
+        <div class="gallery-item"><span class="gallery-label">Corporate Dinner</span></div>
+        <div class="gallery-item"><span class="gallery-label">Entrance Moment</span></div>
+      </div>
+    </section>
+
+    <section class="page">
+      <div class="experience-panel">
+        <div>
+          <div class="kicker">Why this works</div>
+          <h2>Event clients need visuals, confidence, and a clear process.</h2>
+          <p>
+            Decor clients are usually comparing taste, budget, availability, and trust. A good website should reduce uncertainty before the first conversation.
+          </p>
+        </div>
+
+        <div class="experience-list">
+          <div class="experience-item">
+            <strong>Visual-first structure</strong>
+            <span>The layout gives enough space for portfolios, details, and mood-driven presentation.</span>
+          </div>
+
+          <div class="experience-item">
+            <strong>Service clarity</strong>
+            <span>Visitors can quickly see if the decorator handles weddings, birthdays, corporate events, or installations.</span>
+          </div>
+
+          <div class="experience-item">
+            <strong>Consultation CTA</strong>
+            <span>The page moves serious clients toward a planning conversation instead of vague browsing.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Process</div>
+          <h2 class="section-title">From vision to setup.</h2>
+        </div>
+        <p class="section-desc">
+          A clear process section helps clients understand how their event idea becomes a real decorated space.
+        </p>
+      </div>
+
+      <div class="steps">
+        <div class="step-card">
+          <div class="step">1</div>
+          <h3>Consultation</h3>
+          <p>The client shares date, venue, guest count, event type, style direction, and budget range.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step">2</div>
+          <h3>Concept direction</h3>
+          <p>The decorator shapes the mood, colors, key decor moments, and realistic design scope.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step">3</div>
+          <h3>Planning</h3>
+          <p>The team confirms rentals, florals, layout, timeline, setup needs, and final details.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step">4</div>
+          <h3>Event setup</h3>
+          <p>The decor is installed, styled, reviewed, and prepared before guests arrive.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="packages">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Packages</div>
+          <h2 class="section-title">Event styling options.</h2>
+        </div>
+        <p class="section-desc">
+          Real event pricing depends on scope, location, rentals, florals, and setup. This gives clean package direction without overpromising.
+        </p>
+      </div>
+
+      <div class="packages">
+        <article class="package-card">
+          <h3>Intimate Setup</h3>
+          <p>For smaller birthdays, dinners, showers, and photo-ready celebration corners.</p>
+          <div class="price">Starter</div>
+          <ul>
+            <li>Backdrop styling</li>
+            <li>Basic decor pieces</li>
+            <li>Color direction</li>
+            <li>Setup guidance</li>
+          </ul>
+        </article>
+
+        <article class="package-card featured">
+          <h3>Signature Event</h3>
+          <p>For weddings, birthdays, launches, and events that need a fuller decor experience.</p>
+          <div class="price">Custom</div>
+          <ul>
+            <li>Design concept</li>
+            <li>Tablescape styling</li>
+            <li>Installations</li>
+            <li>Setup coordination</li>
+          </ul>
+        </article>
+
+        <article class="package-card">
+          <h3>Full Styling</h3>
+          <p>For events that need ceremony, reception, stage, entrance, tables, and guest experience styling.</p>
+          <div class="price">Premium</div>
+          <ul>
+            <li>Full event design</li>
+            <li>Multiple decor zones</li>
+            <li>Vendor coordination</li>
+            <li>Final walkthrough</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="page">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Testimonials</div>
+          <h2 class="section-title">Client words.</h2>
+        </div>
+        <p class="section-desc">
+          For a real decorator, this section should include real client reviews and event photos.
+        </p>
+      </div>
+
+      <div class="testimonials">
+        <article class="quote-card">
+          <p>“The setup looked even better than we imagined. The colors, table details, and backdrop were beautifully done.”</p>
+          <strong>Sample Wedding Client</strong>
+        </article>
+
+        <article class="quote-card">
+          <p>“They understood the theme and made the whole birthday feel polished without making it stressful.”</p>
+          <strong>Sample Birthday Client</strong>
+        </article>
+
+        <article class="quote-card">
+          <p>“Our launch dinner looked premium and organized. The decor matched the brand perfectly.”</p>
+          <strong>Sample Corporate Client</strong>
+        </article>
+      </div>
+    </section>
+
+    <section class="page" id="contact">
+      <div class="contact-box">
+        <div>
+          <h2>Planning an event?</h2>
+          <p>
+            Send your event date, venue, guest count, decor style, and budget range. We’ll reply with availability and next steps.
+          </p>
+        </div>
+
+        <div class="contact-actions">
+          <a class="contact-link" href="tel:+15550000000">
+            <span>Call</span>
+            <strong>(555) 000-0000</strong>
+          </a>
+
+          <a class="contact-link" href="mailto:hello@example.com">
+            <span>Email</span>
+            <strong>hello@example.com</strong>
+          </a>
+
+          <a class="contact-link" href="../">
+            <span>Portfolio</span>
+            <strong>Back to Built by Sammie</strong>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span>Event decor website demo by Built by Sammie.</span>
+      <span>One-page concept for portfolio use.</span>
+    </div>
+  </footer>
+</body>
+</html>
