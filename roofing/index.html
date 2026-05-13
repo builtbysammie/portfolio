@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Summit Roofing Co. | Roofing Website Demo</title>
+  <meta name="description" content="A clean one-page roofing company website demo by Built by Sammie." />
+
+  <style>
+    :root {
+      --bg: #f4f1ec;
+      --text: #171717;
+      --muted: #68625a;
+      --dark: #111111;
+      --cream: #fffaf1;
+      --orange: #c56b2c;
+      --orange-dark: #8e461b;
+      --line: rgba(17, 17, 17, 0.12);
+      --card: rgba(255, 250, 241, 0.78);
+      --shadow: 0 24px 70px rgba(17, 17, 17, 0.12);
+      --max: 1160px;
+      --radius: 28px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(197, 107, 44, 0.18), transparent 32rem),
+        radial-gradient(circle at top right, rgba(17, 17, 17, 0.08), transparent 28rem),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      width: min(100% - 32px, var(--max));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(244, 241, 236, 0.84);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      min-height: 74px;
+      width: min(100% - 32px, var(--max));
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 14px;
+      background: var(--dark);
+      color: var(--cream);
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      box-shadow: 0 12px 26px rgba(17, 17, 17, 0.18);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      color: var(--muted);
+      font-weight: 750;
+      font-size: 0.92rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .nav-cta {
+      padding: 11px 17px;
+      border-radius: 999px;
+      background: var(--orange);
+      color: white;
+      font-weight: 900;
+      box-shadow: 0 14px 32px rgba(197, 107, 44, 0.22);
+    }
+
+    .hero {
+      padding: 82px 0 56px;
+      display: grid;
+      grid-template-columns: 1.02fr 0.98fr;
+      gap: 44px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 13px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 250, 241, 0.7);
+      color: var(--orange-dark);
+      font-size: 0.78rem;
+      font-weight: 950;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+
+    .eyebrow span {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--orange);
+      box-shadow: 0 0 0 6px rgba(197, 107, 44, 0.15);
+    }
+
+    h1 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(3.1rem, 7.5vw, 7rem);
+      line-height: 0.9;
+      letter-spacing: -0.075em;
+      margin-bottom: 24px;
+    }
+
+    .hero-copy {
+      color: var(--muted);
+      font-size: clamp(1.02rem, 2vw, 1.22rem);
+      max-width: 650px;
+      margin-bottom: 32px;
+      font-weight: 540;
+    }
+
+    .hero-copy strong {
+      color: var(--text);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 34px;
+    }
+
+    .btn {
+      min-height: 52px;
+      padding: 0 22px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn.primary {
+      background: var(--orange);
+      color: white;
+      box-shadow: 0 18px 38px rgba(197, 107, 44, 0.23);
+    }
+
+    .btn.secondary {
+      border: 1px solid var(--line);
+      background: rgba(255, 250, 241, 0.72);
+    }
+
+    .trust-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .trust-card {
+      border: 1px solid var(--line);
+      background: rgba(255, 250, 241, 0.66);
+      border-radius: 20px;
+      padding: 16px;
+    }
+
+    .trust-card strong {
+      display: block;
+      font-size: 1.2rem;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .trust-card span {
+      color: var(--muted);
+      font-size: 0.84rem;
+      font-weight: 700;
+    }
+
+    .hero-panel {
+      min-height: 560px;
+      border-radius: 40px;
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, rgba(17, 17, 17, 0.1), rgba(17, 17, 17, 0.7)),
+        radial-gradient(circle at 52% 30%, #d39a63, transparent 15rem),
+        linear-gradient(135deg, #3d332b, #111111);
+      box-shadow: var(--shadow);
+      position: relative;
+      padding: 24px;
+      color: white;
+    }
+
+    .roof-lines {
+      position: absolute;
+      inset: 0;
+      opacity: 0.2;
+      background:
+        linear-gradient(135deg, transparent 0 48%, rgba(255,255,255,0.25) 49% 51%, transparent 52%),
+        linear-gradient(45deg, transparent 0 48%, rgba(255,255,255,0.18) 49% 51%, transparent 52%);
+      background-size: 120px 120px;
+    }
+
+    .panel-content {
+      position: relative;
+      z-index: 1;
+      min-height: 512px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .panel-pill {
+      align-self: flex-start;
+      border: 1px solid rgba(255,255,255,0.22);
+      background: rgba(255,255,255,0.1);
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: 0.78rem;
+      font-weight: 900;
+    }
+
+    .estimate-card {
+      background: rgba(255, 250, 241, 0.12);
+      border: 1px solid rgba(255, 250, 241, 0.18);
+      backdrop-filter: blur(12px);
+      border-radius: 30px;
+      padding: 24px;
+    }
+
+    .estimate-card h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.2rem, 4vw, 4rem);
+      line-height: 0.98;
+      letter-spacing: -0.06em;
+      margin-bottom: 14px;
+    }
+
+    .estimate-card p {
+      color: rgba(255, 250, 241, 0.74);
+      max-width: 420px;
+      font-weight: 540;
+    }
+
+    section {
+      padding: 62px 0;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 24px;
+      margin-bottom: 28px;
+    }
+
+    .kicker {
+      color: var(--orange-dark);
+      font-size: 0.78rem;
+      font-weight: 950;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.35rem, 4.5vw, 4.8rem);
+      line-height: 1;
+      letter-spacing: -0.065em;
+    }
+
+    .section-desc {
+      max-width: 470px;
+      color: var(--muted);
+      font-weight: 560;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .service-card {
+      min-height: 250px;
+      border: 1px solid var(--line);
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: 0 14px 42px rgba(17, 17, 17, 0.06);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .service-card h3 {
+      font-size: 1.24rem;
+      letter-spacing: -0.035em;
+      margin-bottom: 10px;
+    }
+
+    .service-card p {
+      color: var(--muted);
+      font-weight: 540;
+      font-size: 0.95rem;
+    }
+
+    .service-card span {
+      color: var(--orange-dark);
+      font-weight: 950;
+      font-size: 0.9rem;
+      margin-top: 22px;
+    }
+
+    .emergency {
+      border-radius: 38px;
+      background: var(--dark);
+      color: var(--cream);
+      padding: 38px;
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 34px;
+      align-items: center;
+      box-shadow: var(--shadow);
+    }
+
+    .emergency h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.4rem, 4vw, 4.7rem);
+      line-height: 0.98;
+      letter-spacing: -0.06em;
+      margin-bottom: 16px;
+    }
+
+    .emergency p {
+      color: rgba(255, 250, 241, 0.68);
+      max-width: 520px;
+    }
+
+    .emergency-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .emergency-item {
+      border: 1px solid rgba(255, 250, 241, 0.14);
+      background: rgba(255, 250, 241, 0.07);
+      border-radius: 22px;
+      padding: 18px;
+    }
+
+    .emergency-item strong {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .emergency-item span {
+      color: rgba(255, 250, 241, 0.62);
+      font-size: 0.92rem;
+    }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .process-card {
+      border: 1px solid var(--line);
+      background: rgba(255, 250, 241, 0.68);
+      border-radius: 24px;
+      padding: 22px;
+      min-height: 210px;
+    }
+
+    .step {
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: var(--orange);
+      color: white;
+      font-weight: 950;
+      margin-bottom: 20px;
+    }
+
+    .process-card h3 {
+      letter-spacing: -0.03em;
+      margin-bottom: 8px;
+    }
+
+    .process-card p {
+      color: var(--muted);
+      font-size: 0.92rem;
+      font-weight: 540;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-auto-rows: 230px;
+      gap: 16px;
+    }
+
+    .gallery-item {
+      border-radius: 28px;
+      overflow: hidden;
+      position: relative;
+      border: 1px solid rgba(17, 17, 17, 0.08);
+      box-shadow: 0 18px 48px rgba(17, 17, 17, 0.08);
+      background: var(--dark);
+    }
+
+    .gallery-item:nth-child(1) {
+      grid-row: span 2;
+      background: radial-gradient(circle at 50% 35%, #ce8754, transparent 12rem), linear-gradient(135deg, #4b3f35, #111111);
+    }
+
+    .gallery-item:nth-child(2) {
+      background: radial-gradient(circle at 55% 45%, #e3b07c, transparent 10rem), linear-gradient(135deg, #5a493d, #151515);
+    }
+
+    .gallery-item:nth-child(3) {
+      background: radial-gradient(circle at 50% 45%, #c56b2c, transparent 10rem), linear-gradient(135deg, #2e2925, #111111);
+    }
+
+    .gallery-item:nth-child(4) {
+      background: radial-gradient(circle at 55% 42%, #d7a66f, transparent 10rem), linear-gradient(135deg, #51443a, #111111);
+    }
+
+    .gallery-item:nth-child(5) {
+      background: radial-gradient(circle at 45% 42%, #b65f27, transparent 10rem), linear-gradient(135deg, #3b3029, #111111);
+    }
+
+    .gallery-label {
+      position: absolute;
+      left: 18px;
+      bottom: 18px;
+      color: var(--cream);
+      font-weight: 950;
+      letter-spacing: -0.03em;
+    }
+
+    .testimonials {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .quote-card {
+      border: 1px solid var(--line);
+      background: rgba(255, 250, 241, 0.72);
+      border-radius: var(--radius);
+      padding: 24px;
+      min-height: 230px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .quote-card p {
+      color: var(--muted);
+      font-weight: 560;
+      margin-bottom: 24px;
+    }
+
+    .quote-card strong {
+      letter-spacing: -0.03em;
+    }
+
+    .contact-box {
+      border-radius: 42px;
+      background:
+        radial-gradient(circle at top right, rgba(197, 107, 44, 0.22), transparent 22rem),
+        rgba(255, 250, 241, 0.78);
+      border: 1px solid var(--line);
+      box-shadow: 0 18px 55px rgba(17, 17, 17, 0.08);
+      padding: 42px;
+      display: grid;
+      grid-template-columns: 1fr 0.85fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .contact-box h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.5rem, 5vw, 5.5rem);
+      line-height: 0.95;
+      letter-spacing: -0.07em;
+      margin-bottom: 16px;
+    }
+
+    .contact-box p {
+      color: var(--muted);
+      font-size: 1.04rem;
+      font-weight: 560;
+      max-width: 560px;
+    }
+
+    .contact-actions {
+      display: grid;
+      gap: 12px;
+    }
+
+    .contact-link {
+      border: 1px solid var(--line);
+      background: rgba(244, 241, 236, 0.72);
+      border-radius: 22px;
+      padding: 16px 18px;
+    }
+
+    .contact-link span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 950;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .contact-link strong {
+      letter-spacing: -0.02em;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 26px 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+      font-weight: 650;
+    }
+
+    .footer-inner {
+      width: min(100% - 32px, var(--max));
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 980px) {
+      .hero,
+      .emergency,
+      .contact-box {
+        grid-template-columns: 1fr;
+      }
+
+      .services-grid,
+      .testimonials {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .process-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .hero-panel {
+        min-height: 480px;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav {
+        min-height: 68px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 54px;
+      }
+
+      .hero-actions {
+        align-items: stretch;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .trust-row,
+      .services-grid,
+      .testimonials,
+      .process-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-panel {
+        min-height: 420px;
+        border-radius: 30px;
+      }
+
+      .panel-content {
+        min-height: 372px;
+      }
+
+      section {
+        padding: 48px 0;
+      }
+
+      .section-head {
+        flex-direction: column;
+        align-items: start;
+      }
+
+      .gallery {
+        grid-template-columns: 1fr;
+        grid-auto-rows: 230px;
+      }
+
+      .gallery-item:nth-child(1) {
+        grid-row: span 1;
+      }
+
+      .emergency,
+      .contact-box {
+        padding: 24px;
+        border-radius: 30px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav class="nav">
+      <a href="../" class="brand">
+        <span class="brand-mark">S</span>
+        <span>Summit Roofing Co.</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#process">Process</a>
+        <a href="#work">Work</a>
+        <a href="#contact" class="nav-cta">Free Estimate</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page hero">
+      <div>
+        <div class="eyebrow"><span></span> Roofing Website Demo</div>
+
+        <h1>Reliable roof repairs and replacements without the runaround.</h1>
+
+        <p class="hero-copy">
+          A clean roofing website concept built to help homeowners quickly understand the services, trust the company, and <strong>request a free estimate</strong>.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#contact" class="btn primary">Request a Free Estimate</a>
+          <a href="#services" class="btn secondary">View Roofing Services</a>
+        </div>
+
+        <div class="trust-row">
+          <div class="trust-card">
+            <strong>24/7</strong>
+            <span>Emergency leak support</span>
+          </div>
+          <div class="trust-card">
+            <strong>Free</strong>
+            <span>Roof inspections</span>
+          </div>
+          <div class="trust-card">
+            <strong>Local</strong>
+            <span>Residential roofing team</span>
+          </div>
+        </div>
+      </div>
+
+      <aside class="hero-panel">
+        <div class="roof-lines"></div>
+        <div class="panel-content">
+          <div class="panel-pill">Storm Damage • Repairs • Replacement</div>
+
+          <div class="estimate-card">
+            <h2>Built for homeowners who need help fast.</h2>
+            <p>
+              The layout pushes the most important roofing actions: call, request estimate, inspect damage, and understand services.
+            </p>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="page" id="services">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Services</div>
+          <h2 class="section-title">Roofing services.</h2>
+        </div>
+        <p class="section-desc">
+          A roofing website must make services clear fast, especially for homeowners dealing with leaks, storm damage, or an aging roof.
+        </p>
+      </div>
+
+      <div class="services-grid">
+        <article class="service-card">
+          <div>
+            <h3>Roof Repairs</h3>
+            <p>Leak repairs, missing shingles, flashing issues, storm damage, and small roofing problems before they get worse.</p>
+          </div>
+          <span>Fast inspection</span>
+        </article>
+
+        <article class="service-card">
+          <div>
+            <h3>Roof Replacement</h3>
+            <p>Full residential roof replacement with clear estimates, material guidance, and clean project timelines.</p>
+          </div>
+          <span>Long-term protection</span>
+        </article>
+
+        <article class="service-card">
+          <div>
+            <h3>Storm Damage</h3>
+            <p>Assessment after heavy wind, rain, hail, fallen branches, and weather-related roof damage.</p>
+          </div>
+          <span>Damage review</span>
+        </article>
+
+        <article class="service-card">
+          <div>
+            <h3>Leak Detection</h3>
+            <p>Finding the source of water stains, ceiling leaks, attic moisture, and hidden roofing issues.</p>
+          </div>
+          <span>Problem diagnosis</span>
+        </article>
+
+        <article class="service-card">
+          <div>
+            <h3>Gutters & Drainage</h3>
+            <p>Gutter repair, replacement, and drainage improvements to help protect the roofline and foundation.</p>
+          </div>
+          <span>Water control</span>
+        </article>
+
+        <article class="service-card">
+          <div>
+            <h3>Roof Maintenance</h3>
+            <p>Preventive checkups, seasonal inspections, small fixes, and roof health reports for homeowners.</p>
+          </div>
+          <span>Prevent costly damage</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="page">
+      <div class="emergency">
+        <div>
+          <div class="kicker">Emergency-ready</div>
+          <h2>Roofing pages need urgency and trust.</h2>
+          <p>
+            Many roofing customers are not casually browsing. They may have a leak, visible damage, or stress after a storm. The website needs to reduce panic and move them toward action.
+          </p>
+        </div>
+
+        <div class="emergency-list">
+          <div class="emergency-item">
+            <strong>Clear estimate button</strong>
+            <span>The primary action is visible from the hero section and repeated near the bottom.</span>
+          </div>
+
+          <div class="emergency-item">
+            <strong>Trust signals early</strong>
+            <span>Inspection, local service, emergency support, and repair categories are shown quickly.</span>
+          </div>
+
+          <div class="emergency-item">
+            <strong>Simple service language</strong>
+            <span>The page avoids confusing technical talk and speaks directly to homeowner problems.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="process">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Process</div>
+          <h2 class="section-title">Simple repair process.</h2>
+        </div>
+        <p class="section-desc">
+          A process section helps homeowners understand what happens after they request an estimate.
+        </p>
+      </div>
+
+      <div class="process-grid">
+        <div class="process-card">
+          <div class="step">1</div>
+          <h3>Request inspection</h3>
+          <p>The homeowner sends their address, issue, photos if available, and preferred inspection time.</p>
+        </div>
+
+        <div class="process-card">
+          <div class="step">2</div>
+          <h3>Check the roof</h3>
+          <p>The team reviews the damage, finds the cause, and explains what needs to be repaired.</p>
+        </div>
+
+        <div class="process-card">
+          <div class="step">3</div>
+          <h3>Get clear estimate</h3>
+          <p>The homeowner receives a simple explanation, price range, timeline, and recommended next step.</p>
+        </div>
+
+        <div class="process-card">
+          <div class="step">4</div>
+          <h3>Complete the work</h3>
+          <p>The repair or replacement is scheduled, completed, cleaned up, and reviewed with the homeowner.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="work">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Project Proof</div>
+          <h2 class="section-title">Roofing work preview.</h2>
+        </div>
+        <p class="section-desc">
+          Real roofing sites should show real before-and-after photos. This demo uses styled placeholders for layout.
+        </p>
+      </div>
+
+      <div class="gallery">
+        <div class="gallery-item"><span class="gallery-label">Roof Replacement</span></div>
+        <div class="gallery-item"><span class="gallery-label">Leak Repair</span></div>
+        <div class="gallery-item"><span class="gallery-label">Storm Damage</span></div>
+        <div class="gallery-item"><span class="gallery-label">Gutter Work</span></div>
+        <div class="gallery-item"><span class="gallery-label">Inspection</span></div>
+      </div>
+    </section>
+
+    <section class="page">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Testimonials</div>
+          <h2 class="section-title">Homeowner words.</h2>
+        </div>
+        <p class="section-desc">
+          For a real client, this section should use real customer reviews from Google, Yelp, Facebook, or direct testimonials.
+        </p>
+      </div>
+
+      <div class="testimonials">
+        <article class="quote-card">
+          <p>“They inspected the leak, explained the issue clearly, and fixed it before the next rain. The process was straightforward.”</p>
+          <strong>Sample Homeowner</strong>
+        </article>
+
+        <article class="quote-card">
+          <p>“The estimate was clear and the team showed up when they said they would. The cleanup after the job was excellent.”</p>
+          <strong>Sample Roof Replacement Client</strong>
+        </article>
+
+        <article class="quote-card">
+          <p>“After the storm, we needed help fast. They checked the damage and gave us a simple plan for repair.”</p>
+          <strong>Sample Storm Damage Client</strong>
+        </article>
+      </div>
+    </section>
+
+    <section class="page" id="contact">
+      <div class="contact-box">
+        <div>
+          <h2>Need your roof checked?</h2>
+          <p>
+            Tell us what happened, where the property is located, and whether it is a leak, storm damage, or replacement request. We’ll reply with next steps.
+          </p>
+        </div>
+
+        <div class="contact-actions">
+          <a class="contact-link" href="tel:+15550000000">
+            <span>Call</span>
+            <strong>(555) 000-0000</strong>
+          </a>
+
+          <a class="contact-link" href="mailto:hello@example.com">
+            <span>Email</span>
+            <strong>hello@example.com</strong>
+          </a>
+
+          <a class="contact-link" href="../">
+            <span>Portfolio</span>
+            <strong>Back to Built by Sammie</strong>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span>Roofing website demo by Built by Sammie.</span>
+      <span>One-page concept for portfolio use.</span>
+    </div>
+  </footer>
+</body>
+</html>
