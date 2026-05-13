@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Velour Aesthetics | Med Spa Website Demo</title>
+  <meta name="description" content="A premium one-page med spa website demo by Built by Sammie." />
+
+  <style>
+    :root {
+      --bg: #f8f1ee;
+      --text: #211713;
+      --muted: #776762;
+      --dark: #1b1210;
+      --cream: #fffaf7;
+      --rose: #c98378;
+      --rose-dark: #8f4f47;
+      --soft: #f1d7d1;
+      --line: rgba(33, 23, 19, 0.12);
+      --card: rgba(255, 250, 247, 0.78);
+      --shadow: 0 24px 70px rgba(27, 18, 16, 0.12);
+      --max: 1160px;
+      --radius: 28px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(201, 131, 120, 0.22), transparent 34rem),
+        radial-gradient(circle at top right, rgba(241, 215, 209, 0.55), transparent 30rem),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      width: min(100% - 32px, var(--max));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(248, 241, 238, 0.84);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      min-height: 74px;
+      width: min(100% - 32px, var(--max));
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 14px;
+      background: var(--dark);
+      color: var(--cream);
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      box-shadow: 0 12px 26px rgba(27, 18, 16, 0.18);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      color: var(--muted);
+      font-weight: 750;
+      font-size: 0.92rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .nav-cta {
+      padding: 11px 17px;
+      border-radius: 999px;
+      background: var(--dark);
+      color: var(--cream);
+      font-weight: 900;
+      box-shadow: 0 14px 32px rgba(27, 18, 16, 0.18);
+    }
+
+    .hero {
+      padding: 82px 0 56px;
+      display: grid;
+      grid-template-columns: 1.02fr 0.98fr;
+      gap: 44px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 13px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 250, 247, 0.72);
+      color: var(--rose-dark);
+      font-size: 0.78rem;
+      font-weight: 950;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+
+    .eyebrow span {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--rose);
+      box-shadow: 0 0 0 6px rgba(201, 131, 120, 0.15);
+    }
+
+    h1 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(3.1rem, 7.5vw, 7rem);
+      line-height: 0.9;
+      letter-spacing: -0.075em;
+      margin-bottom: 24px;
+    }
+
+    .hero-copy {
+      color: var(--muted);
+      font-size: clamp(1.02rem, 2vw, 1.22rem);
+      max-width: 650px;
+      margin-bottom: 32px;
+      font-weight: 540;
+    }
+
+    .hero-copy strong {
+      color: var(--text);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 34px;
+    }
+
+    .btn {
+      min-height: 52px;
+      padding: 0 22px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn.primary {
+      background: var(--dark);
+      color: var(--cream);
+      box-shadow: 0 18px 38px rgba(27, 18, 16, 0.2);
+    }
+
+    .btn.secondary {
+      border: 1px solid var(--line);
+      background: rgba(255, 250, 247, 0.72);
+    }
+
+    .trust-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .trust-card {
+      border: 1px solid var(--line);
+      background: rgba(255, 250, 247, 0.68);
+      border-radius: 20px;
+      padding: 16px;
+    }
+
+    .trust-card strong {
+      display: block;
+      font-size: 1.2rem;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .trust-card span {
+      color: var(--muted);
+      font-size: 0.84rem;
+      font-weight: 700;
+    }
+
+    .hero-panel {
+      min-height: 560px;
+      border-radius: 40px;
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, rgba(27, 18, 16, 0.04), rgba(27, 18, 16, 0.68)),
+        radial-gradient(circle at 45% 24%, #f2c9c0, transparent 15rem),
+        radial-gradient(circle at 82% 74%, #c98378, transparent 13rem),
+        linear-gradient(135deg, #8d635d, #1b1210);
+      box-shadow: var(--shadow);
+      position: relative;
+      padding: 24px;
+      color: white;
+    }
+
+    .glow-lines {
+      position: absolute;
+      inset: 0;
+      opacity: 0.18;
+      background:
+        linear-gradient(120deg, transparent 0 47%, rgba(255,255,255,0.22) 48% 52%, transparent 53%),
+        linear-gradient(30deg, transparent 0 47%, rgba(255,255,255,0.16) 48% 52%, transparent 53%);
+      background-size: 130px 130px;
+    }
+
+    .panel-content {
+      position: relative;
+      z-index: 1;
+      min-height: 512px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .panel-pill {
+      align-self: flex-start;
+      border: 1px solid rgba(255,255,255,0.22);
+      background: rgba(255,255,255,0.1);
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: 0.78rem;
+      font-weight: 900;
+    }
+
+    .feature-card {
+      background: rgba(255, 250, 247, 0.13);
+      border: 1px solid rgba(255, 250, 247, 0.18);
+      backdrop-filter: blur(12px);
+      border-radius: 30px;
+      padding: 24px;
+    }
+
+    .feature-card h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.2rem, 4vw, 4rem);
+      line-height: 0.98;
+      letter-spacing: -0.06em;
+      margin-bottom: 14px;
+    }
+
+    .feature-card p {
+      color: rgba(255, 250, 247, 0.76);
+      max-width: 420px;
+      font-weight: 540;
+    }
+
+    section {
+      padding: 62px 0;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 24px;
+      margin-bottom: 28px;
+    }
+
+    .kicker {
+      color: var(--rose-dark);
+      font-size: 0.78rem;
+      font-weight: 950;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.35rem, 4.5vw, 4.8rem);
+      line-height: 1;
+      letter-spacing: -0.065em;
+    }
+
+    .section-desc {
+      max-width: 470px;
+      color: var(--muted);
+      font-weight: 560;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .service-card {
+      min-height: 250px;
+      border: 1px solid var(--line);
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: 0 14px 42px rgba(27, 18, 16, 0.06);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .service-card h3 {
+      font-size: 1.24rem;
+      letter-spacing: -0.035em;
+      margin-bottom: 10px;
+    }
+
+    .service-card p {
+      color: var(--muted);
+      font-weight: 540;
+      font-size: 0.95rem;
+    }
+
+    .service-card span {
+      color: var(--rose-dark);
+      font-weight: 950;
+      font-size: 0.9rem;
+      margin-top: 22px;
+    }
+
+    .luxury-panel {
+      border-radius: 38px;
+      background: var(--dark);
+      color: var(--cream);
+      padding: 38px;
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 34px;
+      align-items: center;
+      box-shadow: var(--shadow);
+    }
+
+    .luxury-panel h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.4rem, 4vw, 4.7rem);
+      line-height: 0.98;
+      letter-spacing: -0.06em;
+      margin-bottom: 16px;
+    }
+
+    .luxury-panel p {
+      color: rgba(255, 250, 247, 0.68);
+      max-width: 520px;
+    }
+
+    .luxury-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .luxury-item {
+      border: 1px solid rgba(255, 250, 247, 0.14);
+      background: rgba(255, 250, 247, 0.07);
+      border-radius: 22px;
+      padding: 18px;
+    }
+
+    .luxury-item strong {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .luxury-item span {
+      color: rgba(255, 250, 247, 0.62);
+      font-size: 0.92rem;
+    }
+
+    .treatment-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-auto-rows: 230px;
+      gap: 16px;
+    }
+
+    .treatment-item {
+      border-radius: 28px;
+      overflow: hidden;
+      position: relative;
+      border: 1px solid rgba(27, 18, 16, 0.08);
+      box-shadow: 0 18px 48px rgba(27, 18, 16, 0.08);
+      background: var(--dark);
+    }
+
+    .treatment-item:nth-child(1) {
+      grid-row: span 2;
+      background: radial-gradient(circle at 50% 34%, #f3c9c1, transparent 12rem), linear-gradient(135deg, #8c615b, #1b1210);
+    }
+
+    .treatment-item:nth-child(2) {
+      background: radial-gradient(circle at 50% 42%, #ffe5df, transparent 10rem), linear-gradient(135deg, #a7756d, #1b1210);
+    }
+
+    .treatment-item:nth-child(3) {
+      background: radial-gradient(circle at 55% 42%, #dca097, transparent 10rem), linear-gradient(135deg, #5a3d39, #1b1210);
+    }
+
+    .treatment-item:nth-child(4) {
+      background: radial-gradient(circle at 48% 42%, #f4d8d2, transparent 10rem), linear-gradient(135deg, #76514c, #1b1210);
+    }
+
+    .treatment-item:nth-child(5) {
+      background: radial-gradient(circle at 45% 42%, #c98378, transparent 10rem), linear-gradient(135deg, #3b2825, #1b1210);
+    }
+
+    .treatment-label {
+      position: absolute;
+      left: 18px;
+      bottom: 18px;
+      color: var(--cream);
+      font-weight: 950;
+      letter-spacing: -0.03em;
+    }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .process-card {
+      border: 1px solid var(--line);
+      background: rgba(255, 250, 247, 0.68);
+      border-radius: 24px;
+      padding: 22px;
+      min-height: 210px;
+    }
+
+    .step {
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: var(--dark);
+      color: var(--cream);
+      font-weight: 950;
+      margin-bottom: 20px;
+    }
+
+    .process-card h3 {
+      letter-spacing: -0.03em;
+      margin-bottom: 8px;
+    }
+
+    .process-card p {
+      color: var(--muted);
+      font-size: 0.92rem;
+      font-weight: 540;
+    }
+
+    .packages {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .package-card {
+      border: 1px solid var(--line);
+      background: rgba(255, 250, 247, 0.72);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: 0 14px 42px rgba(27, 18, 16, 0.06);
+    }
+
+    .package-card.featured {
+      background: var(--dark);
+      color: var(--cream);
+      border-color: rgba(255, 250, 247, 0.14);
+      transform: translateY(-8px);
+    }
+
+    .package-card h3 {
+      font-size: 1.2rem;
+      letter-spacing: -0.035em;
+      margin-bottom: 8px;
+    }
+
+    .price {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 2.35rem;
+      letter-spacing: -0.055em;
+      margin: 14px 0;
+    }
+
+    .package-card p,
+    .package-card li {
+      color: var(--muted);
+      font-weight: 540;
+      font-size: 0.94rem;
+    }
+
+    .package-card.featured p,
+    .package-card.featured li {
+      color: rgba(255, 250, 247, 0.68);
+    }
+
+    ul {
+      list-style: none;
+      display: grid;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    li::before {
+      content: "•";
+      color: var(--rose);
+      font-weight: 900;
+      margin-right: 8px;
+    }
+
+    .testimonials {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .quote-card {
+      border: 1px solid var(--line);
+      background: rgba(255, 250, 247, 0.72);
+      border-radius: var(--radius);
+      padding: 24px;
+      min-height: 230px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .quote-card p {
+      color: var(--muted);
+      font-weight: 560;
+      margin-bottom: 24px;
+    }
+
+    .quote-card strong {
+      letter-spacing: -0.03em;
+    }
+
+    .contact-box {
+      border-radius: 42px;
+      background:
+        radial-gradient(circle at top right, rgba(201, 131, 120, 0.22), transparent 22rem),
+        rgba(255, 250, 247, 0.78);
+      border: 1px solid var(--line);
+      box-shadow: 0 18px 55px rgba(27, 18, 16, 0.08);
+      padding: 42px;
+      display: grid;
+      grid-template-columns: 1fr 0.85fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .contact-box h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.5rem, 5vw, 5.5rem);
+      line-height: 0.95;
+      letter-spacing: -0.07em;
+      margin-bottom: 16px;
+    }
+
+    .contact-box p {
+      color: var(--muted);
+      font-size: 1.04rem;
+      font-weight: 560;
+      max-width: 560px;
+    }
+
+    .contact-actions {
+      display: grid;
+      gap: 12px;
+    }
+
+    .contact-link {
+      border: 1px solid var(--line);
+      background: rgba(248, 241, 238, 0.72);
+      border-radius: 22px;
+      padding: 16px 18px;
+    }
+
+    .contact-link span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 950;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .contact-link strong {
+      letter-spacing: -0.02em;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 26px 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+      font-weight: 650;
+    }
+
+    .footer-inner {
+      width: min(100% - 32px, var(--max));
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 980px) {
+      .hero,
+      .luxury-panel,
+      .contact-box {
+        grid-template-columns: 1fr;
+      }
+
+      .services-grid,
+      .testimonials,
+      .packages {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .process-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .hero-panel {
+        min-height: 480px;
+      }
+
+      .package-card.featured {
+        transform: none;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav {
+        min-height: 68px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 54px;
+      }
+
+      .hero-actions {
+        align-items: stretch;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .trust-row,
+      .services-grid,
+      .testimonials,
+      .process-grid,
+      .packages {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-panel {
+        min-height: 420px;
+        border-radius: 30px;
+      }
+
+      .panel-content {
+        min-height: 372px;
+      }
+
+      section {
+        padding: 48px 0;
+      }
+
+      .section-head {
+        flex-direction: column;
+        align-items: start;
+      }
+
+      .treatment-grid {
+        grid-template-columns: 1fr;
+        grid-auto-rows: 230px;
+      }
+
+      .treatment-item:nth-child(1) {
+        grid-row: span 1;
+      }
+
+      .luxury-panel,
+      .contact-box {
+        padding: 24px;
+        border-radius: 30px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav class="nav">
+      <a href="../" class="brand">
+        <span class="brand-mark">V</span>
+        <span>Velour Aesthetics</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#treatments">Treatments</a>
+        <a href="#experience">Experience</a>
+        <a href="#packages">Packages</a>
+        <a href="#contact" class="nav-cta">Book Consult</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page hero">
+      <div>
+        <div class="eyebrow"><span></span> Med Spa Website Demo</div>
+
+        <h1>Soft luxury skincare and aesthetic treatments.</h1>
+
+        <p class="hero-copy">
+          A premium med spa website concept built for treatment discovery, consultation booking, trust, elegance, and a calm <strong>high-end client experience</strong>.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#contact" class="btn primary">Book a Consultation</a>
+          <a href="#treatments" class="btn secondary">Explore Treatments</a>
+        </div>
+
+        <div class="trust-row">
+          <div class="trust-card">
+            <strong>Skin</strong>
+            <span>Personalized plans</span>
+          </div>
+          <div class="trust-card">
+            <strong>Glow</strong>
+            <span>Facials & peels</span>
+          </div>
+          <div class="trust-card">
+            <strong>Care</strong>
+            <span>Consult-first approach</span>
+          </div>
+        </div>
+      </div>
+
+      <aside class="hero-panel">
+        <div class="glow-lines"></div>
+        <div class="panel-content">
+          <div class="panel-pill">Facials • Injectables • Laser • Skin Plans</div>
+
+          <div class="feature-card">
+            <h2>Built for clients who need trust before beauty.</h2>
+            <p>
+              Med spa websites must feel polished, calm, safe, and credible. The design needs to sell transformation without feeling cheap or aggressive.
+            </p>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="page" id="treatments">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Treatments</div>
+          <h2 class="section-title">Aesthetic services.</h2>
+        </div>
+        <p class="section-desc">
+          This page separates treatments clearly so visitors can understand what the med spa offers before booking a consultation.
+        </p>
+      </div>
+
+      <div class="services-grid">
+        <article class="service-card">
+          <div>
+            <h3>Signature Facials</h3>
+            <p>Custom facials for hydration, texture, dullness, congestion, glow, and routine skin maintenance.</p>
+          </div>
+          <span>Best for skin refresh</span>
+        </article>
+
+        <article class="service-card">
+          <div>
+            <h3>Injectables</h3>
+            <p>Consultation-led aesthetic treatments for softening lines, facial balance, and natural-looking refinement.</p>
+          </div>
+          <span>Best by consultation</span>
+        </article>
+
+        <article class="service-card">
+          <div>
+            <h3>Chemical Peels</h3>
+            <p>Targeted treatments for texture, tone, pigmentation, acne marks, and smoother skin appearance.</p>
+          </div>
+          <span>Best for texture</span>
+        </article>
+
+        <article class="service-card">
+          <div>
+            <h3>Laser Treatments</h3>
+            <p>Laser-focused services for skin clarity, hair reduction, resurfacing, and long-term treatment plans.</p>
+          </div>
+          <span>Best for long-term care</span>
+        </article>
+
+        <article class="service-card">
+          <div>
+            <h3>Body Contouring</h3>
+            <p>Non-surgical treatment options for sculpting, tightening, and supporting body confidence goals.</p>
+          </div>
+          <span>Best for body goals</span>
+        </article>
+
+        <article class="service-card">
+          <div>
+            <h3>Skin Consultations</h3>
+            <p>One-on-one assessment to understand goals, concerns, current routine, and best treatment direction.</p>
+          </div>
+          <span>Best first step</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="page" id="experience">
+      <div class="luxury-panel">
+        <div>
+          <div class="kicker">Experience</div>
+          <h2>Med spa websites must feel safe, premium, and personal.</h2>
+          <p>
+            Beauty clients are not only buying a treatment. They are buying trust, privacy, taste, safety, and confidence in the provider.
+          </p>
+        </div>
+
+        <div class="luxury-list">
+          <div class="luxury-item">
+            <strong>Consultation-first booking</strong>
+            <span>The page guides clients toward a consultation instead of pushing every visitor into a treatment too quickly.</span>
+          </div>
+
+          <div class="luxury-item">
+            <strong>Soft premium presentation</strong>
+            <span>The visuals and spacing create a calm luxury feel, which matters for med spa and skincare brands.</span>
+          </div>
+
+          <div class="luxury-item">
+            <strong>Treatment clarity</strong>
+            <span>Services are easy to scan, helping clients understand what is available before they ask questions.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Visual Direction</div>
+          <h2 class="section-title">Treatment preview layout.</h2>
+        </div>
+        <p class="section-desc">
+          A real med spa site should use real treatment room images, skin result photos where allowed, and soft brand photography.
+        </p>
+      </div>
+
+      <div class="treatment-grid">
+        <div class="treatment-item"><span class="treatment-label">Glow Facial</span></div>
+        <div class="treatment-item"><span class="treatment-label">Skin Consultation</span></div>
+        <div class="treatment-item"><span class="treatment-label">Laser Care</span></div>
+        <div class="treatment-item"><span class="treatment-label">Treatment Room</span></div>
+        <div class="treatment-item"><span class="treatment-label">Aftercare</span></div>
+      </div>
+    </section>
+
+    <section class="page">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Process</div>
+          <h2 class="section-title">From consult to glow plan.</h2>
+        </div>
+        <p class="section-desc">
+          A simple process reduces uncertainty and helps clients feel guided before they book.
+        </p>
+      </div>
+
+      <div class="process-grid">
+        <div class="process-card">
+          <div class="step">1</div>
+          <h3>Book consult</h3>
+          <p>The client shares their skin goals, concerns, timeline, and treatment interests.</p>
+        </div>
+
+        <div class="process-card">
+          <div class="step">2</div>
+          <h3>Skin review</h3>
+          <p>The provider reviews goals, current routine, skin history, and suitable treatment options.</p>
+        </div>
+
+        <div class="process-card">
+          <div class="step">3</div>
+          <h3>Treatment plan</h3>
+          <p>The client receives a realistic plan based on safety, budget, skin needs, and desired outcome.</p>
+        </div>
+
+        <div class="process-card">
+          <div class="step">4</div>
+          <h3>Aftercare</h3>
+          <p>The client gets aftercare guidance, follow-up timing, and maintenance recommendations.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="packages">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Packages</div>
+          <h2 class="section-title">Treatment pathways.</h2>
+        </div>
+        <p class="section-desc">
+          Real prices vary by state, provider, and treatment. This structure shows how a med spa can package services cleanly.
+        </p>
+      </div>
+
+      <div class="packages">
+        <article class="package-card">
+          <h3>Glow Starter</h3>
+          <p>For clients who want a facial, skin refresh, and simple first visit.</p>
+          <div class="price">From $150</div>
+          <ul>
+            <li>Skin review</li>
+            <li>Signature facial</li>
+            <li>Hydration focus</li>
+            <li>Home-care notes</li>
+          </ul>
+        </article>
+
+        <article class="package-card featured">
+          <h3>Consult + Plan</h3>
+          <p>For clients considering injectables, laser, peels, or a longer treatment journey.</p>
+          <div class="price">Best First Step</div>
+          <ul>
+            <li>Full consultation</li>
+            <li>Goal mapping</li>
+            <li>Treatment options</li>
+            <li>Personalized plan</li>
+          </ul>
+        </article>
+
+        <article class="package-card">
+          <h3>Skin Series</h3>
+          <p>For clients who want a multi-session plan for texture, tone, clarity, or glow.</p>
+          <div class="price">Custom</div>
+          <ul>
+            <li>Multiple visits</li>
+            <li>Progress tracking</li>
+            <li>Aftercare support</li>
+            <li>Maintenance plan</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="page">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Testimonials</div>
+          <h2 class="section-title">Client words.</h2>
+        </div>
+        <p class="section-desc">
+          A real med spa website should use real reviews, compliant before-and-after proof, and provider credentials.
+        </p>
+      </div>
+
+      <div class="testimonials">
+        <article class="quote-card">
+          <p>“The consultation helped me understand what my skin actually needed. The experience felt calm and professional.”</p>
+          <strong>Sample Facial Client</strong>
+        </article>
+
+        <article class="quote-card">
+          <p>“I liked that nothing felt rushed. They explained the options and helped me choose a plan that felt natural.”</p>
+          <strong>Sample Aesthetic Client</strong>
+        </article>
+
+        <article class="quote-card">
+          <p>“The space, process, and follow-up made the treatment feel premium from start to finish.”</p>
+          <strong>Sample Skin Client</strong>
+        </article>
+      </div>
+    </section>
+
+    <section class="page" id="contact">
+      <div class="contact-box">
+        <div>
+          <h2>Ready for your glow plan?</h2>
+          <p>
+            Tell us your skin goals, preferred treatment type, and whether this is your first visit. We’ll reply with consultation options.
+          </p>
+        </div>
+
+        <div class="contact-actions">
+          <a class="contact-link" href="tel:+15550000000">
+            <span>Call</span>
+            <strong>(555) 000-0000</strong>
+          </a>
+
+          <a class="contact-link" href="mailto:hello@example.com">
+            <span>Email</span>
+            <strong>hello@example.com</strong>
+          </a>
+
+          <a class="contact-link" href="../">
+            <span>Portfolio</span>
+            <strong>Back to Built by Sammie</strong>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span>Med spa website demo by Built by Sammie.</span>
+      <span>One-page concept for portfolio use.</span>
+    </div>
+  </footer>
+</body>
+</html>
