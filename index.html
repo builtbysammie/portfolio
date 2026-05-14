@@ -4,35 +4,41 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Built by Sammie — Websites That Make Small Brands Look Serious</title>
-  <meta name="description" content="Built by Sammie creates clean, modern websites for small businesses, founders, creatives, and community projects that need to look credible fast." />
+  <meta name="description" content="Built by Sammie creates modern, mobile-friendly websites for small businesses, founders, creatives, and community projects. Clean design. Real results." />
+  <meta property="og:title" content="Built by Sammie — Web Design Studio" />
+  <meta property="og:description" content="I help businesses turn rough ideas into clean, credible websites that win customers fast." />
+  <meta property="og:type" content="website" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
 
   <style>
     :root {
-      --bg: #080810;
-      --surface: #0f0f1a;
-      --surface2: #14141f;
-      --border: rgba(255,255,255,0.07);
-      --border2: rgba(255,255,255,0.12);
-      --text: #f0eee8;
-      --muted: #8a8a9a;
-      --dim: #4a4a5a;
-      --gold: #c8a96e;
-      --gold-light: #e0c890;
-      --gold-dim: rgba(200,169,110,0.15);
-      --teal: #4ecdc4;
-      --max: 1200px;
-      --radius: 20px;
+      --bg:         #03030a;
+      --s1:         #07070f;
+      --s2:         #0c0c1a;
+      --s3:         #111120;
+      --border:     rgba(255,255,255,0.055);
+      --borderhi:   rgba(255,255,255,0.11);
+      --text:       #ecedf5;
+      --muted:      #6b6b8a;
+      --dim:        #2e2e48;
+      --cyan:       #00d4ff;
+      --cyanfade:   rgba(0,212,255,0.07);
+      --cyanglow:   rgba(0,212,255,0.2);
+      --purple:     #9580ff;
+      --purplefade: rgba(149,128,255,0.08);
+      --blue:       #4488ff;
+      --max:        1200px;
+      --r:          18px;
+      --r2:         22px;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Syne', sans-serif;
+      font-family: 'Outfit', sans-serif;
       background: var(--bg);
       color: var(--text);
       line-height: 1.6;
@@ -40,28 +46,34 @@
     }
 
     a { color: inherit; text-decoration: none; }
+    ::selection { background: rgba(0,212,255,0.18); }
+    ::-webkit-scrollbar { width: 3px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--dim); border-radius: 99px; }
 
     .wrap { width: min(100% - 40px, var(--max)); margin: 0 auto; }
 
-    /* ─── NOISE OVERLAY ─── */
-    body::before {
-      content: '';
+    /* ── CANVAS ── */
+    #bgCanvas {
       position: fixed;
       inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-      pointer-events: none;
       z-index: 0;
-      opacity: 0.6;
+      pointer-events: none;
     }
+    @media (prefers-reduced-motion: reduce) { #bgCanvas { display: none; } }
 
-    /* ─── NAV ─── */
+    header, main, footer { position: relative; z-index: 1; }
+
+    /* ─────────────────────────────────────
+       NAV
+    ───────────────────────────────────── */
     header {
       position: sticky;
       top: 0;
-      z-index: 100;
+      z-index: 200;
       border-bottom: 1px solid var(--border);
-      backdrop-filter: blur(24px) saturate(1.4);
-      background: rgba(8,8,16,0.82);
+      backdrop-filter: blur(28px) saturate(1.5);
+      background: rgba(3,3,10,0.84);
     }
 
     .nav {
@@ -70,1076 +82,834 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      min-height: 72px;
-      gap: 24px;
+      min-height: 68px;
+      gap: 16px;
     }
 
-    /* ─── LOGO ─── */
-    .logo-mark {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
+    /* LOGO */
+    .logo { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
 
-    .logo-svg {
-      width: 42px;
-      height: 42px;
-      flex-shrink: 0;
-    }
+    .logo-svg { width: 38px; height: 38px; flex-shrink: 0; }
+
+    .logo-text { display: flex; flex-direction: column; line-height: 1; }
 
     .logo-name {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.15rem;
-      font-weight: 600;
-      letter-spacing: 0.01em;
-      line-height: 1.2;
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.01em;
     }
 
-    .logo-name span {
-      display: block;
-      font-family: 'Syne', sans-serif;
-      font-size: 0.62rem;
+    .logo-sub {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.58rem;
       font-weight: 600;
-      letter-spacing: 0.18em;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: var(--gold);
-      margin-top: 1px;
+      color: var(--cyan);
+      margin-top: 3px;
     }
 
+    /* Desktop nav links */
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 28px;
+      gap: 22px;
       font-size: 0.82rem;
       font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
+      letter-spacing: 0.03em;
       color: var(--muted);
     }
-
-    .nav-links a:hover { color: var(--text); }
+    .nav-links a:hover { color: var(--text); transition: color 0.18s; }
 
     .nav-cta {
-      padding: 10px 22px;
-      border-radius: 999px;
-      border: 1px solid var(--gold);
-      color: var(--gold) !important;
+      padding: 9px 20px;
+      border-radius: 99px;
+      border: 1px solid rgba(0,212,255,0.5);
+      color: var(--cyan) !important;
       font-weight: 700 !important;
-      transition: background 0.2s, color 0.2s;
+      transition: background 0.2s, box-shadow 0.2s;
+      white-space: nowrap;
     }
-
     .nav-cta:hover {
-      background: var(--gold) !important;
+      background: var(--cyan) !important;
       color: var(--bg) !important;
+      box-shadow: 0 0 22px var(--cyanglow);
     }
 
-    /* ─── HERO ─── */
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 38px;
+      height: 38px;
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 8px;
+      cursor: pointer;
+      z-index: 300;
+      flex-shrink: 0;
+    }
+    .hamburger span {
+      display: block;
+      height: 1.5px;
+      background: var(--text);
+      border-radius: 99px;
+      transition: transform 0.28s ease, opacity 0.28s ease;
+      transform-origin: center;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    /* Mobile menu overlay */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 150;
+      background: rgba(3,3,10,0.97);
+      backdrop-filter: blur(24px);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.28s ease;
+    }
+    .mobile-menu.active { opacity: 1; pointer-events: all; }
+
+    .mobile-menu a {
+      font-size: 1.9rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--muted);
+      padding: 10px 40px;
+      border-radius: 12px;
+      transition: color 0.18s, background 0.18s;
+      width: 100%;
+      text-align: center;
+      max-width: 320px;
+    }
+    .mobile-menu a:hover { color: var(--cyan); background: var(--cyanfade); }
+
+    .mobile-menu .m-cta {
+      font-size: 1rem !important;
+      border: 1px solid rgba(0,212,255,0.5);
+      color: var(--cyan) !important;
+      margin-top: 14px;
+      padding: 14px 44px !important;
+    }
+
+    /* ─────────────────────────────────────
+       HERO
+    ───────────────────────────────────── */
     .hero {
+      padding: 106px 0 80px;
       position: relative;
-      padding: 100px 0 70px;
       overflow: hidden;
     }
 
-    .hero-glow {
+    .hero-orb {
       position: absolute;
-      width: 700px;
-      height: 700px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(200,169,110,0.12) 0%, transparent 70%);
-      top: -200px;
-      right: -200px;
       pointer-events: none;
     }
-
-    .hero-glow2 {
-      position: absolute;
-      width: 500px;
-      height: 500px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(78,205,196,0.06) 0%, transparent 70%);
-      bottom: -100px;
-      left: -100px;
-      pointer-events: none;
+    .orb1 {
+      width: 660px; height: 660px;
+      background: radial-gradient(circle, rgba(0,212,255,0.07) 0%, transparent 65%);
+      top: -200px; right: -180px;
+    }
+    .orb2 {
+      width: 440px; height: 440px;
+      background: radial-gradient(circle, rgba(149,128,255,0.055) 0%, transparent 65%);
+      bottom: -60px; left: -100px;
     }
 
-    .hero-inner {
-      position: relative;
-      z-index: 1;
-    }
+    .hero-inner { position: relative; z-index: 1; }
 
-    .hero-tag {
+    /* Badge */
+    .badge {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      padding: 8px 16px;
-      border: 1px solid var(--border2);
-      border-radius: 999px;
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
+      gap: 9px;
+      padding: 7px 14px;
+      border: 1px solid var(--borderhi);
+      border-radius: 99px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: var(--gold);
+      color: var(--cyan);
+      background: var(--cyanfade);
       margin-bottom: 28px;
-      background: rgba(200,169,110,0.06);
+      opacity: 0;
+      animation: fadeUp 0.55s 0.05s forwards;
     }
-
-    .hero-tag::before {
-      content: '';
-      width: 7px;
-      height: 7px;
+    .badge-dot {
+      width: 6px; height: 6px;
       border-radius: 50%;
-      background: var(--gold);
-      box-shadow: 0 0 8px var(--gold);
-      animation: pulse 2s infinite;
+      background: var(--cyan);
+      box-shadow: 0 0 8px var(--cyan);
+      animation: blink 2.2s infinite;
     }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.4; }
-    }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
 
     .hero h1 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(3.6rem, 8vw, 8rem);
-      font-weight: 300;
-      line-height: 0.92;
-      letter-spacing: -0.03em;
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(3.2rem, 7.5vw, 8rem);
+      font-weight: 800;
+      line-height: 0.93;
+      letter-spacing: -0.045em;
       max-width: 820px;
-      margin-bottom: 30px;
+      margin-bottom: 26px;
+      opacity: 0;
+      animation: fadeUp 0.55s 0.15s forwards;
     }
-
-    .hero h1 em {
-      font-style: italic;
-      color: var(--gold);
+    .hl {
+      background: linear-gradient(130deg, var(--cyan) 0%, var(--purple) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
     .hero-sub {
-      font-size: 1.05rem;
+      font-size: clamp(1rem, 1.8vw, 1.18rem);
       color: var(--muted);
-      max-width: 520px;
-      margin-bottom: 40px;
+      max-width: 530px;
+      line-height: 1.78;
+      margin-bottom: 36px;
       font-weight: 400;
-      line-height: 1.7;
+      opacity: 0;
+      animation: fadeUp 0.55s 0.25s forwards;
     }
-
     .hero-sub strong { color: var(--text); font-weight: 600; }
 
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
-      gap: 14px;
-      margin-bottom: 70px;
+      gap: 12px;
+      margin-bottom: 60px;
+      opacity: 0;
+      animation: fadeUp 0.55s 0.35s forwards;
     }
 
     .btn {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      min-height: 52px;
-      padding: 0 28px;
-      border-radius: 999px;
-      font-family: 'Syne', sans-serif;
-      font-weight: 700;
+      gap: 8px;
+      min-height: 50px;
+      padding: 0 26px;
+      border-radius: 99px;
+      font-family: 'Outfit', sans-serif;
       font-size: 0.88rem;
-      letter-spacing: 0.04em;
-      transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
       cursor: pointer;
+      white-space: nowrap;
     }
-
     .btn:hover { transform: translateY(-2px); }
 
-    .btn-gold {
-      background: var(--gold);
-      color: #0a0810;
-      box-shadow: 0 12px 40px rgba(200,169,110,0.28);
+    .btn-primary {
+      background: var(--cyan);
+      color: #02020a;
+      box-shadow: 0 8px 30px rgba(0,212,255,0.22);
     }
+    .btn-primary:hover { box-shadow: 0 14px 42px rgba(0,212,255,0.38); }
 
-    .btn-gold:hover { box-shadow: 0 16px 50px rgba(200,169,110,0.4); }
-
-    .btn-outline {
-      border: 1px solid var(--border2);
+    .btn-ghost {
+      border: 1px solid var(--borderhi);
       color: var(--text);
-      background: transparent;
     }
+    .btn-ghost:hover { border-color: var(--cyan); color: var(--cyan); }
 
-    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
-
+    /* Hero stats */
     .hero-stats {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 1px;
-      max-width: 520px;
+      max-width: 560px;
+      background: var(--border);
       border: 1px solid var(--border);
       border-radius: 18px;
       overflow: hidden;
-      background: var(--border);
+      opacity: 0;
+      animation: fadeUp 0.55s 0.45s forwards;
     }
-
-    .hero-stat {
-      background: var(--surface);
-      padding: 22px 20px;
+    .stat {
+      background: var(--s1);
+      padding: 20px 16px;
       text-align: center;
+      transition: background 0.2s;
+    }
+    .stat:hover { background: var(--s2); }
+    .stat-val {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--cyan);
+      margin-bottom: 3px;
+      letter-spacing: -0.01em;
+    }
+    .stat-label {
+      font-size: 0.74rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 2px;
+    }
+    .stat-desc {
+      font-size: 0.63rem;
+      color: var(--muted);
+      line-height: 1.4;
     }
 
-    .hero-stat strong {
-      display: block;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2.2rem;
-      font-weight: 600;
-      color: var(--gold);
+    /* ─────────────────────────────────────
+       SECTION HEADER HELPERS
+    ───────────────────────────────────── */
+    .kicker {
+      display: inline-block;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.64rem;
+      font-weight: 700;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 12px;
+    }
+    .section-h {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(2.2rem, 4.5vw, 4.4rem);
+      font-weight: 800;
       line-height: 1;
-      margin-bottom: 6px;
+      letter-spacing: -0.04em;
+    }
+    .section-sub {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.74;
+      max-width: 520px;
+      margin-top: 14px;
     }
 
-    .hero-stat span {
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
+    /* ─────────────────────────────────────
+       CAPABILITY STRIP
+    ───────────────────────────────────── */
+    .cap-strip {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 0;
+    }
+    .cap-strip-inner {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 0;
+    }
+    .cap-cell {
+      padding: 28px 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      text-align: center;
+      border-right: 1px solid var(--border);
+      background: var(--s1);
+      transition: background 0.2s;
+      cursor: default;
+    }
+    .cap-cell:last-child { border-right: none; }
+    .cap-cell:hover { background: var(--s2); }
+    .cap-icon { color: var(--cyan); opacity: 0.8; }
+    .cap-label {
+      font-size: 0.66rem;
+      font-weight: 700;
+      letter-spacing: 0.07em;
       text-transform: uppercase;
       color: var(--muted);
     }
 
-    /* ─── BROWSER MOCKUP STRIP ─── */
-    .mockup-strip {
-      padding: 60px 0;
-      overflow: hidden;
-      position: relative;
-    }
+    /* ─────────────────────────────────────
+       REAL PROJECTS
+    ───────────────────────────────────── */
+    .projects-section { padding: 88px 0; }
 
-    .mockup-strip::before,
-    .mockup-strip::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      width: 120px;
-      z-index: 2;
-      pointer-events: none;
-    }
-
-    .mockup-strip::before {
-      left: 0;
-      background: linear-gradient(to right, var(--bg), transparent);
-    }
-
-    .mockup-strip::after {
-      right: 0;
-      background: linear-gradient(to left, var(--bg), transparent);
-    }
-
-    .mockup-label {
-      text-align: center;
-      margin-bottom: 40px;
-    }
-
-    .section-kicker {
-      display: inline-block;
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 10px;
-    }
-
-    .section-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2.4rem, 5vw, 5rem);
-      font-weight: 300;
-      line-height: 1;
-      letter-spacing: -0.04em;
-    }
-
-    .section-title em { font-style: italic; color: var(--gold); }
-
-    /* ─── LIVE WEBSITE PREVIEWS ─── */
-    .previews-section { padding: 80px 0; }
-
-    .previews-grid {
+    .projects-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 24px;
-      margin-top: 48px;
+      gap: 18px;
+      margin-top: 52px;
     }
 
-    .preview-card {
+    .project-card {
       border: 1px solid var(--border);
-      border-radius: 24px;
+      border-radius: var(--r2);
       overflow: hidden;
-      background: var(--surface);
-      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
-      position: relative;
+      background: var(--s1);
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.28s, transform 0.28s, box-shadow 0.28s;
+    }
+    .project-card:hover {
+      border-color: rgba(0,212,255,0.22);
+      transform: translateY(-5px);
+      box-shadow: 0 26px 64px rgba(0,0,0,0.45), 0 0 0 1px rgba(0,212,255,0.06);
     }
 
-    .preview-card:hover {
-      border-color: var(--gold);
-      transform: translateY(-6px);
-      box-shadow: 0 32px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(200,169,110,0.2);
-    }
-
-    .browser-chrome {
-      background: var(--surface2);
-      padding: 12px 16px;
+    /* Browser chrome */
+    .browser-top {
+      background: var(--s2);
+      padding: 10px 15px;
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
     }
-
-    .browser-dots {
-      display: flex;
-      gap: 6px;
-    }
-
-    .browser-dots span {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-    }
-
-    .dot-red { background: #ff5f56; }
-    .dot-yellow { background: #ffbd2e; }
-    .dot-green { background: #27c93f; }
-
-    .browser-bar {
+    .bdots { display: flex; gap: 5px; flex-shrink: 0; }
+    .bdots span { width: 9px; height: 9px; border-radius: 50%; }
+    .bd1 { background: #ff5f56; }
+    .bd2 { background: #ffbd2e; }
+    .bd3 { background: #27c93f; }
+    .burl {
       flex: 1;
-      background: rgba(255,255,255,0.06);
-      border-radius: 6px;
-      padding: 5px 12px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 5px;
+      padding: 4px 11px;
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.72rem;
+      font-size: 0.66rem;
       color: var(--muted);
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
 
-    .preview-frame-wrap {
+    /* Illustrated site mockup */
+    .site-preview {
+      height: 220px;
       position: relative;
-      height: 400px;
       overflow: hidden;
-    }
-
-    .preview-frame-wrap iframe {
-      width: 200%;
-      height: 200%;
-      transform: scale(0.5);
-      transform-origin: top left;
-      border: none;
-      pointer-events: none;
-    }
-
-    .preview-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom, transparent 60%, var(--surface) 100%);
-    }
-
-    .preview-info {
-      padding: 22px 26px 26px;
-    }
-
-    .preview-info h3 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.9rem;
-      font-weight: 600;
-      letter-spacing: -0.03em;
-      margin-bottom: 6px;
-    }
-
-    .preview-info p {
-      color: var(--muted);
-      font-size: 0.9rem;
-      margin-bottom: 16px;
-    }
-
-    .preview-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 7px;
-      margin-bottom: 18px;
-    }
-
-    .preview-tags span {
-      padding: 5px 11px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid var(--border);
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      color: var(--muted);
-    }
-
-    .visit-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.82rem;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      color: var(--gold);
-      transition: gap 0.2s;
-    }
-
-    .visit-btn:hover { gap: 12px; }
-
-    /* ─── VISUAL DECO: code + design graphics ─── */
-    .visual-break {
-      padding: 60px 0;
-      overflow: hidden;
-    }
-
-    .visual-break-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 16px;
-    }
-
-    .visual-panel {
-      border: 1px solid var(--border);
-      border-radius: 22px;
-      overflow: hidden;
-      min-height: 240px;
-      position: relative;
-      background: var(--surface);
-    }
-
-    /* Code snippet panel */
-    .code-panel {
-      padding: 24px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.7rem;
-      line-height: 1.9;
-      color: var(--dim);
-      overflow: hidden;
-    }
-
-    .code-panel .c-tag { color: #4ecdc4; }
-    .code-panel .c-attr { color: #c8a96e; }
-    .code-panel .c-val { color: #f0c090; }
-    .code-panel .c-com { color: var(--dim); font-style: italic; }
-    .code-panel .c-prop { color: #a78bfa; }
-    .code-panel .c-sel { color: #f0eee8; }
-
-    /* Color swatch panel */
-    .palette-panel {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .swatch-row {
-      flex: 1;
-      display: flex;
-    }
-
-    .swatch {
-      flex: 1;
-    }
-
-    /* Typography panel */
-    .type-panel {
-      padding: 24px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .type-sample-big {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 4.5rem;
-      font-weight: 300;
-      line-height: 0.9;
-      letter-spacing: -0.04em;
-      color: rgba(200,169,110,0.5);
-    }
-
-    .type-sample-small {
-      font-family: 'Syne', sans-serif;
-      font-size: 0.72rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    /* Device mockup panel */
-    .device-panel {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      gap: 16px;
-    }
-
-    .phone-mock {
-      width: 60px;
-      height: 110px;
-      border: 2px solid rgba(200,169,110,0.4);
-      border-radius: 14px;
-      background: rgba(200,169,110,0.05);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 8px 6px;
-      gap: 4px;
-    }
-
-    .phone-mock::before {
-      content: '';
-      width: 20px;
-      height: 3px;
-      border-radius: 999px;
-      background: rgba(200,169,110,0.3);
-    }
-
-    .phone-lines {
-      flex: 1;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      padding-top: 4px;
-    }
-
-    .phone-line {
-      height: 3px;
-      border-radius: 999px;
-      background: rgba(200,169,110,0.2);
-    }
-
-    .phone-line.wide { width: 100%; }
-    .phone-line.medium { width: 75%; }
-    .phone-line.short { width: 50%; }
-
-    .tablet-mock {
-      width: 90px;
-      height: 110px;
-      border: 2px solid rgba(78,205,196,0.3);
-      border-radius: 12px;
-      background: rgba(78,205,196,0.04);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .desktop-mock {
-      width: 110px;
-      height: 80px;
-      border: 2px solid rgba(200,169,110,0.25);
-      border-radius: 8px;
-      background: rgba(200,169,110,0.03);
-      position: relative;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .desktop-mock::after {
-      content: '';
-      position: absolute;
-      bottom: -12px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 40px;
-      height: 8px;
-      background: rgba(200,169,110,0.2);
-      border-radius: 0 0 4px 4px;
-    }
-
-    .desktop-bar {
-      height: 10px;
-      background: rgba(200,169,110,0.1);
-      display: flex;
-      align-items: center;
-      gap: 3px;
-      padding: 0 6px;
-      border-radius: 6px 6px 0 0;
-    }
-
-    .desktop-bar span {
-      width: 4px;
-      height: 4px;
-      border-radius: 50%;
-      background: rgba(200,169,110,0.3);
-    }
-
-    /* Grid/grid panel */
-    .grid-panel {
-      padding: 20px;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      grid-template-rows: repeat(3, 1fr);
-      gap: 8px;
-    }
-
-    .grid-block {
-      border-radius: 6px;
-      background: rgba(200,169,110,0.08);
-      border: 1px solid rgba(200,169,110,0.1);
-    }
-
-    .grid-block.accent { background: rgba(200,169,110,0.22); }
-    .grid-block.span2 { grid-column: span 2; }
-    .grid-block.span3 { grid-column: span 3; }
-
-    /* Metrics mini panel */
-    .metrics-panel {
-      padding: 24px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 14px;
-    }
-
-    .metric-row {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .metric-label {
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--dim);
-      width: 80px;
       flex-shrink: 0;
     }
+    .sp-tsh    { background: linear-gradient(155deg, #091728 0%, #0d2244 100%); }
+    .sp-peasis { background: linear-gradient(155deg, #1a080e 0%, #26101a 100%); }
 
-    .metric-bar-wrap {
-      flex: 1;
-      height: 4px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.06);
-      overflow: hidden;
-    }
-
-    .metric-bar {
-      height: 100%;
-      border-radius: 999px;
-      background: var(--gold);
-    }
-
-    .metric-val {
-      font-size: 0.7rem;
-      font-weight: 700;
-      color: var(--gold);
-      width: 28px;
-      text-align: right;
-    }
-
-    /* ─── DEMOS SECTION ─── */
-    .demos-section { padding: 80px 0; }
-
-    .demo-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-      margin-top: 48px;
-    }
-
-    .demo-card {
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 26px;
-      background: var(--surface);
+    .sp-inner {
       position: relative;
-      overflow: hidden;
-      transition: border-color 0.3s, transform 0.3s;
-      cursor: pointer;
+      z-index: 1;
+      padding: 18px 20px;
+      height: 100%;
       display: flex;
       flex-direction: column;
-      min-height: 200px;
+      gap: 9px;
     }
 
-    .demo-card:hover {
-      border-color: rgba(200,169,110,0.35);
-      transform: translateY(-4px);
+    .sp-nav { display: flex; align-items: center; gap: 6px; }
+    .sp-logo-bar { height: 7px; border-radius: 2px; }
+    .sp-links { margin-left: auto; display: flex; gap: 5px; }
+    .sp-links span { width: 18px; height: 4px; border-radius: 2px; background: rgba(255,255,255,0.12); }
+
+    .sp-h1    { height: 13px; border-radius: 3px; width: 74%; }
+    .sp-h1b   { height: 13px; border-radius: 3px; width: 52%; }
+    .sp-line  { height: 4px; border-radius: 2px; background: rgba(255,255,255,0.1); }
+    .sp-btn   { height: 20px; width: 64px; border-radius: 99px; margin-top: 4px; }
+
+    .sp-cards { display: flex; gap: 7px; margin-top: auto; }
+    .sp-card  { flex: 1; height: 34px; border-radius: 5px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.07); }
+
+    .tsh-a  { background: rgba(58,110,165,0.8); }
+    .tsh-b  { background: rgba(110,191,139,0.8); }
+    .pea-a  { background: rgba(190,100,120,0.8); }
+    .pea-b  { background: rgba(210,170,110,0.8); }
+
+    .preview-live-badge {
+      position: absolute; bottom: 12px; right: 12px; z-index: 2;
+      padding: 3px 9px; border-radius: 99px;
+      font-size: 0.6rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      background: rgba(0,0,0,0.55); border: 1px solid rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.55); backdrop-filter: blur(8px);
     }
 
-    .demo-card::before {
-      content: '';
-      position: absolute;
-      top: -30px;
-      right: -30px;
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      background: var(--gold-dim);
-    }
+    .project-info { padding: 20px 22px 24px; flex: 1; display: flex; flex-direction: column; }
+    .project-info h3 { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 6px; }
+    .project-info p  { font-size: 0.86rem; color: var(--muted); line-height: 1.65; margin-bottom: 14px; }
 
-    .demo-icon {
-      width: 44px;
-      height: 44px;
-      border-radius: 14px;
-      border: 1px solid var(--border2);
-      background: rgba(255,255,255,0.04);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 18px;
-      font-size: 1.2rem;
-      position: relative;
-      z-index: 1;
-    }
-
-    .demo-card h3 {
-      font-size: 1rem;
-      font-weight: 700;
-      letter-spacing: -0.01em;
-      margin-bottom: 8px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .demo-card p {
-      color: var(--muted);
-      font-size: 0.84rem;
-      font-weight: 400;
-      flex: 1;
-      position: relative;
-      z-index: 1;
-    }
-
-    .demo-coming {
-      margin-top: 18px;
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--dim);
-      position: relative;
-      z-index: 1;
-    }
-
-    /* ─── SERVICES ─── */
-    .services-section { padding: 80px 0; }
-
-    .services-wrap {
+    .tag-row { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 16px; }
+    .tag {
+      padding: 3px 9px; border-radius: 99px;
       border: 1px solid var(--border);
-      border-radius: 32px;
+      font-size: 0.65rem; font-weight: 600; letter-spacing: 0.04em; color: var(--muted);
+    }
+
+    .visit-link {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-size: 0.8rem; font-weight: 700; color: var(--cyan);
+      transition: gap 0.18s; margin-top: auto;
+    }
+    .visit-link:hover { gap: 11px; }
+
+    /* ─────────────────────────────────────
+       DEMOS CAROUSEL
+    ───────────────────────────────────── */
+    .demos-section { padding: 88px 0; }
+
+    .slider-wrap {
+      margin-top: 52px;
+      position: relative;
+    }
+    .slider-wrap::before,
+    .slider-wrap::after {
+      content: '';
+      position: absolute; top: 0; bottom: 0; width: 64px; z-index: 2; pointer-events: none;
+    }
+    .slider-wrap::before { left: 0;  background: linear-gradient(to right, var(--bg), transparent); }
+    .slider-wrap::after  { right: 0; background: linear-gradient(to left,  var(--bg), transparent); }
+
+    .slider {
+      display: flex;
+      gap: 14px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      padding: 4px 6px 16px;
+      -webkit-overflow-scrolling: touch;
+    }
+    .slider::-webkit-scrollbar { display: none; }
+
+    .demo-slide {
+      scroll-snap-align: start;
+      flex-shrink: 0;
+      width: 290px;
+      border: 1px solid var(--border);
+      border-radius: var(--r2);
       overflow: hidden;
-      margin-top: 48px;
+      background: var(--s1);
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.26s, transform 0.26s, box-shadow 0.26s;
+      cursor: pointer;
+    }
+    .demo-slide:hover {
+      border-color: rgba(0,212,255,0.18);
+      transform: translateY(-4px);
+      box-shadow: 0 18px 48px rgba(0,0,0,0.38);
     }
 
-    .services-header {
-      padding: 48px 48px 40px;
-      background: var(--surface);
-      border-bottom: 1px solid var(--border);
+    /* Illustrated demo mockup */
+    .demo-preview {
+      height: 148px;
+      position: relative;
+      overflow: hidden;
+    }
+    .dp-inner {
+      position: absolute; inset: 0; z-index: 1;
+      padding: 12px 14px;
+      display: flex; flex-direction: column; gap: 7px;
+    }
+    .dp-nav    { display: flex; align-items: center; gap: 5px; height: 7px; }
+    .dp-logo   { height: 6px; border-radius: 2px; width: 24px; }
+    .dp-h1     { height: 11px; border-radius: 3px; width: 68%; margin-top: 4px; }
+    .dp-sub    { height: 4px; border-radius: 2px; width: 50%; background: rgba(255,255,255,0.1); }
+    .dp-btn    { height: 12px; width: 44px; border-radius: 99px; margin-top: 2px; }
+    .dp-cards  { display: flex; gap: 5px; margin-top: 4px; }
+    .dp-card   { flex: 1; height: 20px; border-radius: 3px; background: rgba(255,255,255,0.06); }
+
+    .dp-badge {
+      position: absolute; top: 8px; right: 8px; z-index: 2;
+      width: 28px; height: 28px; border-radius: 8px;
+      background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.8rem; backdrop-filter: blur(8px);
+    }
+
+    /* Per-industry background gradients */
+    .bg-food    { background: linear-gradient(140deg,#0d1a0c,#112212); }
+    .bg-roof    { background: linear-gradient(140deg,#0f1116,#0d1020); }
+    .bg-plumb   { background: linear-gradient(140deg,#091220,#0c182e); }
+    .bg-hvac    { background: linear-gradient(140deg,#0c1a1a,#0a1e1e); }
+    .bg-remodel { background: linear-gradient(140deg,#191008,#201408); }
+    .bg-spa     { background: linear-gradient(140deg,#190812,#200d18); }
+    .bg-photo   { background: linear-gradient(140deg,#08080e,#10101c); }
+    .bg-event   { background: linear-gradient(140deg,#181508,#201808); }
+    .bg-clean   { background: linear-gradient(140deg,#09161a,#0b1e22); }
+
+    /* Accent colors per industry */
+    .ac-green  { background: #4caf7a; }
+    .ac-slate  { background: #7890b0; }
+    .ac-blue   { background: #4488cc; }
+    .ac-teal   { background: #3bbfbf; }
+    .ac-amber  { background: #cf8e44; }
+    .ac-rose   { background: #cc4477; }
+    .ac-white  { background: #ddddee; }
+    .ac-gold   { background: #c8a944; }
+    .ac-sky    { background: #44aacc; }
+
+    .demo-info { padding: 14px 16px 18px; flex: 1; display: flex; flex-direction: column; }
+    .demo-info h3 { font-size: 0.93rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 5px; }
+    .demo-info p  { font-size: 0.76rem; color: var(--muted); line-height: 1.55; flex: 1; margin-bottom: 12px; }
+
+    .demo-cta {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: 0.73rem; font-weight: 700; color: var(--cyan);
+      transition: gap 0.18s;
+    }
+    .demo-cta:hover { gap: 9px; }
+
+    /* Carousel controls */
+    .carousel-nav {
+      display: flex; justify-content: center; gap: 10px; margin-top: 22px;
+    }
+    .cnav-btn {
+      width: 36px; height: 36px; border-radius: 99px;
+      border: 1px solid var(--borderhi); background: var(--s1); color: var(--text);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: border-color 0.18s, color 0.18s, background 0.18s;
+    }
+    .cnav-btn:hover { border-color: var(--cyan); color: var(--cyan); background: var(--cyanfade); }
+
+    /* ─────────────────────────────────────
+       SERVICES
+    ───────────────────────────────────── */
+    .services-section { padding: 88px 0; }
+
+    .services-layout {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 32px;
-      align-items: end;
+      grid-template-columns: 0.78fr 1.22fr;
+      gap: 22px;
+      margin-top: 52px;
+      align-items: start;
     }
+    .services-left { position: sticky; top: 88px; }
+    .services-left p { color: var(--muted); font-size: 0.9rem; line-height: 1.76; margin-top: 14px; }
+    .services-left p + p { margin-top: 12px; }
 
-    .services-header h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2.4rem, 4vw, 4.2rem);
-      font-weight: 300;
-      line-height: 1.05;
-      letter-spacing: -0.04em;
+    .svc-list { display: flex; flex-direction: column; gap: 2px; }
+
+    .svc-item {
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 22px 24px;
+      background: var(--s1);
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      transition: background 0.2s, border-color 0.2s;
     }
+    .svc-item:hover { background: var(--s2); border-color: var(--borderhi); }
 
-    .services-header h2 em { font-style: italic; color: var(--gold); }
-
-    .services-header p {
-      color: var(--muted);
-      font-size: 0.95rem;
-      line-height: 1.7;
+    .svc-icon {
+      width: 38px; height: 38px; flex-shrink: 0;
+      border-radius: 11px; border: 1px solid var(--border);
+      background: var(--cyanfade);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--cyan);
     }
+    .svc-text h3 { font-size: 0.94rem; font-weight: 700; margin-bottom: 4px; letter-spacing: -0.01em; }
+    .svc-text p  { font-size: 0.82rem; color: var(--muted); line-height: 1.62; }
 
-    .service-list {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-    }
-
-    .service-item {
-      padding: 36px 40px;
-      border-right: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      background: var(--bg);
-      transition: background 0.2s;
-    }
-
-    .service-item:hover { background: var(--surface); }
-
-    .service-item:nth-child(3n) { border-right: none; }
-    .service-item:nth-last-child(-n+2) { border-bottom: none; }
-    .service-item:nth-child(4), .service-item:nth-child(5) { border-bottom: none; }
-
-    .service-num {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 3rem;
-      font-weight: 300;
-      color: var(--border2);
-      line-height: 1;
-      margin-bottom: 16px;
-      letter-spacing: -0.04em;
-    }
-
-    .service-item h3 {
-      font-size: 0.95rem;
-      font-weight: 700;
-      margin-bottom: 10px;
-      letter-spacing: -0.01em;
-    }
-
-    .service-item p {
-      color: var(--muted);
-      font-size: 0.84rem;
-      line-height: 1.65;
-    }
-
-    /* ─── PROCESS ─── */
-    .process-section { padding: 80px 0; }
+    /* ─────────────────────────────────────
+       PROCESS
+    ───────────────────────────────────── */
+    .process-section { padding: 88px 0; }
 
     .process-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-      margin-top: 48px;
+      gap: 14px;
+      margin-top: 52px;
     }
 
     .process-card {
       border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 28px;
-      background: var(--surface);
+      border-radius: var(--r2);
+      padding: 26px 22px;
+      background: var(--s1);
       position: relative;
       overflow: hidden;
+      transition: border-color 0.24s, background 0.24s;
     }
-
-    .process-card::after {
+    .process-card:hover { border-color: rgba(0,212,255,0.18); background: var(--s2); }
+    .process-card::before {
       content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: linear-gradient(to right, var(--gold), transparent);
+      position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, var(--cyan), var(--purple));
       opacity: 0;
-      transition: opacity 0.3s;
+      transition: opacity 0.24s;
     }
+    .process-card:hover::before { opacity: 1; }
 
-    .process-card:hover::after { opacity: 1; }
-
-    .process-step {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 3.5rem;
-      font-weight: 300;
-      color: var(--gold-dim);
+    .process-num {
+      font-size: 3.4rem;
+      font-weight: 800;
+      color: var(--dim);
       line-height: 1;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
+      letter-spacing: -0.05em;
+      font-family: 'Outfit', sans-serif;
     }
+    .process-card h3 { font-size: 0.9rem; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.01em; }
+    .process-card p  { font-size: 0.81rem; color: var(--muted); line-height: 1.65; }
 
-    .process-card h3 {
-      font-size: 0.92rem;
-      font-weight: 700;
-      margin-bottom: 8px;
-      letter-spacing: -0.01em;
-    }
-
-    .process-card p {
-      font-size: 0.84rem;
-      color: var(--muted);
-      line-height: 1.65;
-    }
-
-    /* ─── CTA / CONTACT ─── */
-    .contact-section { padding: 80px 0 100px; }
+    /* ─────────────────────────────────────
+       CONTACT
+    ───────────────────────────────────── */
+    .contact-section { padding: 88px 0 110px; }
 
     .contact-box {
       border: 1px solid var(--border);
-      border-radius: 32px;
-      overflow: hidden;
-      background: var(--surface);
+      border-radius: 26px;
+      background: var(--s1);
       position: relative;
+      overflow: hidden;
     }
-
     .contact-glow {
       position: absolute;
-      width: 500px;
-      height: 500px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(200,169,110,0.1) 0%, transparent 70%);
-      top: -150px;
-      right: -150px;
-      pointer-events: none;
+      width: 480px; height: 480px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,212,255,0.065), transparent 65%);
+      top: -140px; right: -80px; pointer-events: none;
     }
-
     .contact-inner {
-      position: relative;
-      z-index: 1;
-      padding: 60px;
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 40px;
-      align-items: center;
+      position: relative; z-index: 1;
+      padding: 58px 52px;
+      display: grid; grid-template-columns: 1.15fr 0.85fr;
+      gap: 48px; align-items: center;
     }
-
-    .contact-box h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(3rem, 6vw, 6rem);
-      font-weight: 300;
-      line-height: 0.95;
-      letter-spacing: -0.05em;
-      margin-bottom: 20px;
+    .contact-inner h2 {
+      font-size: clamp(2.6rem, 5vw, 5rem);
+      font-weight: 800; line-height: 1;
+      letter-spacing: -0.05em; margin-bottom: 16px;
     }
+    .contact-inner > div > p { color: var(--muted); font-size: 0.94rem; line-height: 1.76; max-width: 460px; }
 
-    .contact-box h2 em { font-style: italic; color: var(--gold); }
+    .clinks { display: flex; flex-direction: column; gap: 9px; }
 
-    .contact-box p {
-      color: var(--muted);
-      font-size: 1rem;
-      max-width: 480px;
-      line-height: 1.7;
-    }
-
-    .contact-links {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .contact-link {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 18px 22px;
+    .clink {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 17px 19px;
       border: 1px solid var(--border);
-      border-radius: 16px;
-      background: rgba(255,255,255,0.03);
+      border-radius: var(--r);
+      background: rgba(255,255,255,0.02);
       transition: border-color 0.2s, background 0.2s, transform 0.2s;
     }
+    .clink:hover { border-color: var(--cyan); background: var(--cyanfade); transform: translateX(4px); }
+    .clink-meta span   { display: block; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.17em; text-transform: uppercase; color: var(--dim); margin-bottom: 3px; }
+    .clink-meta strong { font-size: 0.87rem; font-weight: 600; }
+    .clink-arrow { color: var(--cyan); font-size: 0.95rem; transition: transform 0.18s; }
+    .clink:hover .clink-arrow { transform: translateX(4px); }
 
-    .contact-link:hover {
-      border-color: var(--gold);
-      background: var(--gold-dim);
-      transform: translateX(4px);
-    }
+    .contact-hint { margin-top: 12px; font-size: 0.75rem; color: var(--dim); line-height: 1.55; }
 
-    .contact-link-meta span {
-      display: block;
-      font-size: 0.65rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--dim);
-      margin-bottom: 3px;
-    }
-
-    .contact-link-meta strong {
-      font-size: 0.9rem;
-      font-weight: 600;
-    }
-
-    .contact-arrow {
-      color: var(--gold);
-      font-size: 1.1rem;
-      transition: transform 0.2s;
-    }
-
-    .contact-link:hover .contact-arrow { transform: translateX(4px); }
-
-    /* ─── FOOTER ─── */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 28px 0;
-    }
-
+    /* ─────────────────────────────────────
+       FOOTER
+    ───────────────────────────────────── */
+    footer { border-top: 1px solid var(--border); padding: 24px 0; }
     .footer-inner {
-      width: min(100% - 40px, var(--max));
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-      flex-wrap: wrap;
+      width: min(100% - 40px, var(--max)); margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;
     }
+    .footer-inner span, .footer-inner a { font-size: 0.74rem; color: var(--dim); font-weight: 500; }
+    .footer-inner a:hover { color: var(--cyan); }
+    .footer-links { display: flex; gap: 20px; }
 
-    .footer-inner span {
-      font-size: 0.78rem;
-      color: var(--dim);
-      font-weight: 500;
+    /* ─────────────────────────────────────
+       ANIMATIONS
+    ───────────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
+    .reveal { opacity: 0; }
+    .reveal.visible { animation: fadeUp 0.52s both; }
 
-    .footer-inner a {
-      color: var(--muted);
-      font-size: 0.78rem;
-      font-weight: 600;
-      transition: color 0.2s;
-    }
-
-    .footer-inner a:hover { color: var(--gold); }
-
-    /* ─── SCROLLBAR ─── */
-    ::-webkit-scrollbar { width: 4px; }
-    ::-webkit-scrollbar-track { background: var(--bg); }
-    ::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 999px; }
-
-    /* ─── RESPONSIVE ─── */
-    @media (max-width: 960px) {
-      .previews-grid,
-      .services-header,
-      .contact-inner { grid-template-columns: 1fr; }
-
-      .service-list { grid-template-columns: 1fr 1fr; }
-
-      .demo-grid,
-      .process-grid { grid-template-columns: repeat(2, 1fr); }
-
-      .visual-break-inner { grid-template-columns: 1fr 1fr; }
-
-      .service-item:nth-child(2n) { border-right: none; }
-      .service-item:nth-child(3n) { border-right: 1px solid var(--border); }
+    /* ─────────────────────────────────────
+       RESPONSIVE
+    ───────────────────────────────────── */
+    @media (max-width: 1040px) {
+      .cap-strip-inner { grid-template-columns: repeat(3, 1fr); }
+      .cap-cell:nth-child(3) { border-right: none; }
+      .cap-cell:nth-child(6) { border-right: none; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .services-layout { grid-template-columns: 1fr; }
+      .services-left { position: static; }
+      .process-grid  { grid-template-columns: repeat(2, 1fr); }
+      .contact-inner { grid-template-columns: 1fr; padding: 38px 32px; }
     }
 
     @media (max-width: 680px) {
       .nav-links { display: none; }
-      .hero { padding: 60px 0 50px; }
-      .hero h1 { font-size: clamp(3rem, 12vw, 5rem); }
+      .hamburger { display: flex; }
+      .mobile-menu { display: flex; }
+
+      .hero { padding: 68px 0 58px; }
+      .hero h1 { letter-spacing: -0.035em; }
       .hero-stats { grid-template-columns: 1fr; max-width: 100%; }
-      .service-list { grid-template-columns: 1fr; }
-      .service-item { border-right: none !important; }
-      .demo-grid,
-      .process-grid,
-      .visual-break-inner { grid-template-columns: 1fr; }
-      .services-header,
-      .contact-inner { padding: 32px; }
-      .contact-box h2 { font-size: 3rem; }
+
+      .cap-strip-inner { grid-template-columns: repeat(2, 1fr); }
+      .cap-cell:nth-child(2n) { border-right: none; }
+      .cap-cell:nth-child(3) { border-right: 1px solid var(--border); }
+
+      .process-grid { grid-template-columns: 1fr; }
+
+      .contact-inner { padding: 28px 22px; }
+      .contact-inner h2 { font-size: 2.4rem; }
+
       .btn { width: 100%; justify-content: center; }
+      .hero-actions { flex-direction: column; }
+
+      .demo-slide { width: 252px; }
+    }
+
+    @media (max-width: 420px) {
+      .cap-strip-inner { grid-template-columns: repeat(2, 1fr); }
     }
   </style>
 </head>
 
 <body>
 
-  <!-- ─── NAV ─── -->
+  <!-- Animated code canvas -->
+  <canvas id="bgCanvas" aria-hidden="true"></canvas>
+
+  <!-- Mobile menu overlay -->
+  <div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Site navigation">
+    <a href="#work"     class="m-nav-link">Work</a>
+    <a href="#demos"    class="m-nav-link">Demos</a>
+    <a href="#services" class="m-nav-link">Services</a>
+    <a href="#process"  class="m-nav-link">Process</a>
+    <a href="#contact"  class="m-nav-link m-cta">Let's Talk</a>
+  </div>
+
+  <!-- ─── HEADER ─── -->
   <header>
-    <nav class="nav">
-      <a href="#" class="logo-mark">
-        <!-- Creative geometric logo mark -->
-        <svg class="logo-svg" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Outer ring -->
-          <circle cx="21" cy="21" r="20" stroke="rgba(200,169,110,0.35)" stroke-width="1"/>
-          <!-- Inner geometric "BS" monogram: two abstract rectangles forming a refined mark -->
-          <!-- Left vertical bar -->
-          <rect x="10" y="12" width="4" height="18" rx="2" fill="#c8a96e"/>
-          <!-- Top horizontal -->
-          <rect x="10" y="12" width="12" height="4" rx="2" fill="#c8a96e"/>
-          <!-- Middle bar -->
-          <rect x="10" y="19" width="11" height="3.5" rx="1.75" fill="#c8a96e"/>
-          <!-- Bottom bar -->
-          <rect x="10" y="26" width="12" height="4" rx="2" fill="#c8a96e"/>
-          <!-- Right curves suggestion (bold B right side) -->
-          <path d="M22 12 Q29 14 29 17.5 Q29 21 22 22.5" stroke="#c8a96e" stroke-width="3.5" fill="none" stroke-linecap="round"/>
-          <path d="M21.5 19 Q30 21 30 25 Q30 30 21.5 30" stroke="#c8a96e" stroke-width="3.5" fill="none" stroke-linecap="round"/>
-          <!-- Gold dot accent -->
-          <circle cx="33" cy="10" r="2.5" fill="#c8a96e" opacity="0.6"/>
+    <nav class="nav" aria-label="Main navigation">
+
+      <a href="#" class="logo" aria-label="Built by Sammie — Home">
+        <!-- Futuristic angular B mark — no rings, no circles -->
+        <svg class="logo-svg" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <!-- Left vertical spine -->
+          <rect x="5" y="6"  width="4.5" height="26" rx="1.5" fill="#00d4ff"/>
+          <!-- Top shelf -->
+          <rect x="5" y="6"  width="16"  height="4.5" rx="1.5" fill="#00d4ff"/>
+          <!-- Mid shelf -->
+          <rect x="5" y="17" width="13.5" height="4"  rx="1.5" fill="#00d4ff"/>
+          <!-- Bottom shelf -->
+          <rect x="5" y="27.5" width="16" height="4.5" rx="1.5" fill="#00d4ff"/>
+          <!-- Upper arm of B -->
+          <path d="M21 6 L31 10.5 L31 17 L21 19" stroke="#00d4ff" stroke-width="3.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- Lower arm of B -->
+          <path d="M19 17 L31 21.5 L31 28.5 L19 32" stroke="#00d4ff" stroke-width="3.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- Purple pixel accent -->
+          <rect x="32" y="4" width="4" height="4" rx="1" fill="#9580ff" opacity="0.85"/>
         </svg>
-        <div class="logo-name">
-          Built by Sammie
-          <span>Web Design Studio</span>
+
+        <div class="logo-text">
+          <span class="logo-name">Built by Sammie</span>
+          <span class="logo-sub">Web Design Studio</span>
         </div>
       </a>
 
@@ -1150,6 +920,11 @@
         <a href="#process">Process</a>
         <a href="#contact" class="nav-cta">Let's Talk</a>
       </div>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
     </nav>
   </header>
 
@@ -1157,246 +932,216 @@
 
     <!-- ─── HERO ─── -->
     <section class="hero">
-      <div class="hero-glow"></div>
-      <div class="hero-glow2"></div>
-      <div class="wrap hero-inner">
-        <div class="hero-tag">Available for New Projects</div>
+      <div class="hero-orb orb1" aria-hidden="true"></div>
+      <div class="hero-orb orb2" aria-hidden="true"></div>
 
-        <h1>Websites that make<br><em>small brands</em><br>look serious.</h1>
+      <div class="wrap hero-inner">
+
+        <div class="badge">
+          <span class="badge-dot" aria-hidden="true"></span>
+          Available for New Projects
+        </div>
+
+        <h1>Your dream website,<br><span class="hl">built right.</span></h1>
 
         <p class="hero-sub">
-          I build <strong>modern, mobile-ready websites</strong> for small businesses, founders, creatives, and community projects that need to look credible fast — without the agency price tag.
+          I listen to your vision, shape it into a <strong>clean, modern website</strong>, and build something that makes your business look credible, serious, and easy to contact — without the agency price tag.
         </p>
 
         <div class="hero-actions">
-          <a href="#work" class="btn btn-gold">View My Work</a>
-          <a href="#contact" class="btn btn-outline">Start a Project →</a>
+          <a href="#work" class="btn btn-primary">
+            <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true">
+              <path d="M2 7.5h11M8 3l5 4.5L8 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            See My Work
+          </a>
+          <a href="#contact" class="btn btn-ghost">Start a Project</a>
         </div>
 
         <div class="hero-stats">
-          <div class="hero-stat">
-            <strong>2+</strong>
-            <span>Live Brands</span>
+          <div class="stat">
+            <div class="stat-val">Active</div>
+            <div class="stat-label">Brands</div>
+            <div class="stat-desc">Real projects with real purpose</div>
           </div>
-          <div class="hero-stat">
-            <strong>9+</strong>
-            <span>Demo Concepts</span>
+          <div class="stat">
+            <div class="stat-val">9</div>
+            <div class="stat-label">Industries</div>
+            <div class="stat-desc">Clickable business demo sites</div>
           </div>
-          <div class="hero-stat">
-            <strong>100%</strong>
-            <span>Mobile-First</span>
+          <div class="stat">
+            <div class="stat-val">100%</div>
+            <div class="stat-label">Mobile-First</div>
+            <div class="stat-desc">Designed for every screen</div>
           </div>
         </div>
+
       </div>
     </section>
 
-    <!-- ─── DESIGN GRAPHIC STRIP ─── -->
-    <div class="visual-break">
-      <div class="wrap">
-        <div class="visual-break-inner">
+    <!-- ─── CAPABILITY STRIP ─── -->
+    <div class="cap-strip" aria-label="Capabilities">
+      <div class="cap-strip-inner">
 
-          <!-- Code snippet -->
-          <div class="visual-panel code-panel">
-            <div><span class="c-com">/* Built by Sammie — clean code */</span></div>
-            <div><span class="c-tag">:root</span> <span style="color:#f0eee8">{</span></div>
-            <div>&nbsp;&nbsp;<span class="c-prop">--primary</span>: <span class="c-val">#c8a96e</span>;</div>
-            <div>&nbsp;&nbsp;<span class="c-prop">--bg</span>: <span class="c-val">#080810</span>;</div>
-            <div>&nbsp;&nbsp;<span class="c-prop">--radius</span>: <span class="c-val">20px</span>;</div>
-            <div><span style="color:#f0eee8">}</span></div>
-            <br/>
-            <div><span class="c-sel">.hero</span> <span style="color:#f0eee8">{</span></div>
-            <div>&nbsp;&nbsp;<span class="c-prop">display</span>: <span class="c-val">grid</span>;</div>
-            <div>&nbsp;&nbsp;<span class="c-prop">mobile</span>: <span class="c-val">first</span>;</div>
-            <div>&nbsp;&nbsp;<span class="c-prop">trust</span>: <span class="c-val">instantly</span>;</div>
-            <div><span style="color:#f0eee8">}</span></div>
+        <div class="cap-cell">
+          <div class="cap-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+              <rect x="1" y="3" width="20" height="13" rx="2" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M7 20h8M11 16v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M6 8.5l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M12 14.5h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
           </div>
-
-          <!-- Typography showcase -->
-          <div class="visual-panel type-panel">
-            <div>
-              <div class="type-sample-small">Typeface / Display</div>
-              <div class="type-sample-big">Aa</div>
-            </div>
-            <div>
-              <div class="type-sample-small" style="margin-bottom:8px">Body / Interface</div>
-              <div style="font-family:'Syne',sans-serif; font-size:0.88rem; color:var(--muted); line-height:1.6;">
-                Clean, readable, purposeful — every word earns its place on the page.
-              </div>
-            </div>
-          </div>
-
-          <!-- Devices -->
-          <div class="visual-panel device-panel" style="flex-direction:column; gap:12px;">
-            <div class="type-sample-small" style="font-size:0.62rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted); margin-bottom:6px;">Responsive on All Screens</div>
-            <div style="display:flex; align-items:flex-end; gap:16px; justify-content:center;">
-              <div class="phone-mock">
-                <div class="phone-lines">
-                  <div class="phone-line wide"></div>
-                  <div class="phone-line medium"></div>
-                  <div class="phone-line wide"></div>
-                  <div class="phone-line short"></div>
-                  <div class="phone-line medium"></div>
-                </div>
-              </div>
-              <div class="tablet-mock">
-                <div style="width:60px; display:flex; flex-direction:column; gap:5px;">
-                  <div style="height:3px; border-radius:999px; background:rgba(78,205,196,0.25); width:100%"></div>
-                  <div style="height:3px; border-radius:999px; background:rgba(78,205,196,0.15); width:80%"></div>
-                  <div style="height:3px; border-radius:999px; background:rgba(78,205,196,0.25); width:100%"></div>
-                  <div style="height:3px; border-radius:999px; background:rgba(78,205,196,0.1); width:60%"></div>
-                </div>
-              </div>
-              <div style="display:flex; flex-direction:column; align-items:center;">
-                <div class="desktop-mock">
-                  <div class="desktop-bar">
-                    <span></span><span></span><span></span>
-                  </div>
-                  <div style="flex:1; padding:6px; display:flex; flex-direction:column; gap:4px;">
-                    <div style="height:3px; border-radius:999px; background:rgba(200,169,110,0.2); width:100%"></div>
-                    <div style="height:3px; border-radius:999px; background:rgba(200,169,110,0.12); width:80%"></div>
-                    <div style="height:3px; border-radius:999px; background:rgba(200,169,110,0.2); width:60%"></div>
-                  </div>
-                </div>
-                <div style="width:40px; height:10px; background:rgba(200,169,110,0.12); border-radius:0 0 4px 4px; margin-top:1px;"></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Performance metrics -->
-          <div class="visual-panel metrics-panel">
-            <div class="type-sample-small" style="font-size:0.62rem; letter-spacing:0.18em; color:var(--muted); margin-bottom:4px;">Website Performance</div>
-            <div class="metric-row">
-              <div class="metric-label">Speed</div>
-              <div class="metric-bar-wrap"><div class="metric-bar" style="width:96%"></div></div>
-              <div class="metric-val">96</div>
-            </div>
-            <div class="metric-row">
-              <div class="metric-label">Mobile</div>
-              <div class="metric-bar-wrap"><div class="metric-bar" style="width:98%"></div></div>
-              <div class="metric-val">98</div>
-            </div>
-            <div class="metric-row">
-              <div class="metric-label">Trust</div>
-              <div class="metric-bar-wrap"><div class="metric-bar" style="width:100%"></div></div>
-              <div class="metric-val">✓</div>
-            </div>
-            <div class="metric-row">
-              <div class="metric-label">Clarity</div>
-              <div class="metric-bar-wrap"><div class="metric-bar" style="width:94%"></div></div>
-              <div class="metric-val">94</div>
-            </div>
-          </div>
-
-          <!-- Layout grid -->
-          <div class="visual-panel grid-panel">
-            <div class="grid-block span3 accent" style="min-height:40px;"></div>
-            <div class="grid-block" style="min-height:40px;"></div>
-            <div class="grid-block span2" style="min-height:40px;"></div>
-            <div class="grid-block span2" style="min-height:40px;"></div>
-            <div class="grid-block accent" style="min-height:40px;"></div>
-            <div class="grid-block" style="min-height:40px;"></div>
-            <div class="grid-block" style="min-height:40px;"></div>
-            <div class="grid-block span2" style="min-height:40px;"></div>
-            <div class="grid-block accent" style="min-height:40px;"></div>
-            <div class="grid-block span3" style="min-height:40px;"></div>
-          </div>
-
-          <!-- Color palette -->
-          <div class="visual-panel palette-panel">
-            <div style="padding:18px 20px 10px; font-size:0.62rem; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted);">Colour & Craft</div>
-            <div class="swatch-row">
-              <div class="swatch" style="background:#c8a96e;"></div>
-              <div class="swatch" style="background:#4ecdc4;"></div>
-              <div class="swatch" style="background:#f0eee8;"></div>
-            </div>
-            <div class="swatch-row">
-              <div class="swatch" style="background:#0f0f1a;"></div>
-              <div class="swatch" style="background:#1a1a2e;"></div>
-              <div class="swatch" style="background:#080810;"></div>
-            </div>
-          </div>
-
+          <div class="cap-label">Web Design</div>
         </div>
+
+        <div class="cap-cell">
+          <div class="cap-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+              <rect x="7" y="1" width="8" height="16" rx="2" stroke="currentColor" stroke-width="1.5"/>
+              <circle cx="11" cy="14.5" r="0.9" fill="currentColor"/>
+              <path d="M9 4h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="cap-label">Mobile-First</div>
+        </div>
+
+        <div class="cap-cell">
+          <div class="cap-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+              <path d="M3 3h7v7H3zM12 3h7v7h-7zM3 12h7v7H3zM12 12h7v7h-7z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="cap-label">Clean Layout</div>
+        </div>
+
+        <div class="cap-cell">
+          <div class="cap-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+              <circle cx="11" cy="11" r="9" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M11 6v5.5l3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="cap-label">Fast Delivery</div>
+        </div>
+
+        <div class="cap-cell">
+          <div class="cap-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+              <path d="M11 2L2 7l9 5 9-5-9-5z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+              <path d="M2 16l9 5 9-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M2 11.5l9 5 9-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="cap-label">Redesigns</div>
+        </div>
+
+        <div class="cap-cell">
+          <div class="cap-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+              <path d="M21 11h-4l-3 8L9 3 6 11H1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="cap-label">Performance</div>
+        </div>
+
       </div>
     </div>
 
-    <!-- ─── LIVE WEBSITE PREVIEWS ─── -->
-    <section class="previews-section" id="work">
+    <!-- ─── REAL PROJECTS ─── -->
+    <section class="projects-section" id="work">
       <div class="wrap">
-        <div class="section-kicker">Real Projects</div>
-        <div class="section-title">Work with <em>real purpose.</em></div>
-        <p style="color:var(--muted); margin-top:14px; max-width:560px; font-size:0.95rem; line-height:1.7;">
-          These are live websites connected to real brands — not fictional client claims or template demos.
+        <div class="kicker">Real Projects</div>
+        <h2 class="section-h">Work with <span class="hl">real purpose.</span></h2>
+        <p class="section-sub">
+          Live websites for real brands — not fictional clients, not template demos. Every project started with someone's vision, shaped into a site that does real work.
         </p>
 
-        <div class="previews-grid">
+        <div class="projects-grid">
 
-          <!-- TSH Preview -->
-          <div class="preview-card">
-            <div class="browser-chrome">
-              <div class="browser-dots">
-                <span class="dot-red"></span>
-                <span class="dot-yellow"></span>
-                <span class="dot-green"></span>
+          <!-- TSH -->
+          <div class="project-card reveal">
+            <div class="browser-top">
+              <div class="bdots"><span class="bd1"></span><span class="bd2"></span><span class="bd3"></span></div>
+              <div class="burl">twaynesafehaven.org</div>
+            </div>
+
+            <div class="site-preview sp-tsh" role="img" aria-label="Twayne Safe Haven website mockup">
+              <div class="sp-inner">
+                <div class="sp-nav">
+                  <div class="sp-logo-bar tsh-a" style="width:38px"></div>
+                  <div class="sp-links"><span></span><span></span><span></span></div>
+                </div>
+                <div class="sp-h1 tsh-a"></div>
+                <div class="sp-h1b tsh-b"></div>
+                <div class="sp-line" style="width:82%"></div>
+                <div class="sp-line" style="width:64%"></div>
+                <div class="sp-line" style="width:72%"></div>
+                <div class="sp-btn tsh-a"></div>
+                <div class="sp-cards">
+                  <div class="sp-card"></div><div class="sp-card"></div><div class="sp-card"></div>
+                </div>
               </div>
-              <div class="browser-bar">twaynesafehaven.org</div>
+              <div class="preview-live-badge">Live Website</div>
             </div>
-            <div class="preview-frame-wrap">
-              <iframe
-                src="https://www.twaynesafehaven.org/"
-                title="Twayne Safe Haven Website"
-                loading="lazy"
-                sandbox="allow-scripts allow-same-origin"
-                scrolling="no"
-              ></iframe>
-              <div class="preview-overlay"></div>
-            </div>
-            <div class="preview-info">
+
+            <div class="project-info">
               <h3>Twayne Safe Haven</h3>
-              <p>Youth-led storytelling and wellbeing community. Built to communicate trust, mission, and impact clearly.</p>
-              <div class="preview-tags">
-                <span>NGO / Community</span>
-                <span>Website Structure</span>
-                <span>Programme Pages</span>
-                <span>Copy Direction</span>
+              <p>Youth-led storytelling and wellbeing community across Nigeria. Built to communicate mission, trust, and programme impact — clearly and confidently.</p>
+              <div class="tag-row">
+                <span class="tag">NGO / Community</span>
+                <span class="tag">Website Structure</span>
+                <span class="tag">Programme Pages</span>
+                <span class="tag">Copy Direction</span>
               </div>
-              <a class="visit-btn" href="https://www.twaynesafehaven.org/" target="_blank" rel="noopener">
-                Visit Live Site →
+              <a class="visit-link" href="https://www.twaynesafehaven.org/" target="_blank" rel="noopener noreferrer">
+                Visit Live Site
+                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+                  <path d="M2 6.5h9M6.5 2l4.5 4.5L6.5 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
               </a>
             </div>
           </div>
 
-          <!-- Peasis Preview -->
-          <div class="preview-card">
-            <div class="browser-chrome">
-              <div class="browser-dots">
-                <span class="dot-red"></span>
-                <span class="dot-yellow"></span>
-                <span class="dot-green"></span>
+          <!-- Peasis -->
+          <div class="project-card reveal">
+            <div class="browser-top">
+              <div class="bdots"><span class="bd1"></span><span class="bd2"></span><span class="bd3"></span></div>
+              <div class="burl">peasis.com</div>
+            </div>
+
+            <div class="site-preview sp-peasis" role="img" aria-label="Peasis Fashion website mockup">
+              <div class="sp-inner">
+                <div class="sp-nav">
+                  <div class="sp-logo-bar pea-b" style="width:38px"></div>
+                  <div class="sp-links"><span></span><span></span><span></span></div>
+                </div>
+                <div class="sp-h1 pea-b"></div>
+                <div class="sp-h1b pea-a"></div>
+                <div class="sp-line" style="width:75%"></div>
+                <div class="sp-line" style="width:58%"></div>
+                <div class="sp-btn pea-a"></div>
+                <div class="sp-cards">
+                  <div class="sp-card"></div><div class="sp-card"></div>
+                </div>
               </div>
-              <div class="browser-bar">peasis.com</div>
+              <div class="preview-live-badge">Live Website</div>
             </div>
-            <div class="preview-frame-wrap">
-              <iframe
-                src="https://peasis.com/"
-                title="Peasis Fashion Website"
-                loading="lazy"
-                sandbox="allow-scripts allow-same-origin"
-                scrolling="no"
-              ></iframe>
-              <div class="preview-overlay"></div>
-            </div>
-            <div class="preview-info">
+
+            <div class="project-info">
               <h3>Peasis Fashion</h3>
-              <p>Premium womenswear brand. Shaped around visual storytelling, pricing clarity, and international appeal.</p>
-              <div class="preview-tags">
-                <span>Fashion Brand</span>
-                <span>Luxury Positioning</span>
-                <span>Mobile Experience</span>
-                <span>Visual Storytelling</span>
+              <p>Premium womenswear brand built around visual storytelling, pricing clarity, and international appeal — designed to attract serious buyers and reflect the craft behind the clothing.</p>
+              <div class="tag-row">
+                <span class="tag">Fashion Brand</span>
+                <span class="tag">Luxury Positioning</span>
+                <span class="tag">Mobile Experience</span>
+                <span class="tag">Visual Storytelling</span>
               </div>
-              <a class="visit-btn" href="https://peasis.com/" target="_blank" rel="noopener">
-                Visit Live Site →
+              <a class="visit-link" href="https://peasis.com/" target="_blank" rel="noopener noreferrer">
+                Visit Live Site
+                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+                  <path d="M2 6.5h9M6.5 2l4.5 4.5L6.5 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
               </a>
             </div>
           </div>
@@ -1405,125 +1150,286 @@
       </div>
     </section>
 
-    <!-- ─── DEMO CONCEPTS ─── -->
+    <!-- ─── DEMO CAROUSEL ─── -->
     <section class="demos-section" id="demos">
       <div class="wrap">
-        <div class="section-kicker">Demo Concepts</div>
-        <div class="section-title">Clickable business <em>demos.</em></div>
-        <p style="color:var(--muted); margin-top:14px; max-width:560px; font-size:0.95rem; line-height:1.7;">
-          One-page website concepts built for different business types — showing what clean structure, trust signals, and smart layout look like in practice.
+        <div class="kicker">Clickable Business Demos</div>
+        <h2 class="section-h">9 industries. <span class="hl">One standard.</span></h2>
+        <p class="section-sub">
+          Real, clickable one-page demo websites built across different industries — showing how clean structure, trust signals, and smart layout work for actual businesses.
         </p>
-
-        <div class="demo-grid">
-          <div class="demo-card">
-            <div class="demo-icon">🍽️</div>
-            <h3>Food & Restaurant</h3>
-            <p>Menu highlights, ordering CTA, delivery details, and location-focused layout.</p>
-            <div class="demo-coming">Coming Soon</div>
-          </div>
-
-          <div class="demo-card">
-            <div class="demo-icon">🏠</div>
-            <h3>Roofing & Contractors</h3>
-            <p>Estimate requests, emergency messaging, service areas, and trust signals.</p>
-            <div class="demo-coming">Coming Soon</div>
-          </div>
-
-          <div class="demo-card">
-            <div class="demo-icon">🔧</div>
-            <h3>Plumbing Services</h3>
-            <p>Emergency calls, repairs, drain cleaning, and fast quote sections.</p>
-            <div class="demo-coming">Coming Soon</div>
-          </div>
-
-          <div class="demo-card">
-            <div class="demo-icon">❄️</div>
-            <h3>HVAC & Climate</h3>
-            <p>AC repair, heating, maintenance plans, seasonal offers, and booking layout.</p>
-            <div class="demo-coming">Coming Soon</div>
-          </div>
-
-          <div class="demo-card">
-            <div class="demo-icon">🛁</div>
-            <h3>Home Remodeling</h3>
-            <p>Kitchen, bath, and renovation sections with project flow and consultation CTA.</p>
-            <div class="demo-coming">Coming Soon</div>
-          </div>
-
-          <div class="demo-card">
-            <div class="demo-icon">💆</div>
-            <h3>Med Spa & Wellness</h3>
-            <p>Treatments, consultation booking, and premium service presentation.</p>
-            <div class="demo-coming">Coming Soon</div>
-          </div>
-
-          <div class="demo-card">
-            <div class="demo-icon">📷</div>
-            <h3>Photography Studio</h3>
-            <p>Portfolio gallery, session types, booking, packages, and visual-first storytelling.</p>
-            <div class="demo-coming">Coming Soon</div>
-          </div>
-
-          <div class="demo-card">
-            <div class="demo-icon">🎉</div>
-            <h3>Event & Decor</h3>
-            <p>Event styling, gallery, packages, social proof, and consultation flow.</p>
-            <div class="demo-coming">Coming Soon</div>
-          </div>
-
-          <div class="demo-card">
-            <div class="demo-icon">🧹</div>
-            <h3>Cleaning Services</h3>
-            <p>Residential, commercial, recurring plans, quote form, and trust-focused layout.</p>
-            <div class="demo-coming">Coming Soon</div>
-          </div>
-        </div>
       </div>
+
+      <div class="slider-wrap" role="region" aria-label="Demo websites">
+        <div class="slider" id="demoSlider">
+
+          <a class="demo-slide" href="./food-restaurant/" target="_blank" rel="noopener">
+            <div class="demo-preview bg-food">
+              <div class="dp-badge" aria-hidden="true">🍽️</div>
+              <div class="dp-inner">
+                <div class="dp-nav"><div class="dp-logo ac-green"></div></div>
+                <div class="dp-h1 ac-green"></div>
+                <div class="dp-sub"></div>
+                <div class="dp-btn ac-green"></div>
+                <div class="dp-cards"><div class="dp-card"></div><div class="dp-card"></div><div class="dp-card"></div></div>
+              </div>
+            </div>
+            <div class="demo-info">
+              <h3>Food &amp; Restaurant</h3>
+              <p>Menu highlights, ordering CTA, delivery details, and a layout built to bring customers through the door.</p>
+              <span class="demo-cta">View Demo <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true"><path d="M1 5.5h9M5.5 1l4.5 4.5L5.5 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
+          </a>
+
+          <a class="demo-slide" href="./roofing/" target="_blank" rel="noopener">
+            <div class="demo-preview bg-roof">
+              <div class="dp-badge" aria-hidden="true">🏠</div>
+              <div class="dp-inner">
+                <div class="dp-nav"><div class="dp-logo ac-slate"></div></div>
+                <div class="dp-h1 ac-slate"></div>
+                <div class="dp-sub"></div>
+                <div class="dp-btn ac-slate"></div>
+                <div class="dp-cards"><div class="dp-card"></div><div class="dp-card"></div></div>
+              </div>
+            </div>
+            <div class="demo-info">
+              <h3>Roofing &amp; Contractors</h3>
+              <p>Estimate requests, emergency messaging, service areas, and trust signals that convert local traffic.</p>
+              <span class="demo-cta">View Demo <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true"><path d="M1 5.5h9M5.5 1l4.5 4.5L5.5 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
+          </a>
+
+          <a class="demo-slide" href="./plumbing/" target="_blank" rel="noopener">
+            <div class="demo-preview bg-plumb">
+              <div class="dp-badge" aria-hidden="true">🔧</div>
+              <div class="dp-inner">
+                <div class="dp-nav"><div class="dp-logo ac-blue"></div></div>
+                <div class="dp-h1 ac-blue"></div>
+                <div class="dp-sub"></div>
+                <div class="dp-btn ac-blue"></div>
+                <div class="dp-cards"><div class="dp-card"></div><div class="dp-card"></div><div class="dp-card"></div></div>
+              </div>
+            </div>
+            <div class="demo-info">
+              <h3>Plumbing Services</h3>
+              <p>Emergency call section, drain cleaning, repairs, water heater services, and a fast quote flow.</p>
+              <span class="demo-cta">View Demo <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true"><path d="M1 5.5h9M5.5 1l4.5 4.5L5.5 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
+          </a>
+
+          <a class="demo-slide" href="./hvac/" target="_blank" rel="noopener">
+            <div class="demo-preview bg-hvac">
+              <div class="dp-badge" aria-hidden="true">❄️</div>
+              <div class="dp-inner">
+                <div class="dp-nav"><div class="dp-logo ac-teal"></div></div>
+                <div class="dp-h1 ac-teal"></div>
+                <div class="dp-sub"></div>
+                <div class="dp-btn ac-teal"></div>
+                <div class="dp-cards"><div class="dp-card"></div><div class="dp-card"></div></div>
+              </div>
+            </div>
+            <div class="demo-info">
+              <h3>HVAC &amp; Climate</h3>
+              <p>AC repair, heating, maintenance plans, seasonal offers, and a booking-focused layout.</p>
+              <span class="demo-cta">View Demo <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true"><path d="M1 5.5h9M5.5 1l4.5 4.5L5.5 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
+          </a>
+
+          <a class="demo-slide" href="./remodeling/" target="_blank" rel="noopener">
+            <div class="demo-preview bg-remodel">
+              <div class="dp-badge" aria-hidden="true">🛁</div>
+              <div class="dp-inner">
+                <div class="dp-nav"><div class="dp-logo ac-amber"></div></div>
+                <div class="dp-h1 ac-amber"></div>
+                <div class="dp-sub"></div>
+                <div class="dp-btn ac-amber"></div>
+                <div class="dp-cards"><div class="dp-card"></div><div class="dp-card"></div><div class="dp-card"></div></div>
+              </div>
+            </div>
+            <div class="demo-info">
+              <h3>Home Remodeling</h3>
+              <p>Kitchen, bathroom, and renovation sections with project flow and consultation booking.</p>
+              <span class="demo-cta">View Demo <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true"><path d="M1 5.5h9M5.5 1l4.5 4.5L5.5 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
+          </a>
+
+          <a class="demo-slide" href="./med-spa/" target="_blank" rel="noopener">
+            <div class="demo-preview bg-spa">
+              <div class="dp-badge" aria-hidden="true">💆</div>
+              <div class="dp-inner">
+                <div class="dp-nav"><div class="dp-logo ac-rose"></div></div>
+                <div class="dp-h1 ac-rose"></div>
+                <div class="dp-sub"></div>
+                <div class="dp-btn ac-rose"></div>
+                <div class="dp-cards"><div class="dp-card"></div><div class="dp-card"></div></div>
+              </div>
+            </div>
+            <div class="demo-info">
+              <h3>Med Spa &amp; Wellness</h3>
+              <p>Treatments, consultation booking, skin goals, and a premium service presentation.</p>
+              <span class="demo-cta">View Demo <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true"><path d="M1 5.5h9M5.5 1l4.5 4.5L5.5 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
+          </a>
+
+          <a class="demo-slide" href="./photography/" target="_blank" rel="noopener">
+            <div class="demo-preview bg-photo">
+              <div class="dp-badge" aria-hidden="true">📷</div>
+              <div class="dp-inner">
+                <div class="dp-nav"><div class="dp-logo ac-white"></div></div>
+                <div class="dp-h1 ac-white"></div>
+                <div class="dp-sub"></div>
+                <div class="dp-btn ac-white"></div>
+                <div class="dp-cards"><div class="dp-card"></div><div class="dp-card"></div><div class="dp-card"></div></div>
+              </div>
+            </div>
+            <div class="demo-info">
+              <h3>Photography Studio</h3>
+              <p>Portfolio gallery, session types, packages, booking CTA, and visual-first storytelling.</p>
+              <span class="demo-cta">View Demo <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true"><path d="M1 5.5h9M5.5 1l4.5 4.5L5.5 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
+          </a>
+
+          <a class="demo-slide" href="./event-decor/" target="_blank" rel="noopener">
+            <div class="demo-preview bg-event">
+              <div class="dp-badge" aria-hidden="true">🎉</div>
+              <div class="dp-inner">
+                <div class="dp-nav"><div class="dp-logo ac-gold"></div></div>
+                <div class="dp-h1 ac-gold"></div>
+                <div class="dp-sub"></div>
+                <div class="dp-btn ac-gold"></div>
+                <div class="dp-cards"><div class="dp-card"></div><div class="dp-card"></div></div>
+              </div>
+            </div>
+            <div class="demo-info">
+              <h3>Event &amp; Decor</h3>
+              <p>Event styling, gallery, packages, social proof, and a consultation booking flow.</p>
+              <span class="demo-cta">View Demo <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true"><path d="M1 5.5h9M5.5 1l4.5 4.5L5.5 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
+          </a>
+
+          <a class="demo-slide" href="./cleaning/" target="_blank" rel="noopener">
+            <div class="demo-preview bg-clean">
+              <div class="dp-badge" aria-hidden="true">🧹</div>
+              <div class="dp-inner">
+                <div class="dp-nav"><div class="dp-logo ac-sky"></div></div>
+                <div class="dp-h1 ac-sky"></div>
+                <div class="dp-sub"></div>
+                <div class="dp-btn ac-sky"></div>
+                <div class="dp-cards"><div class="dp-card"></div><div class="dp-card"></div><div class="dp-card"></div></div>
+              </div>
+            </div>
+            <div class="demo-info">
+              <h3>Cleaning Services</h3>
+              <p>Residential and commercial cleaning, recurring plans, quote form, and a trust-focused layout.</p>
+              <span class="demo-cta">View Demo <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true"><path d="M1 5.5h9M5.5 1l4.5 4.5L5.5 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
+          </a>
+
+        </div><!-- /slider -->
+
+        <div class="carousel-nav">
+          <button class="cnav-btn" id="prevBtn" aria-label="Scroll left">
+            <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true">
+              <path d="M9 11.5L5 7.5l4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <button class="cnav-btn" id="nextBtn" aria-label="Scroll right">
+            <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true">
+              <path d="M6 3.5l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+
+      </div><!-- /slider-wrap -->
     </section>
 
     <!-- ─── SERVICES ─── -->
     <section class="services-section" id="services">
       <div class="wrap">
-        <div class="section-kicker">What I Offer</div>
+        <div class="kicker">What I Offer</div>
+        <h2 class="section-h">Your idea. <span class="hl">Built properly.</span></h2>
+        <p class="section-sub">
+          Whether you have a clear brief or just a rough direction, I take your vision seriously — and turn it into something clean, credible, and ready to win customers.
+        </p>
 
-        <div class="services-wrap">
-          <div class="services-header">
-            <h2>Website help that makes you look <em>better</em> than the competition.</h2>
-            <p>
-              I focus on clean presentation, clear messaging, and the exact sections your customers need to see before they contact you. No bloat. No confusion. Just pages that convert.
-            </p>
+        <div class="services-layout">
+
+          <div class="services-left">
+            <p>You don't need a big agency. You need someone who listens, understands what you're trying to build, and delivers a website that makes your business impossible to overlook.</p>
+            <p>I work with small businesses, founders, creatives, and community projects. I shape rough ideas into polished online presences — and I stay involved until it feels exactly right.</p>
           </div>
 
-          <div class="service-list">
-            <div class="service-item">
-              <div class="service-num">01</div>
-              <h3>One-Page Business Websites</h3>
-              <p>Clean, focused landing pages for businesses that need a professional web presence quickly.</p>
+          <div class="svc-list">
+
+            <div class="svc-item reveal">
+              <div class="svc-icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                  <rect x="1" y="2" width="16" height="11" rx="2" stroke="currentColor" stroke-width="1.4"/>
+                  <path d="M6 16h6M9 13v3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                  <path d="M5 7l2.5 2.5L5 12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M10 12h4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div class="svc-text">
+                <h3>One-Page Business Websites</h3>
+                <p>Clean, focused pages that make your business look professional from the first scroll — built quickly without cutting corners on quality.</p>
+              </div>
             </div>
 
-            <div class="service-item">
-              <div class="service-num">02</div>
-              <h3>Website Redesigns</h3>
-              <p>Improving outdated pages so your business looks more trustworthy and easier to understand at a glance.</p>
+            <div class="svc-item reveal">
+              <div class="svc-icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                  <path d="M3 3h12v12H3z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+                  <path d="M7 8.5l2 2 2-2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M1 7V3h4M17 7V3h-4M1 11v4h4M17 11v4h-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div class="svc-text">
+                <h3>Website Redesigns</h3>
+                <p>Got an outdated site that doesn't reflect where your business is now? I'll improve the layout, messaging, and visual presentation so it matches your actual quality.</p>
+              </div>
             </div>
 
-            <div class="service-item">
-              <div class="service-num">03</div>
-              <h3>Landing Pages</h3>
-              <p>Focused pages built for specific offers, services, campaigns, or lead generation — with clear next steps.</p>
+            <div class="svc-item reveal">
+              <div class="svc-icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                  <rect x="2" y="4" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.4"/>
+                  <path d="M6 9h6M9 7v4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div class="svc-text">
+                <h3>Landing Pages</h3>
+                <p>Focused pages for specific offers, campaigns, or lead generation — with one clear action and zero confusion about what visitors should do next.</p>
+              </div>
             </div>
 
-            <div class="service-item">
-              <div class="service-num">04</div>
-              <h3>Mobile-First Setup</h3>
-              <p>Pages designed for phones first — where most of your customers will see your business for the first time.</p>
+            <div class="svc-item reveal">
+              <div class="svc-icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                  <rect x="6" y="1" width="6" height="13" rx="2" stroke="currentColor" stroke-width="1.4"/>
+                  <circle cx="9" cy="11.5" r="0.8" fill="currentColor"/>
+                  <path d="M7.5 4h3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div class="svc-text">
+                <h3>Mobile-First Setup</h3>
+                <p>Most of your customers see your website on a phone first. I build pages that look exceptional on mobile — and adapt cleanly to tablets and desktops from there.</p>
+              </div>
             </div>
 
-            <div class="service-item">
-              <div class="service-num">05</div>
-              <h3>Website Updates & Management</h3>
-              <p>Ongoing edits, content updates, layout improvements, and maintenance support as your business grows.</p>
+            <div class="svc-item reveal">
+              <div class="svc-icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                  <circle cx="9" cy="9" r="7" stroke="currentColor" stroke-width="1.4"/>
+                  <path d="M9 5v4.5l3 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div class="svc-text">
+                <h3>Updates &amp; Ongoing Support</h3>
+                <p>Edits, content updates, layout improvements, and light maintenance as your business grows. No need to figure it out yourself — I keep things sharp and current.</p>
+              </div>
             </div>
+
           </div>
         </div>
       </div>
@@ -1532,36 +1438,38 @@
     <!-- ─── PROCESS ─── -->
     <section class="process-section" id="process">
       <div class="wrap">
-        <div class="section-kicker">How It Works</div>
-        <div class="section-title">A clear, <em>simple</em> process.</div>
-        <p style="color:var(--muted); margin-top:14px; max-width:520px; font-size:0.95rem; line-height:1.7;">
-          The goal is never to make the website complicated. The goal is to make your business easy to trust and easy to contact.
+        <div class="kicker">How It Works</div>
+        <h2 class="section-h">Simple, <span class="hl">clear process.</span></h2>
+        <p class="section-sub">
+          No jargon. No surprises. Just a focused process that moves from your rough idea to a finished website you're proud of.
         </p>
 
         <div class="process-grid">
-          <div class="process-card">
-            <div class="process-step">01</div>
-            <h3>Understand your business</h3>
-            <p>I look at what you offer, who you serve, and what customers need to see before reaching out.</p>
+
+          <div class="process-card reveal">
+            <div class="process-num">01</div>
+            <h3>I understand your business</h3>
+            <p>We talk about what you offer, who you're trying to reach, and what matters most. Your ideas, taste, and goals all shape what gets built.</p>
           </div>
 
-          <div class="process-card">
-            <div class="process-step">02</div>
-            <h3>Structure the page</h3>
-            <p>I organise the sections so visitors understand your offer quickly, trust you, and know exactly what to do next.</p>
+          <div class="process-card reveal">
+            <div class="process-num">02</div>
+            <h3>I shape the structure</h3>
+            <p>I figure out exactly what sections your website needs — what goes first, how to build trust fast, and how to guide visitors toward the action you want.</p>
           </div>
 
-          <div class="process-card">
-            <div class="process-step">03</div>
-            <h3>Build the website</h3>
-            <p>A clean, responsive page with strong visuals, service sections, calls-to-action, and a smooth contact flow.</p>
+          <div class="process-card reveal">
+            <div class="process-num">03</div>
+            <h3>I build the page</h3>
+            <p>Clean code, mobile-first layout, strong visuals, and all the right sections — assembled into a website that feels made specifically for your business.</p>
           </div>
 
-          <div class="process-card">
-            <div class="process-step">04</div>
-            <h3>Review and refine</h3>
-            <p>I polish the wording, spacing, and mobile layout so the final result feels credible and ready to win clients.</p>
+          <div class="process-card reveal">
+            <div class="process-num">04</div>
+            <h3>We review and refine</h3>
+            <p>You review it. We adjust. I polish the wording, spacing, and mobile experience until the final result feels polished and ready to share with the world.</p>
           </div>
+
         </div>
       </div>
     </section>
@@ -1570,32 +1478,41 @@
     <section class="contact-section" id="contact">
       <div class="wrap">
         <div class="contact-box">
-          <div class="contact-glow"></div>
+          <div class="contact-glow" aria-hidden="true"></div>
           <div class="contact-inner">
+
             <div>
-              <h2>Need a cleaner <em>website?</em></h2>
+              <div class="kicker" style="margin-bottom:14px">Get in Touch</div>
+              <h2>Let's build <span class="hl">something real.</span></h2>
               <p>
-                Send me a message with your business type, your current website if you have one, and what you want customers to do when they land on your page. I'll take it from there.
+                Send me a message with your business type, your current website if you have one, and what you want customers to do when they land on your page. If you have a rough idea for your dream site — share that too. I'll work with whatever you've got and help shape it into something that works.
               </p>
             </div>
 
-            <div class="contact-links">
-              <a class="contact-link" href="mailto:sammietwyne@gmail.com">
-                <div class="contact-link-meta">
-                  <span>Email</span>
-                  <strong>sammietwyne@gmail.com</strong>
-                </div>
-                <span class="contact-arrow">→</span>
-              </a>
+            <div>
+              <div class="clinks">
+                <a class="clink" href="mailto:sammietwyne@gmail.com">
+                  <div class="clink-meta">
+                    <span>Email</span>
+                    <strong>sammietwyne@gmail.com</strong>
+                  </div>
+                  <span class="clink-arrow" aria-hidden="true">→</span>
+                </a>
 
-              <a class="contact-link" href="https://www.linkedin.com/in/samuelefriday/" target="_blank" rel="noopener">
-                <div class="contact-link-meta">
-                  <span>LinkedIn</span>
-                  <strong>Samuel E. Friday</strong>
-                </div>
-                <span class="contact-arrow">→</span>
-              </a>
+                <a class="clink" href="https://www.linkedin.com/in/samuelefriday/" target="_blank" rel="noopener noreferrer">
+                  <div class="clink-meta">
+                    <span>LinkedIn</span>
+                    <strong>Samuel E. Friday</strong>
+                  </div>
+                  <span class="clink-arrow" aria-hidden="true">→</span>
+                </a>
+              </div>
+
+              <p class="contact-hint">
+                Not sure what to say? Just tell me what your business does and what problem your website should solve. That's enough to get started.
+              </p>
             </div>
+
           </div>
         </div>
       </div>
@@ -1607,12 +1524,118 @@
   <footer>
     <div class="footer-inner">
       <span>© 2026 Built by Sammie. Clean websites for serious small brands.</span>
-      <div style="display:flex; gap:20px;">
+      <div class="footer-links">
         <a href="mailto:sammietwyne@gmail.com">Email</a>
-        <a href="https://www.linkedin.com/in/samuelefriday/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://www.linkedin.com/in/samuelefriday/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
       </div>
     </div>
   </footer>
+
+  <!-- ─── SCRIPTS ─── -->
+  <script>
+    /* ── Hamburger / mobile menu ── */
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    function setMenu(open) {
+      hamburger.classList.toggle('open', open);
+      mobileMenu.classList.toggle('active', open);
+      hamburger.setAttribute('aria-expanded', String(open));
+      document.body.style.overflow = open ? 'hidden' : '';
+    }
+
+    hamburger.addEventListener('click', () => setMenu(!mobileMenu.classList.contains('active')));
+
+    document.querySelectorAll('.m-nav-link').forEach(a => {
+      a.addEventListener('click', () => setMenu(false));
+    });
+
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
+
+    /* ── Demo carousel ── */
+    const slider  = document.getElementById('demoSlider');
+    const STEP    = 308; // card width + gap
+
+    document.getElementById('nextBtn').addEventListener('click', () =>
+      slider.scrollBy({ left: STEP * 2, behavior: 'smooth' })
+    );
+    document.getElementById('prevBtn').addEventListener('click', () =>
+      slider.scrollBy({ left: -STEP * 2, behavior: 'smooth' })
+    );
+
+    /* ── Code rain canvas ── */
+    (function () {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+      const canvas = document.getElementById('bgCanvas');
+      const ctx    = canvas.getContext('2d');
+
+      const CHARS   = '{}[]<>/\\=+;:.01#@$%&~^!abcdefghijklmnopqrstuvwxyz'.split('');
+      const FS      = 12;
+      const ALPHA   = 0.09;    // max char opacity — keeps it very subtle
+      const FADE    = 0.15;    // trail fade per frame
+
+      let W, H, cols, drops;
+
+      function resize() {
+        W = canvas.width  = window.innerWidth;
+        H = canvas.height = window.innerHeight;
+        cols  = Math.ceil(W / FS);
+        drops = Array.from({ length: cols }, () => (Math.random() * -H / FS) | 0);
+      }
+
+      resize();
+      window.addEventListener('resize', resize);
+
+      let last = 0;
+      const TICK = 85;
+
+      function draw(now) {
+        requestAnimationFrame(draw);
+        if (now - last < TICK) return;
+        last = now;
+
+        ctx.fillStyle = `rgba(3,3,10,${FADE})`;
+        ctx.fillRect(0, 0, W, H);
+
+        ctx.font         = `${FS}px "JetBrains Mono", monospace`;
+        ctx.textAlign    = 'center';
+
+        for (let i = 0; i < cols; i++) {
+          const char  = CHARS[(Math.random() * CHARS.length) | 0];
+          const x     = i * FS + FS / 2;
+          const y     = drops[i] * FS;
+          const alpha = ALPHA * (0.4 + Math.random() * 0.6);
+
+          ctx.fillStyle = `rgba(0,212,255,${alpha})`;
+          ctx.fillText(char, x, y);
+
+          if (y > H && Math.random() > 0.978) drops[i] = 0;
+          drops[i]++;
+        }
+      }
+
+      requestAnimationFrame(draw);
+    })();
+
+    /* ── Scroll reveal ── */
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e, idx) => {
+          if (e.isIntersecting) {
+            setTimeout(() => {
+              e.target.classList.add('visible');
+            }, idx * 55);
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+
+      document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    } else {
+      document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+    }
+  </script>
 
 </body>
 </html>
