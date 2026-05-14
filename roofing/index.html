@@ -1194,8 +1194,20 @@
       .reviews-stars    { justify-content: flex-start; }
       .footer-grid      { grid-template-columns: 1fr; gap: 28px; }
       .section          { padding: 80px 0; }
-      .trust-bar-inner  { gap: 16px; }
+
+      /* Trust bar: 2-column grid on mobile */
+      .trust-bar        { padding: 24px 0; }
+      .trust-bar-inner  {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
       .trust-divider    { display: none; }
+      .trust-item       { gap: 10px; }
+      .trust-icon       { width: 32px; height: 32px; flex-shrink: 0; }
+      .trust-icon svg   { width: 14px; height: 14px; }
+      .trust-text-top   { font-size: 0.82rem; }
+      .trust-text-sub   { font-size: 0.6rem; letter-spacing: 0.08em; white-space: normal; }
     }
 
     @media (max-width: 540px) {
