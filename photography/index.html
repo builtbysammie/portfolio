@@ -3,950 +3,1675 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>Lumina Studio | Photography Website Demo</title>
-  <meta name="description" content="A premium one-page photography website demo by Built by Sammie." />
+  <title>Lumina Studio | Portrait, Brand & Event Photography</title>
+  <meta name="description" content="Lumina Studio — editorial portrait, brand, and event photography. Warm, intentional, and beautifully directed." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;0,900;1,400;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
   <style>
     :root {
-      --bg: #f5efe6;
-      --text: #171410;
-      --muted: #6f665d;
-      --dark: #11100e;
-      --cream: #fffaf2;
-      --line: rgba(23, 20, 16, 0.12);
-      --gold: #b99054;
-      --card: rgba(255, 250, 242, 0.75);
-      --shadow: 0 24px 70px rgba(17, 16, 14, 0.12);
-      --max: 1160px;
-      --radius: 28px;
+      --void:       #0a0908;
+      --deep:       #111009;
+      --charcoal:   #1a1915;
+      --graphite:   #28261f;
+      --stone:      #413e35;
+      --pewter:     #6b6859;
+      --fog:        #a8a49a;
+      --bone:       #e8e2d9;
+      --ivory:      #f4f0ea;
+      --white:      #fdfcfa;
+      --gold:       #c9a96e;
+      --gold-lt:    #dfc08a;
+      --gold-dk:    #8f6e3e;
+      --gold-glow:  rgba(201,169,110,0.15);
+      --gold-line:  rgba(201,169,110,0.22);
+      --dark-line:  rgba(255,255,255,0.08);
+      --max:        1220px;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
 
     body {
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background:
-        radial-gradient(circle at top left, rgba(185, 144, 84, 0.2), transparent 34rem),
-        radial-gradient(circle at top right, rgba(17, 16, 14, 0.08), transparent 28rem),
-        var(--bg);
-      color: var(--text);
-      line-height: 1.6;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--void);
+      color: var(--bone);
       overflow-x: hidden;
+      line-height: 1.6;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+    ::selection { background: var(--gold); color: var(--void); }
+    a { color: inherit; text-decoration: none; }
 
-    .page {
-      width: min(100% - 32px, var(--max));
+    img { display: block; }
+
+    .container {
+      width: min(100% - 48px, var(--max));
       margin: 0 auto;
     }
 
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      border-bottom: 1px solid var(--line);
-      background: rgba(245, 239, 230, 0.82);
-      backdrop-filter: blur(18px);
+    /* ── NAV ─────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      height: 76px;
+      transition: background 0.4s, border-bottom 0.4s;
     }
 
-    .nav {
-      min-height: 74px;
-      width: min(100% - 32px, var(--max));
+    nav.scrolled {
+      background: rgba(10,9,8,0.9);
+      backdrop-filter: blur(24px);
+      border-bottom: 1px solid var(--dark-line);
+    }
+
+    .nav-inner {
+      height: 76px;
+      width: min(100% - 48px, var(--max));
       margin: 0 auto;
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      gap: 24px;
+      align-items: center;
     }
 
     .brand {
       display: flex;
-      align-items: center;
-      gap: 12px;
-      font-weight: 900;
-      letter-spacing: -0.04em;
+      flex-direction: column;
+      gap: 1px;
     }
 
-    .brand-mark {
-      width: 38px;
-      height: 38px;
-      border-radius: 14px;
-      background: var(--dark);
-      color: var(--cream);
-      display: grid;
-      place-items: center;
-      font-weight: 900;
-      box-shadow: 0 12px 26px rgba(17, 16, 14, 0.18);
+    .brand-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--white);
+      line-height: 1;
+    }
+
+    .brand-sub {
+      font-size: 0.58rem;
+      letter-spacing: 0.36em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 400;
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 22px;
-      color: var(--muted);
-      font-weight: 750;
-      font-size: 0.92rem;
+      gap: 36px;
     }
 
-    .nav-links a:hover {
-      color: var(--text);
-    }
-
-    .nav-cta {
-      padding: 11px 17px;
-      border-radius: 999px;
-      background: var(--dark);
-      color: var(--cream);
-      font-weight: 850;
-    }
-
-    .hero {
-      padding: 78px 0 56px;
-      display: grid;
-      grid-template-columns: 0.95fr 1.05fr;
-      gap: 44px;
-      align-items: center;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 8px 13px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      background: rgba(255, 250, 242, 0.7);
-      color: #806033;
-      font-size: 0.78rem;
-      font-weight: 900;
-      letter-spacing: 0.09em;
+    .nav-links a {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
-      margin-bottom: 22px;
+      color: var(--fog);
+      font-weight: 400;
+      transition: color 0.2s;
     }
 
-    .eyebrow span {
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
+    .nav-links a:hover { color: var(--white); }
+
+    .nav-book {
+      padding: 10px 24px;
+      border: 1px solid var(--gold-line);
+      color: var(--gold);
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      font-weight: 500;
+      transition: all 0.3s;
+    }
+
+    .nav-book:hover {
       background: var(--gold);
-      box-shadow: 0 0 0 6px rgba(185, 144, 84, 0.16);
+      color: var(--void);
+      border-color: var(--gold);
     }
 
-    h1 {
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(3.2rem, 7.5vw, 7.1rem);
-      line-height: 0.9;
-      letter-spacing: -0.075em;
+    /* ── HERO ────────────────────────────────────── */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 740px;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to bottom, rgba(10,9,8,0.2) 0%, rgba(10,9,8,0.05) 35%, rgba(10,9,8,0.65) 70%, rgba(10,9,8,1) 100%),
+        url('https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=1800&q=90&fit=crop&crop=face') center/cover no-repeat;
+    }
+
+    .hero-bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(105deg, rgba(10,9,8,0.55) 0%, transparent 55%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: min(100% - 48px, var(--max));
+      margin: 0 auto;
+      padding-bottom: 80px;
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 60px;
+      align-items: end;
+    }
+
+    .hero-tag {
+      display: flex;
+      align-items: center;
+      gap: 14px;
       margin-bottom: 24px;
     }
 
-    .hero p {
-      color: var(--muted);
-      font-size: clamp(1.02rem, 2vw, 1.22rem);
-      max-width: 610px;
-      margin-bottom: 32px;
-      font-weight: 540;
+    .hero-tag-dash { width: 28px; height: 1px; background: var(--gold); }
+
+    .hero-tag span {
+      font-size: 0.65rem;
+      letter-spacing: 0.34em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 400;
     }
 
-    .hero-actions {
+    .hero-h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(4rem, 7.5vw, 9rem);
+      font-weight: 400;
+      line-height: 0.88;
+      letter-spacing: -0.02em;
+      color: var(--white);
+      margin-bottom: 30px;
+    }
+
+    .hero-h1 em {
+      font-style: italic;
+      color: var(--gold-lt);
+    }
+
+    .hero-sub {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.5);
+      font-weight: 300;
+      max-width: 500px;
+      line-height: 1.8;
+      margin-bottom: 40px;
+    }
+
+    .hero-sub strong { color: rgba(255,255,255,0.8); font-weight: 400; }
+
+    .hero-ctas {
       display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin-bottom: 34px;
+      gap: 16px;
+      align-items: center;
     }
 
-    .btn {
-      min-height: 52px;
-      padding: 0 22px;
-      border-radius: 999px;
+    .btn-gold {
       display: inline-flex;
       align-items: center;
-      justify-content: center;
-      font-weight: 900;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .btn:hover {
-      transform: translateY(-2px);
-    }
-
-    .btn.primary {
-      background: var(--dark);
-      color: var(--cream);
-      box-shadow: 0 18px 38px rgba(17, 16, 14, 0.18);
-    }
-
-    .btn.secondary {
-      border: 1px solid var(--line);
-      background: rgba(255, 250, 242, 0.72);
-    }
-
-    .trust-row {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 12px;
+      background: var(--gold);
+      color: var(--void);
+      padding: 16px 34px;
+      font-size: 0.7rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      font-weight: 600;
+      transition: background 0.25s, transform 0.25s;
     }
 
-    .trust-card {
-      border: 1px solid var(--line);
-      background: rgba(255, 250, 242, 0.66);
-      border-radius: 20px;
-      padding: 16px;
+    .btn-gold:hover { background: var(--gold-lt); transform: translateY(-2px); }
+
+    .btn-ghost {
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      font-weight: 400;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+      padding-bottom: 2px;
+      transition: color 0.2s, border-color 0.2s;
     }
 
-    .trust-card strong {
-      display: block;
-      font-size: 1.25rem;
-      letter-spacing: -0.04em;
+    .btn-ghost:hover { color: var(--white); border-color: rgba(255,255,255,0.5); }
+
+    /* hero right — stat block */
+    .hero-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--dark-line);
+      border: 1px solid var(--dark-line);
+      align-self: end;
+    }
+
+    .hero-stat {
+      background: rgba(10,9,8,0.72);
+      backdrop-filter: blur(16px);
+      padding: 22px 18px;
+      text-align: center;
+    }
+
+    .hero-stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      font-weight: 400;
+      color: var(--gold-lt);
       line-height: 1;
+      display: block;
       margin-bottom: 6px;
     }
 
-    .trust-card span {
-      color: var(--muted);
-      font-size: 0.84rem;
-      font-weight: 700;
+    .hero-stat-label {
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
     }
 
-    .visual-grid {
+    /* ── MARQUEE ─────────────────────────────────── */
+    .marquee-strip {
+      overflow: hidden;
+      border-top: 1px solid var(--dark-line);
+      border-bottom: 1px solid var(--dark-line);
+      padding: 18px 0;
+      background: var(--charcoal);
+    }
+
+    .marquee-inner {
+      display: flex;
+      gap: 52px;
+      animation: ticker 30s linear infinite;
+      white-space: nowrap;
+    }
+
+    .marquee-inner span {
+      font-size: 0.64rem;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--pewter);
+      flex-shrink: 0;
+      font-weight: 400;
+    }
+
+    .marquee-inner em {
+      color: var(--gold);
+      font-style: normal;
+    }
+
+    @keyframes ticker {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ── SECTION COMMONS ─────────────────────────── */
+    .section { padding: 120px 0; }
+
+    .sec-label {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
+    .sec-label-dash { width: 24px; height: 1px; background: var(--gold); }
+
+    .sec-label span {
+      font-size: 0.62rem;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 400;
+    }
+
+    .sec-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 5.5vw, 6.5rem);
+      font-weight: 400;
+      line-height: 0.9;
+      letter-spacing: -0.02em;
+      color: var(--white);
+    }
+
+    .sec-title em { font-style: italic; color: var(--gold-lt); }
+
+    /* ── ABOUT / PHILOSOPHY ──────────────────────── */
+    .philosophy {
+      background: var(--deep);
+    }
+
+    .philosophy-inner {
       display: grid;
-      grid-template-columns: 1fr 0.72fr;
-      grid-template-rows: 260px 260px;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .philosophy-text {}
+
+    .philosophy-body {
+      margin-top: 32px;
+      display: grid;
+      gap: 20px;
+    }
+
+    .philosophy-body p {
+      font-size: 1.02rem;
+      color: var(--fog);
+      font-weight: 300;
+      line-height: 1.85;
+    }
+
+    .philosophy-body p strong { color: var(--bone); font-weight: 400; }
+
+    .philosophy-sig {
+      margin-top: 40px;
+      display: flex;
+      align-items: center;
       gap: 16px;
     }
 
-    .photo-card {
-      border-radius: 34px;
-      overflow: hidden;
+    .philosophy-sig-line { width: 40px; height: 1px; background: var(--gold-dk); }
+
+    .philosophy-sig-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-style: italic;
+      color: var(--gold);
+      font-weight: 400;
+    }
+
+    .philosophy-visual {
       position: relative;
-      box-shadow: var(--shadow);
-      border: 1px solid rgba(255, 250, 242, 0.2);
-      background: var(--dark);
+      height: 600px;
     }
 
-    .photo-card.large {
-      grid-row: span 2;
-      background:
-        linear-gradient(180deg, rgba(17, 16, 14, 0.12), rgba(17, 16, 14, 0.62)),
-        radial-gradient(circle at 35% 22%, #d8c0a0, transparent 16rem),
-        linear-gradient(135deg, #3b3028, #12100e);
-    }
-
-    .photo-card.one {
-      background:
-        linear-gradient(180deg, rgba(17, 16, 14, 0.05), rgba(17, 16, 14, 0.42)),
-        radial-gradient(circle at 55% 35%, #f2d8bf, transparent 11rem),
-        linear-gradient(135deg, #7b654f, #201915);
-    }
-
-    .photo-card.two {
-      background:
-        linear-gradient(180deg, rgba(17, 16, 14, 0.05), rgba(17, 16, 14, 0.5)),
-        radial-gradient(circle at 45% 40%, #d0a57d, transparent 10rem),
-        linear-gradient(135deg, #2c251f, #0e0d0b);
-    }
-
-    .photo-label {
+    .phil-img-main {
       position: absolute;
-      left: 20px;
-      bottom: 20px;
-      right: 20px;
-      color: var(--cream);
+      top: 0; right: 0;
+      width: 82%;
+      height: 75%;
+      object-fit: cover;
+      filter: brightness(0.85) saturate(0.8);
     }
 
-    .photo-label strong {
+    .phil-img-sub {
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 56%;
+      height: 46%;
+      object-fit: cover;
+      filter: brightness(0.8) saturate(0.75);
+      border: 4px solid var(--deep);
+    }
+
+    .phil-badge {
+      position: absolute;
+      bottom: 28px;
+      right: 0;
+      background: var(--gold);
+      color: var(--void);
+      padding: 18px 22px;
+      text-align: center;
+    }
+
+    .phil-badge strong {
       display: block;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 1.9rem;
-      line-height: 1;
-      letter-spacing: -0.05em;
-      margin-bottom: 8px;
-    }
-
-    .photo-label span {
-      color: rgba(255, 250, 242, 0.7);
-      font-size: 0.9rem;
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
       font-weight: 700;
+      line-height: 1;
     }
 
-    section {
-      padding: 62px 0;
+    .phil-badge span {
+      font-size: 0.58rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: 600;
     }
 
-    .section-head {
+    /* ── SERVICES ────────────────────────────────── */
+    .services-section {
+      background: var(--void);
+    }
+
+    .services-header {
       display: flex;
       justify-content: space-between;
-      align-items: end;
-      gap: 24px;
-      margin-bottom: 28px;
+      align-items: flex-end;
+      margin-bottom: 60px;
     }
 
-    .kicker {
-      color: #806033;
-      font-size: 0.78rem;
-      font-weight: 950;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      margin-bottom: 8px;
-    }
-
-    .section-title {
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(2.35rem, 4.5vw, 4.8rem);
-      line-height: 1;
-      letter-spacing: -0.065em;
-    }
-
-    .section-desc {
-      max-width: 460px;
-      color: var(--muted);
-      font-weight: 560;
+    .services-header-right {
+      max-width: 340px;
+      color: var(--pewter);
+      font-size: 0.88rem;
+      font-weight: 300;
+      line-height: 1.8;
+      text-align: right;
     }
 
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--dark-line);
+      border: 1px solid var(--dark-line);
     }
 
     .service-card {
-      min-height: 245px;
-      border: 1px solid var(--line);
-      background: rgba(255, 250, 242, 0.72);
-      border-radius: var(--radius);
-      padding: 24px;
+      background: var(--charcoal);
+      padding: 44px 36px;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s;
+    }
+
+    .service-card:hover { background: var(--graphite); }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 2px;
+      background: linear-gradient(to right, var(--gold), var(--gold-lt));
+      transition: width 0.5s cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+
+    .service-card:hover::before { width: 100%; }
+
+    .service-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.28em;
+      color: var(--stone);
+      margin-bottom: 32px;
+      display: block;
+    }
+
+    .service-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+      filter: brightness(0.75) saturate(0.7);
+      margin-bottom: 28px;
+      transition: filter 0.5s;
+    }
+
+    .service-card:hover .service-img { filter: brightness(0.9) saturate(0.9); }
+
+    .service-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.75rem;
+      font-weight: 400;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 14px;
+    }
+
+    .service-desc {
+      font-size: 0.84rem;
+      color: var(--pewter);
+      font-weight: 300;
+      line-height: 1.75;
+      margin-bottom: 28px;
+    }
+
+    .service-tag {
+      font-size: 0.62rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 400;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .service-tag::before {
+      content: '';
+      width: 20px; height: 1px;
+      background: var(--gold);
+    }
+
+    /* ── GALLERY ─────────────────────────────────── */
+    .gallery-section {
+      background: var(--deep);
+    }
+
+    .gallery-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 44px;
+    }
+
+    .gallery-sub {
+      max-width: 300px;
+      color: var(--pewter);
+      font-size: 0.84rem;
+      font-weight: 300;
+      line-height: 1.7;
+      text-align: right;
+    }
+
+    /* Masonry-style grid */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-template-rows: 280px 320px;
+      gap: 4px;
+    }
+
+    .g {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .g img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: brightness(0.75) saturate(0.7) sepia(0.1);
+      transition: filter 0.6s, transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+
+    .g:hover img {
+      filter: brightness(0.92) saturate(1) sepia(0);
+      transform: scale(1.06);
+    }
+
+    .g1 { grid-column: 1/5; grid-row: 1/3; }
+    .g2 { grid-column: 5/8; grid-row: 1/2; }
+    .g3 { grid-column: 8/13; grid-row: 1/2; }
+    .g4 { grid-column: 5/9; grid-row: 2/3; }
+    .g5 { grid-column: 9/13; grid-row: 2/3; }
+
+    .g-caption {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 36px 20px 18px;
+      background: linear-gradient(to top, rgba(10,9,8,0.8), transparent);
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(244,240,234,0.7);
+      font-weight: 400;
+      pointer-events: none;
+    }
+
+    /* ── PROCESS ─────────────────────────────────── */
+    .process-section {
+      background: var(--charcoal);
+    }
+
+    .process-header {
+      text-align: center;
+      margin-bottom: 72px;
+    }
+
+    .process-header .sec-label { justify-content: center; }
+
+    .process-track {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      position: relative;
+    }
+
+    .process-track::before {
+      content: '';
+      position: absolute;
+      top: 20px;
+      left: 12.5%;
+      right: 12.5%;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold-dk), var(--gold), var(--gold-dk), transparent);
+      opacity: 0.5;
+    }
+
+    .process-step {
+      padding: 0 28px;
+      text-align: center;
+      position: relative;
+    }
+
+    .process-step-dot {
+      width: 40px; height: 40px;
+      border: 1px solid var(--gold-line);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 28px;
+      background: var(--charcoal);
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-style: italic;
+      color: var(--gold);
+      position: relative;
+      z-index: 1;
+    }
+
+    .process-step h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.18rem;
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+
+    .process-step p {
+      font-size: 0.82rem;
+      color: var(--pewter);
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    /* ── PACKAGES ────────────────────────────────── */
+    .packages-section {
+      background: var(--void);
+    }
+
+    .packages-header {
+      margin-bottom: 60px;
+    }
+
+    .packages-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--dark-line);
+      border: 1px solid var(--dark-line);
+    }
+
+    .pkg-card {
+      background: var(--charcoal);
+      padding: 44px 36px;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      box-shadow: 0 14px 42px rgba(17, 16, 14, 0.06);
-    }
-
-    .service-card h3 {
-      font-size: 1.25rem;
-      letter-spacing: -0.035em;
-      margin-bottom: 10px;
-    }
-
-    .service-card p {
-      color: var(--muted);
-      font-weight: 540;
-      font-size: 0.95rem;
-    }
-
-    .service-card span {
-      color: #806033;
-      font-weight: 900;
-      font-size: 0.9rem;
-      margin-top: 22px;
-    }
-
-    .gallery {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      grid-auto-rows: 240px;
-      gap: 16px;
-    }
-
-    .gallery-item {
-      border-radius: 28px;
-      overflow: hidden;
       position: relative;
-      border: 1px solid rgba(17, 16, 14, 0.08);
-      box-shadow: 0 18px 48px rgba(17, 16, 14, 0.08);
+      overflow: hidden;
+      transition: background 0.3s;
     }
 
-    .gallery-item:nth-child(1) {
-      grid-row: span 2;
-      background: radial-gradient(circle at 50% 30%, #e8c8a5, transparent 12rem), linear-gradient(135deg, #352c25, #100f0d);
+    .pkg-card.featured {
+      background: var(--graphite);
     }
 
-    .gallery-item:nth-child(2) {
-      background: radial-gradient(circle at 55% 45%, #d8b28c, transparent 10rem), linear-gradient(135deg, #755f4b, #191512);
-    }
-
-    .gallery-item:nth-child(3) {
-      background: radial-gradient(circle at 50% 45%, #f0d1b7, transparent 10rem), linear-gradient(135deg, #322721, #12100e);
-    }
-
-    .gallery-item:nth-child(4) {
-      background: radial-gradient(circle at 55% 42%, #c99d75, transparent 10rem), linear-gradient(135deg, #554337, #100f0d);
-    }
-
-    .gallery-item:nth-child(5) {
-      background: radial-gradient(circle at 45% 42%, #ead7c2, transparent 10rem), linear-gradient(135deg, #695241, #171310);
-    }
-
-    .gallery-label {
+    .pkg-card.featured::after {
+      content: 'Most Popular';
       position: absolute;
-      left: 18px;
-      bottom: 18px;
-      color: var(--cream);
-      font-weight: 900;
-      letter-spacing: -0.03em;
+      top: 22px; right: -28px;
+      background: var(--gold);
+      color: var(--void);
+      font-size: 0.58rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: 600;
+      padding: 6px 36px;
+      transform: rotate(45deg);
     }
 
-    .about-panel {
-      border-radius: 38px;
-      background: var(--dark);
-      color: var(--cream);
-      padding: 38px;
+    .pkg-card:hover { background: var(--graphite); }
+
+    .pkg-label {
+      font-size: 0.62rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 18px;
+    }
+
+    .pkg-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.9rem;
+      font-weight: 400;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+
+    .pkg-tagline {
+      font-size: 0.82rem;
+      color: var(--pewter);
+      font-weight: 300;
+      line-height: 1.65;
+      margin-bottom: 32px;
+    }
+
+    .pkg-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.2rem;
+      font-weight: 400;
+      color: var(--gold-lt);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .pkg-price-sub {
+      font-size: 0.64rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--stone);
+      margin-bottom: 36px;
+    }
+
+    .pkg-divider {
+      width: 100%;
+      height: 1px;
+      background: var(--dark-line);
+      margin-bottom: 28px;
+    }
+
+    .pkg-features {
+      list-style: none;
       display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
-      gap: 34px;
-      box-shadow: var(--shadow);
+      gap: 12px;
+      margin-bottom: auto;
     }
 
-    .about-panel h2 {
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(2.4rem, 4vw, 4.5rem);
-      line-height: 0.98;
-      letter-spacing: -0.06em;
+    .pkg-features li {
+      font-size: 0.82rem;
+      color: var(--fog);
+      font-weight: 300;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      line-height: 1.5;
+    }
+
+    .pkg-features li::before {
+      content: '';
+      width: 12px; height: 1px;
+      background: var(--gold);
+      flex-shrink: 0;
+      margin-top: 9px;
+    }
+
+    .pkg-cta {
+      margin-top: 36px;
+      display: block;
+      text-align: center;
+      padding: 14px;
+      border: 1px solid var(--gold-line);
+      color: var(--gold);
+      font-size: 0.66rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      font-weight: 500;
+      transition: all 0.3s;
+    }
+
+    .pkg-cta:hover {
+      background: var(--gold);
+      color: var(--void);
+      border-color: var(--gold);
+    }
+
+    .pkg-card.featured .pkg-cta {
+      background: var(--gold);
+      color: var(--void);
+      border-color: var(--gold);
+    }
+
+    .pkg-card.featured .pkg-cta:hover {
+      background: var(--gold-lt);
+    }
+
+    /* ── TESTIMONIALS ────────────────────────────── */
+    .reviews-section {
+      background: var(--deep);
+    }
+
+    .reviews-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 56px;
+    }
+
+    .reviews-rating {
+      text-align: right;
+    }
+
+    .reviews-big-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 4rem;
+      font-weight: 400;
+      color: var(--gold-lt);
+      line-height: 1;
+      display: block;
+    }
+
+    .reviews-stars {
+      display: flex;
+      gap: 4px;
+      justify-content: flex-end;
+      margin: 6px 0;
+    }
+
+    .star { color: var(--gold); font-size: 0.78rem; }
+
+    .reviews-count {
+      font-size: 0.64rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--stone);
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--dark-line);
+      border: 1px solid var(--dark-line);
+    }
+
+    .review-card {
+      background: var(--charcoal);
+      padding: 40px 36px;
+    }
+
+    .review-open-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: 4rem;
+      font-weight: 700;
+      color: var(--gold-dk);
+      line-height: 0.6;
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .review-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-style: italic;
+      font-weight: 400;
+      color: var(--bone);
+      line-height: 1.7;
+      margin-bottom: 28px;
+    }
+
+    .review-bar {
+      width: 24px; height: 1px;
+      background: var(--gold-dk);
       margin-bottom: 16px;
     }
 
-    .about-panel p {
-      color: rgba(255, 250, 242, 0.68);
-      font-size: 1rem;
-      max-width: 530px;
+    .review-name {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--fog);
+      font-weight: 400;
+      display: block;
     }
 
-    .about-list {
+    .review-session {
+      font-size: 0.6rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-top: 4px;
+    }
+
+    /* ── CONTACT / BOOKING ───────────────────────── */
+    .contact-section {
+      position: relative;
+      min-height: 640px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .contact-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to right, rgba(10,9,8,0.95) 50%, rgba(10,9,8,0.65) 100%),
+        url('https://images.unsplash.com/photo-1452587925148-ce544e77e70d?w=1800&q=85&fit=crop') center/cover no-repeat;
+    }
+
+    .contact-inner {
+      position: relative;
+      z-index: 2;
       display: grid;
-      gap: 12px;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
     }
 
-    .about-item {
-      border: 1px solid rgba(255, 250, 242, 0.14);
-      background: rgba(255, 250, 242, 0.07);
-      border-radius: 22px;
-      padding: 18px;
+    .contact-left {}
+
+    .contact-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3.5rem, 6vw, 7.5rem);
+      font-weight: 400;
+      line-height: 0.88;
+      letter-spacing: -0.02em;
+      color: var(--white);
+      margin: 20px 0 28px;
     }
 
-    .about-item strong {
+    .contact-title em { font-style: italic; color: var(--gold-lt); }
+
+    .contact-body {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.42);
+      font-weight: 300;
+      line-height: 1.85;
+      margin-bottom: 40px;
+      max-width: 440px;
+    }
+
+    .contact-right {
+      display: grid;
+      gap: 1px;
+      background: var(--dark-line);
+      border: 1px solid var(--dark-line);
+    }
+
+    .contact-card {
+      background: rgba(10,9,8,0.7);
+      backdrop-filter: blur(16px);
+      padding: 22px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.2s;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .contact-card:last-child { border: none; }
+
+    .contact-card:hover { background: rgba(25,23,18,0.9); }
+
+    .contact-label {
+      font-size: 0.58rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
       display: block;
       margin-bottom: 5px;
     }
 
-    .about-item span {
-      color: rgba(255, 250, 242, 0.62);
-      font-size: 0.92rem;
+    .contact-val {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--white);
     }
 
-    .packages {
+    .contact-arrow { color: var(--gold); font-size: 1rem; }
+
+    .contact-book-block {
+      background: var(--gold);
+      padding: 28px;
+      text-align: center;
+    }
+
+    .contact-book-block p {
+      font-size: 0.62rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: rgba(10,9,8,0.6);
+      margin-bottom: 10px;
+    }
+
+    .contact-book-block a {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--void);
+      margin-bottom: 16px;
+      letter-spacing: 0.04em;
+    }
+
+    .book-btn {
+      display: inline-block;
+      border: 1.5px solid rgba(10,9,8,0.35);
+      color: var(--void);
+      padding: 10px 28px;
+      font-size: 0.64rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: 600;
+      transition: all 0.25s;
+    }
+
+    .book-btn:hover {
+      background: var(--void);
+      color: var(--gold);
+      border-color: var(--void);
+    }
+
+    /* ── FOOTER ──────────────────────────────────── */
+    footer {
+      background: var(--void);
+      border-top: 1px solid var(--dark-line);
+      padding: 56px 0 32px;
+    }
+
+    .footer-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 52px;
     }
 
-    .package-card {
-      border: 1px solid var(--line);
-      background: rgba(255, 250, 242, 0.72);
-      border-radius: var(--radius);
-      padding: 24px;
-      box-shadow: 0 14px 42px rgba(17, 16, 14, 0.06);
+    .footer-brand-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin: 12px 0 5px;
     }
 
-    .package-card h3 {
-      font-size: 1.24rem;
-      letter-spacing: -0.035em;
-      margin-bottom: 8px;
+    .footer-brand-sub {
+      font-size: 0.58rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 18px;
     }
 
-    .price {
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 2.4rem;
-      letter-spacing: -0.055em;
-      margin: 16px 0;
+    .footer-brand-desc {
+      font-size: 0.8rem;
+      color: var(--stone);
+      font-weight: 300;
+      line-height: 1.75;
+      max-width: 250px;
     }
 
-    .package-card p,
-    .package-card li {
-      color: var(--muted);
-      font-weight: 540;
-      font-size: 0.94rem;
+    .footer-col-head {
+      font-size: 0.58rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+      font-weight: 400;
     }
 
-    ul {
-      list-style: none;
+    .footer-links {
       display: grid;
       gap: 10px;
-      margin-top: 18px;
     }
 
-    li::before {
-      content: "•";
-      color: var(--gold);
-      font-weight: 900;
-      margin-right: 8px;
+    .footer-links a {
+      font-size: 0.8rem;
+      color: var(--stone);
+      font-weight: 300;
+      transition: color 0.2s;
     }
 
-    .testimonials {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-    }
+    .footer-links a:hover { color: var(--bone); }
 
-    .quote-card {
-      border: 1px solid var(--line);
-      background: rgba(255, 250, 242, 0.72);
-      border-radius: var(--radius);
-      padding: 24px;
-      min-height: 230px;
+    .footer-bottom {
+      border-top: 1px solid var(--dark-line);
+      padding-top: 24px;
       display: flex;
-      flex-direction: column;
       justify-content: space-between;
-    }
-
-    .quote-card p {
-      color: var(--muted);
-      font-weight: 560;
-      margin-bottom: 24px;
-    }
-
-    .quote-card strong {
-      letter-spacing: -0.03em;
-    }
-
-    .contact-box {
-      border-radius: 42px;
-      background:
-        radial-gradient(circle at top right, rgba(185, 144, 84, 0.22), transparent 22rem),
-        rgba(255, 250, 242, 0.78);
-      border: 1px solid var(--line);
-      box-shadow: 0 18px 55px rgba(17, 16, 14, 0.08);
-      padding: 42px;
-      display: grid;
-      grid-template-columns: 1fr 0.85fr;
-      gap: 28px;
       align-items: center;
-    }
-
-    .contact-box h2 {
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(2.5rem, 5vw, 5.5rem);
-      line-height: 0.95;
-      letter-spacing: -0.07em;
-      margin-bottom: 16px;
-    }
-
-    .contact-box p {
-      color: var(--muted);
-      font-size: 1.04rem;
-      font-weight: 560;
-      max-width: 560px;
-    }
-
-    .contact-actions {
-      display: grid;
+      flex-wrap: wrap;
       gap: 12px;
     }
 
-    .contact-link {
-      border: 1px solid var(--line);
-      background: rgba(245, 239, 230, 0.72);
-      border-radius: 22px;
-      padding: 16px 18px;
+    .footer-copy {
+      font-size: 0.72rem;
+      color: var(--stone);
+      letter-spacing: 0.06em;
     }
 
-    .contact-link span {
-      display: block;
-      color: var(--muted);
-      font-size: 0.78rem;
-      font-weight: 950;
-      letter-spacing: 0.09em;
-      text-transform: uppercase;
-      margin-bottom: 4px;
+    /* ── REVEAL ──────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1);
     }
 
-    .contact-link strong {
-      letter-spacing: -0.02em;
-    }
+    .reveal.in { opacity: 1; transform: translateY(0); }
 
-    footer {
-      border-top: 1px solid var(--line);
-      padding: 26px 0;
-      color: var(--muted);
-      font-size: 0.92rem;
-      font-weight: 650;
-    }
+    .d1 { transition-delay: 0.1s; }
+    .d2 { transition-delay: 0.2s; }
+    .d3 { transition-delay: 0.3s; }
+    .d4 { transition-delay: 0.4s; }
 
-    .footer-inner {
-      width: min(100% - 32px, var(--max));
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    @media (max-width: 980px) {
-      .hero,
-      .about-panel,
-      .contact-box {
-        grid-template-columns: 1fr;
+    /* ── RESPONSIVE ──────────────────────────────── */
+    @media (max-width: 1100px) {
+      .hero-content     { grid-template-columns: 1fr; }
+      .hero-stats       { display: none; }
+      .philosophy-inner { grid-template-columns: 1fr; }
+      .philosophy-visual{ height: 420px; }
+      .contact-inner    { grid-template-columns: 1fr; }
+      .footer-grid      { grid-template-columns: 1fr 1fr; }
+      .gallery-grid     {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
       }
-
-      .visual-grid {
-        grid-template-rows: 240px 240px;
-      }
-
-      .services-grid,
-      .packages,
-      .testimonials {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+      .g1,.g2,.g3,.g4,.g5 {
+        grid-column: auto;
+        grid-row: auto;
+        height: 260px;
       }
     }
 
-    @media (max-width: 720px) {
-      .nav {
-        min-height: 68px;
-      }
+    @media (max-width: 768px) {
+      .nav-links        { display: none; }
+      .section          { padding: 80px 0; }
+      .services-grid    { grid-template-columns: 1fr; }
+      .packages-grid    { grid-template-columns: 1fr; }
+      .reviews-grid     { grid-template-columns: 1fr; }
+      .services-header,
+      .gallery-header,
+      .reviews-header   { flex-direction: column; align-items: flex-start; gap: 16px; }
+      .services-header-right,
+      .gallery-sub,
+      .reviews-rating   { text-align: left; }
+      .reviews-stars    { justify-content: flex-start; }
+      .process-track    { grid-template-columns: 1fr 1fr; gap: 36px; }
+      .process-track::before { display: none; }
+      .footer-grid      { grid-template-columns: 1fr; gap: 28px; }
+      .gallery-grid     { grid-template-columns: 1fr; }
+      .g1,.g2,.g3,.g4,.g5 { height: 220px; }
+    }
 
-      .nav-links {
-        display: none;
-      }
-
-      .hero {
-        padding-top: 54px;
-      }
-
-      .hero-actions {
-        align-items: stretch;
-      }
-
-      .btn {
-        width: 100%;
-      }
-
-      .trust-row,
-      .services-grid,
-      .packages,
-      .testimonials {
-        grid-template-columns: 1fr;
-      }
-
-      .visual-grid {
-        grid-template-columns: 1fr;
-        grid-template-rows: 420px 210px 210px;
-      }
-
-      .photo-card.large {
-        grid-row: span 1;
-      }
-
-      section {
-        padding: 48px 0;
-      }
-
-      .section-head {
-        flex-direction: column;
-        align-items: start;
-      }
-
-      .gallery {
-        grid-template-columns: 1fr;
-        grid-auto-rows: 230px;
-      }
-
-      .gallery-item:nth-child(1) {
-        grid-row: span 1;
-      }
-
-      .about-panel,
-      .contact-box {
-        padding: 24px;
-        border-radius: 30px;
-      }
+    @media (max-width: 560px) {
+      .hero-h1 { font-size: clamp(3.5rem, 13vw, 5.5rem); }
+      .process-track { grid-template-columns: 1fr; }
+      .philosophy-visual { height: 360px; }
     }
   </style>
 </head>
 
 <body>
-  <header>
-    <nav class="nav">
-      <a href="../" class="brand">
-        <span class="brand-mark">L</span>
-        <span>Lumina Studio</span>
-      </a>
 
-      <div class="nav-links">
-        <a href="#services">Services</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#packages">Packages</a>
-        <a href="#contact" class="nav-cta">Book a Session</a>
+<!-- NAV -->
+<nav id="main-nav">
+  <div class="nav-inner">
+    <a href="#" class="brand">
+      <div class="brand-name">Lumina Studio</div>
+      <div class="brand-sub">Photography &amp; Direction</div>
+    </a>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#packages">Packages</a>
+      <a href="#contact" class="nav-book">Book a Session</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-left">
+      <div class="hero-tag">
+        <div class="hero-tag-dash"></div>
+        <span>Portrait · Brand · Event Photography</span>
       </div>
-    </nav>
-  </header>
+      <h1 class="hero-h1">
+        Images that<br>
+        <em>feel</em> like<br>
+        you.
+      </h1>
+      <p class="hero-sub">
+        Editorial portrait, brand, and event photography for people and businesses who understand that <strong>the right image changes everything.</strong>
+      </p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn-gold">Book a Session</a>
+        <a href="#gallery" class="btn-ghost">View the Gallery</a>
+      </div>
+    </div>
 
-  <main>
-    <section class="page hero">
-      <div>
-        <div class="eyebrow"><span></span> Photography Website Demo</div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <span class="hero-stat-num">4.9★</span>
+        <span class="hero-stat-label">Client rating</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">500+</span>
+        <span class="hero-stat-label">Sessions shot</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">48hr</span>
+        <span class="hero-stat-label">Preview delivery</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">8+</span>
+        <span class="hero-stat-label">Years of craft</span>
+      </div>
+    </div>
+  </div>
+</section>
 
-        <h1>Portraits, events, and brand photos with a clean editorial feel.</h1>
+<!-- MARQUEE -->
+<div class="marquee-strip">
+  <div class="marquee-inner">
+    <span>Portrait Sessions</span><em>·</em>
+    <span>Brand Photography</span><em>·</em>
+    <span>Event Coverage</span><em>·</em>
+    <span>Editorial Direction</span><em>·</em>
+    <span>48hr Preview Delivery</span><em>·</em>
+    <span>Studio &amp; Location</span><em>·</em>
+    <span>Creative Direction</span><em>·</em>
+    <span>Portrait Sessions</span><em>·</em>
+    <span>Brand Photography</span><em>·</em>
+    <span>Event Coverage</span><em>·</em>
+    <span>Editorial Direction</span><em>·</em>
+    <span>48hr Preview Delivery</span><em>·</em>
+    <span>Studio &amp; Location</span><em>·</em>
+    <span>Creative Direction</span><em>·</em>
+  </div>
+</div>
 
-        <p>
-          A premium photography website concept for creatives who need visitors to understand their style, trust their work, view their portfolio, and book a session quickly.
-        </p>
+<main>
 
-        <div class="hero-actions">
-          <a href="#contact" class="btn primary">Book a Session</a>
-          <a href="#gallery" class="btn secondary">View Gallery</a>
-        </div>
-
-        <div class="trust-row">
-          <div class="trust-card">
-            <strong>48hr</strong>
-            <span>Preview delivery</span>
+  <!-- PHILOSOPHY -->
+  <section class="section philosophy" id="about">
+    <div class="container">
+      <div class="philosophy-inner">
+        <div class="philosophy-text reveal">
+          <div class="sec-label">
+            <div class="sec-label-dash"></div>
+            <span>The Approach</span>
           </div>
-          <div class="trust-card">
+          <h2 class="sec-title">More than<br>a <em>shutter.</em></h2>
+          <div class="philosophy-body">
+            <p>Photography is direction before it's technique. Before the first frame is shot, we understand what you want people to <strong>feel</strong> when they see your images — and we build the entire session around that intention.</p>
+            <p>Whether it's a portrait for your personal brand, coverage of your most important day, or content that will define how the world sees your business — <strong>every image is crafted with purpose.</strong></p>
+          </div>
+          <div class="philosophy-sig">
+            <div class="philosophy-sig-line"></div>
+            <span class="philosophy-sig-name">Lead Photographer, Lumina Studio</span>
+          </div>
+        </div>
+        <div class="philosophy-visual reveal d2">
+          <img class="phil-img-main"
+            src="https://images.unsplash.com/photo-1616091093854-bfa9c1be4b04?w=900&q=85&fit=crop"
+            alt="Photographer at work in studio" loading="lazy" />
+          <img class="phil-img-sub"
+            src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=600&q=85&fit=crop&crop=center"
+            alt="Camera equipment and gear" loading="lazy" />
+          <div class="phil-badge">
             <strong>4.9★</strong>
-            <span>Client experience</span>
-          </div>
-          <div class="trust-card">
-            <strong>Studio</strong>
-            <span>Portraits & events</span>
+            <span>Rated by clients</span>
           </div>
         </div>
       </div>
+    </div>
+  </section>
 
-      <div class="visual-grid">
-        <div class="photo-card large">
-          <div class="photo-label">
-            <strong>Editorial portraits</strong>
-            <span>Clean, warm, confident image direction.</span>
-          </div>
-        </div>
-
-        <div class="photo-card one">
-          <div class="photo-label">
-            <strong>Events</strong>
-            <span>Moments, details, and atmosphere.</span>
-          </div>
-        </div>
-
-        <div class="photo-card two">
-          <div class="photo-label">
-            <strong>Brand shoots</strong>
-            <span>Images for founders, teams, and products.</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="page" id="services">
-      <div class="section-head">
+  <!-- SERVICES -->
+  <section class="section services-section" id="services">
+    <div class="container">
+      <div class="services-header reveal">
         <div>
-          <div class="kicker">Services</div>
-          <h2 class="section-title">Photography services.</h2>
+          <div class="sec-label">
+            <div class="sec-label-dash"></div>
+            <span>Services</span>
+          </div>
+          <h2 class="sec-title">Three ways<br>to <em>work together.</em></h2>
         </div>
-        <p class="section-desc">
-          The page clearly separates what the photographer offers so visitors can quickly choose the right type of session.
-        </p>
+        <p class="services-header-right">Each session type is designed around what you actually need — not a one-size-fits-all formula.</p>
       </div>
 
       <div class="services-grid">
-        <article class="service-card">
-          <div>
-            <h3>Portrait Sessions</h3>
-            <p>Personal portraits, birthday shoots, graduation sessions, creative portraits, and profile images.</p>
-          </div>
-          <span>Best for individuals</span>
-        </article>
-
-        <article class="service-card">
-          <div>
-            <h3>Event Photography</h3>
-            <p>Coverage for birthdays, intimate weddings, launches, dinners, community events, and private gatherings.</p>
-          </div>
-          <span>Best for events</span>
-        </article>
-
-        <article class="service-card">
-          <div>
-            <h3>Brand Photography</h3>
-            <p>Clean visual content for founders, products, creatives, businesses, teams, and campaign launches.</p>
-          </div>
-          <span>Best for businesses</span>
-        </article>
-      </div>
-    </section>
-
-    <section class="page" id="gallery">
-      <div class="section-head">
-        <div>
-          <div class="kicker">Gallery</div>
-          <h2 class="section-title">Featured work.</h2>
-        </div>
-        <p class="section-desc">
-          This gallery section gives the business owner room to showcase strong images without overwhelming the page.
-        </p>
-      </div>
-
-      <div class="gallery">
-        <div class="gallery-item"><span class="gallery-label">Portrait Series</span></div>
-        <div class="gallery-item"><span class="gallery-label">Event Details</span></div>
-        <div class="gallery-item"><span class="gallery-label">Brand Campaign</span></div>
-        <div class="gallery-item"><span class="gallery-label">Studio Session</span></div>
-        <div class="gallery-item"><span class="gallery-label">Creative Direction</span></div>
-      </div>
-    </section>
-
-    <section class="page">
-      <div class="about-panel">
-        <div>
-          <div class="kicker">Why choose us</div>
-          <h2>More than photos. A guided shoot experience.</h2>
-          <p>
-            A strong photography website should not only show beautiful images. It should explain the process, reduce uncertainty, and make the photographer feel organized and trustworthy.
-          </p>
+        <div class="service-card reveal">
+          <span class="service-num">01</span>
+          <img class="service-img"
+            src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=800&q=85&fit=crop&crop=face"
+            alt="Portrait photography" loading="lazy" />
+          <h3 class="service-name">Portrait Sessions</h3>
+          <p class="service-desc">Personal portraits, graduation shoots, birthday sessions, creative profiles, and headshots — directed to bring out your most natural, confident self.</p>
+          <span class="service-tag">Best for individuals</span>
         </div>
 
-        <div class="about-list">
-          <div class="about-item">
-            <strong>Clear creative direction</strong>
-            <span>Clients know what to expect before the shoot, from styling notes to mood direction.</span>
-          </div>
-
-          <div class="about-item">
-            <strong>Smooth booking flow</strong>
-            <span>The contact section helps visitors choose a session type and request availability quickly.</span>
-          </div>
-
-          <div class="about-item">
-            <strong>Professional delivery</strong>
-            <span>The layout creates room for delivery timelines, editing details, and client expectations.</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="page" id="packages">
-      <div class="section-head">
-        <div>
-          <div class="kicker">Packages</div>
-          <h2 class="section-title">Simple session packages.</h2>
-        </div>
-        <p class="section-desc">
-          Pricing can be adjusted, but the structure helps clients understand the value before they inquire.
-        </p>
-      </div>
-
-      <div class="packages">
-        <article class="package-card">
-          <h3>Portrait Session</h3>
-          <p>For personal portraits, birthday shoots, graduation images, and creative profile photos.</p>
-          <div class="price">From $250</div>
-          <ul>
-            <li>1-hour session</li>
-            <li>One location</li>
-            <li>Edited digital images</li>
-            <li>Private online gallery</li>
-          </ul>
-        </article>
-
-        <article class="package-card">
-          <h3>Brand Session</h3>
-          <p>For founders, small businesses, creatives, and products that need professional visual content.</p>
-          <div class="price">From $600</div>
-          <ul>
-            <li>Creative planning</li>
-            <li>Multiple looks</li>
-            <li>Website and social content</li>
-            <li>Edited image collection</li>
-          </ul>
-        </article>
-
-        <article class="package-card">
-          <h3>Event Coverage</h3>
-          <p>For intimate events, launches, private dinners, celebrations, and community gatherings.</p>
-          <div class="price">Custom</div>
-          <ul>
-            <li>Hourly coverage</li>
-            <li>Candid and detail shots</li>
-            <li>Fast preview delivery</li>
-            <li>Full event gallery</li>
-          </ul>
-        </article>
-      </div>
-    </section>
-
-    <section class="page">
-      <div class="section-head">
-        <div>
-          <div class="kicker">Testimonials</div>
-          <h2 class="section-title">Client words.</h2>
-        </div>
-        <p class="section-desc">
-          Real sites should use real testimonials. For this demo, these are sample placeholders showing where social proof would go.
-        </p>
-      </div>
-
-      <div class="testimonials">
-        <article class="quote-card">
-          <p>“The session felt organized from start to finish. I knew what to wear, where to be, and the photos came out clean and natural.”</p>
-          <strong>Sample Client</strong>
-        </article>
-
-        <article class="quote-card">
-          <p>“They captured the event beautifully without making things feel staged. The gallery told the full story of the day.”</p>
-          <strong>Sample Event Client</strong>
-        </article>
-
-        <article class="quote-card">
-          <p>“The brand photos gave our website and social pages a much more professional look. The process was simple.”</p>
-          <strong>Sample Brand Client</strong>
-        </article>
-      </div>
-    </section>
-
-    <section class="page" id="contact">
-      <div class="contact-box">
-        <div>
-          <h2>Ready to book your shoot?</h2>
-          <p>
-            Tell us the kind of session you want, your preferred date, and what the photos will be used for. We’ll reply with availability and next steps.
-          </p>
+        <div class="service-card reveal d1">
+          <span class="service-num">02</span>
+          <img class="service-img"
+            src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&q=85&fit=crop"
+            alt="Event photography" loading="lazy" />
+          <h3 class="service-name">Event Coverage</h3>
+          <p class="service-desc">Birthdays, launches, intimate weddings, community gatherings, and private celebrations — captured candidly and beautifully without interrupting the moment.</p>
+          <span class="service-tag">Best for events</span>
         </div>
 
-        <div class="contact-actions">
-          <a class="contact-link" href="mailto:hello@example.com">
-            <span>Email</span>
-            <strong>hello@example.com</strong>
-          </a>
-
-          <a class="contact-link" href="#">
-            <span>Instagram</span>
-            <strong>@luminastudio</strong>
-          </a>
-
-          <a class="contact-link" href="../">
-            <span>Portfolio</span>
-            <strong>Back to Built by Sammie</strong>
-          </a>
+        <div class="service-card reveal d2">
+          <span class="service-num">03</span>
+          <img class="service-img"
+            src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=85&fit=crop"
+            alt="Brand photography session" loading="lazy" />
+          <h3 class="service-name">Brand Photography</h3>
+          <p class="service-desc">Visual content for founders, product lines, creative businesses, and campaign launches — built to own your market and elevate your presence everywhere.</p>
+          <span class="service-tag">Best for businesses</span>
         </div>
       </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="footer-inner">
-      <span>Photography website demo by Built by Sammie.</span>
-      <span>One-page concept for portfolio use.</span>
     </div>
-  </footer>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="section gallery-section" id="gallery">
+    <div class="container">
+      <div class="gallery-header reveal">
+        <div>
+          <div class="sec-label">
+            <div class="sec-label-dash"></div>
+            <span>Gallery</span>
+          </div>
+          <h2 class="sec-title">Featured <em>work.</em></h2>
+        </div>
+        <p class="gallery-sub">A selection of recent sessions across portrait, event, and brand work.</p>
+      </div>
+
+      <div class="gallery-grid">
+        <div class="g g1 reveal">
+          <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=1200&q=85&fit=crop&crop=face" alt="Portrait series" loading="lazy" />
+          <div class="g-caption">Portrait Series</div>
+        </div>
+        <div class="g g2 reveal d1">
+          <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=800&q=85&fit=crop" alt="Event detail" loading="lazy" />
+          <div class="g-caption">Event Details</div>
+        </div>
+        <div class="g g3 reveal d2">
+          <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1000&q=85&fit=crop" alt="Brand campaign" loading="lazy" />
+          <div class="g-caption">Brand Campaign</div>
+        </div>
+        <div class="g g4 reveal d1">
+          <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=900&q=85&fit=crop" alt="Event atmosphere" loading="lazy" />
+          <div class="g-caption">Event Atmosphere</div>
+        </div>
+        <div class="g g5 reveal d2">
+          <img src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=800&q=85&fit=crop" alt="Creative direction" loading="lazy" />
+          <div class="g-caption">Creative Direction</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="section process-section">
+    <div class="container">
+      <div class="process-header reveal">
+        <div class="sec-label"><div class="sec-label-dash"></div><span>The Process</span></div>
+        <h2 class="sec-title">From inquiry<br>to <em>gallery.</em></h2>
+      </div>
+
+      <div class="process-track">
+        <div class="process-step reveal">
+          <div class="process-step-dot">i</div>
+          <h3>Initial Inquiry</h3>
+          <p>Tell us what you need — session type, date, and what you want to use the photos for. We'll respond with availability within 24 hours.</p>
+        </div>
+        <div class="process-step reveal d1">
+          <div class="process-step-dot">ii</div>
+          <h3>Creative Brief</h3>
+          <p>We agree on the look, feel, location, and styling direction. You receive a clear preparation guide before the shoot date.</p>
+        </div>
+        <div class="process-step reveal d2">
+          <div class="process-step-dot">iii</div>
+          <h3>The Shoot</h3>
+          <p>A relaxed, well-directed session. We guide you through every moment so you always know what to do and how to move.</p>
+        </div>
+        <div class="process-step reveal d3">
+          <div class="process-step-dot">iv</div>
+          <h3>Delivery</h3>
+          <p>48-hour preview of your favourites, then a full private gallery delivered within your agreed timeline.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PACKAGES -->
+  <section class="section packages-section" id="packages">
+    <div class="container">
+      <div class="packages-header reveal">
+        <div class="sec-label">
+          <div class="sec-label-dash"></div>
+          <span>Packages</span>
+        </div>
+        <h2 class="sec-title">Simple, <em>honest</em> pricing.</h2>
+      </div>
+
+      <div class="packages-grid">
+        <div class="pkg-card reveal">
+          <div class="pkg-label">Portrait</div>
+          <h3 class="pkg-name">Portrait Session</h3>
+          <p class="pkg-tagline">For individuals who want confident, natural images that actually look like them.</p>
+          <div class="pkg-price">$250</div>
+          <div class="pkg-price-sub">Starting from</div>
+          <div class="pkg-divider"></div>
+          <ul class="pkg-features">
+            <li>1-hour directed session</li>
+            <li>One location — studio or outdoor</li>
+            <li>30+ edited digital images</li>
+            <li>Private online gallery</li>
+            <li>48hr preview delivery</li>
+          </ul>
+          <a href="#contact" class="pkg-cta">Book This Session</a>
+        </div>
+
+        <div class="pkg-card featured reveal d1">
+          <div class="pkg-label">Brand</div>
+          <h3 class="pkg-name">Brand Session</h3>
+          <p class="pkg-tagline">For founders, creatives, and businesses who need visual content that converts.</p>
+          <div class="pkg-price">$600</div>
+          <div class="pkg-price-sub">Starting from</div>
+          <div class="pkg-divider"></div>
+          <ul class="pkg-features">
+            <li>Creative planning &amp; brief</li>
+            <li>2–3 hour full session</li>
+            <li>Multiple looks &amp; locations</li>
+            <li>Website &amp; social-ready content</li>
+            <li>80+ edited image collection</li>
+          </ul>
+          <a href="#contact" class="pkg-cta">Book This Session</a>
+        </div>
+
+        <div class="pkg-card reveal d2">
+          <div class="pkg-label">Event</div>
+          <h3 class="pkg-name">Event Coverage</h3>
+          <p class="pkg-tagline">For celebrations, launches, and gatherings — every moment caught without disrupting the mood.</p>
+          <div class="pkg-price">Custom</div>
+          <div class="pkg-price-sub">Based on hours &amp; scope</div>
+          <div class="pkg-divider"></div>
+          <ul class="pkg-features">
+            <li>Hourly coverage rates</li>
+            <li>Candid &amp; detail photography</li>
+            <li>Fast 48hr preview gallery</li>
+            <li>Full edited event collection</li>
+            <li>Multi-shooter available</li>
+          </ul>
+          <a href="#contact" class="pkg-cta">Get a Custom Quote</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="section reviews-section">
+    <div class="container">
+      <div class="reviews-header reveal">
+        <div>
+          <div class="sec-label">
+            <div class="sec-label-dash"></div>
+            <span>Client Words</span>
+          </div>
+          <h2 class="sec-title">Heard from<br>our <em>clients.</em></h2>
+        </div>
+        <div class="reviews-rating">
+          <span class="reviews-big-num">4.9</span>
+          <div class="reviews-stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          </div>
+          <span class="reviews-count">From 90+ client reviews</span>
+        </div>
+      </div>
+
+      <div class="reviews-grid">
+        <div class="review-card reveal">
+          <span class="review-open-quote">"</span>
+          <p class="review-quote">The entire session felt effortless. I came in nervous and left feeling genuinely beautiful. The photos arrived looking like nothing I'd ever had taken of myself.</p>
+          <div class="review-bar"></div>
+          <span class="review-name">Amara D.</span>
+          <span class="review-session">Portrait Session</span>
+        </div>
+
+        <div class="review-card reveal d1">
+          <span class="review-open-quote">"</span>
+          <p class="review-quote">We used Lumina for our product launch event and the photos told the full story of the night. Every detail, every emotion — captured beautifully without anyone even noticing the camera.</p>
+          <div class="review-bar"></div>
+          <span class="review-name">Tobi &amp; Kemi O.</span>
+          <span class="review-session">Event Coverage</span>
+        </div>
+
+        <div class="review-card reveal d2">
+          <span class="review-open-quote">"</span>
+          <p class="review-quote">Our website and social presence completely transformed after the brand shoot. The direction was intentional, the images felt premium, and our inquiries doubled within a month.</p>
+          <div class="review-bar"></div>
+          <span class="review-name">Lena K.</span>
+          <span class="review-session">Brand Photography</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact-section" id="contact">
+    <div class="contact-bg"></div>
+    <div class="container">
+      <div class="contact-inner">
+        <div class="contact-left reveal">
+          <div class="sec-label">
+            <div class="sec-label-dash"></div>
+            <span>Book a Session</span>
+          </div>
+          <h2 class="contact-title">Let's make<br>something <em>beautiful.</em></h2>
+          <p class="contact-body">Tell us the type of session you want, your preferred date range, and what the images will be used for. We'll come back to you with availability and next steps within 24 hours.</p>
+          <a href="mailto:hello@luminastudio.com" class="btn-gold" style="display:inline-flex;">
+            Send an Enquiry
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+
+        <div class="contact-right reveal d1">
+          <a href="mailto:hello@luminastudio.com" class="contact-card">
+            <div>
+              <span class="contact-label">Email</span>
+              <span class="contact-val">hello@luminastudio.com</span>
+            </div>
+            <span class="contact-arrow">→</span>
+          </a>
+          <a href="#" class="contact-card">
+            <div>
+              <span class="contact-label">Instagram</span>
+              <span class="contact-val">@luminastudio</span>
+            </div>
+            <span class="contact-arrow">→</span>
+          </a>
+          <div class="contact-card">
+            <div>
+              <span class="contact-label">Turnaround</span>
+              <span class="contact-val">48hr preview · 7-day gallery</span>
+            </div>
+          </div>
+          <div class="contact-card">
+            <div>
+              <span class="contact-label">Location</span>
+              <span class="contact-val">Studio &amp; on-location</span>
+            </div>
+          </div>
+          <div class="contact-book-block">
+            <p>Ready to begin? Book your session</p>
+            <a href="mailto:hello@luminastudio.com">hello@luminastudio.com</a>
+            <a href="mailto:hello@luminastudio.com" class="book-btn">Book My Session</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="brand-name" style="font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--white);">Lumina Studio</div>
+        <div class="footer-brand-sub">Photography &amp; Direction</div>
+        <p class="footer-brand-desc">Editorial portrait, brand, and event photography. Warm, intentional, and beautifully directed.</p>
+      </div>
+      <div>
+        <div class="footer-col-head">Services</div>
+        <div class="footer-links">
+          <a href="#services">Portrait Sessions</a>
+          <a href="#services">Event Coverage</a>
+          <a href="#services">Brand Photography</a>
+          <a href="#packages">Packages &amp; Pricing</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-head">Studio</div>
+        <div class="footer-links">
+          <a href="#about">Our Approach</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#packages">Session Packages</a>
+          <a href="#contact">Book a Session</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-head">Connect</div>
+        <div class="footer-links">
+          <a href="mailto:hello@luminastudio.com">hello@luminastudio.com</a>
+          <a href="#">@luminastudio</a>
+          <a href="#">Studio &amp; On-location</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2025 Lumina Studio. All rights reserved.</span>
+      <span class="footer-copy" style="color:var(--stone);">Demo by Built by Sammie</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Nav scroll
+  const nav = document.getElementById('main-nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 80);
+  });
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -36px 0px' });
+
+  reveals.forEach(el => io.observe(el));
+</script>
+
 </body>
 </html>
