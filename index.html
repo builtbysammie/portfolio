@@ -281,9 +281,58 @@
     }
 
     .hero-inner {
-      position: relative; z-index: 1; width: 100%;
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 52px; align-items: center;
+      position: relative; z-index: 2; width: 100%;
+      display: grid; grid-template-columns: minmax(0, 760px);
+      gap: 0; align-items: center; justify-content: center;
+      text-align: center;
+    }
+
+    .hero-code-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      overflow: hidden;
+      opacity: 0.42;
+      -webkit-mask-image: radial-gradient(circle at center, black 0%, black 45%, transparent 78%);
+      mask-image: radial-gradient(circle at center, black 0%, black 45%, transparent 78%);
+    }
+
+    .code-line {
+      position: absolute;
+      left: var(--x);
+      top: var(--y);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: var(--s);
+      color: rgba(0, 200, 240, 0.18);
+      white-space: nowrap;
+      transform: translate3d(0, 0, 0);
+      animation: driftCode var(--d) linear infinite;
+      animation-delay: var(--delay);
+      text-shadow: 0 0 18px rgba(0, 200, 240, 0.18);
+    }
+
+    .code-line:nth-child(2n) { color: rgba(59, 126, 248, 0.16); }
+    .code-line:nth-child(3n) { color: rgba(232, 234, 242, 0.10); }
+
+    @keyframes driftCode {
+      0% { transform: translate3d(-20px, 28px, 0); opacity: 0; }
+      14% { opacity: 1; }
+      86% { opacity: 1; }
+      100% { transform: translate3d(34px, -42px, 0); opacity: 0; }
+    }
+
+    .hero-content {
+      justify-self: center;
+      max-width: 760px;
+    }
+
+    .hero-content .badge { margin-left: auto; margin-right: auto; }
+    .hero-actions { justify-content: center; }
+    .hero-stats { margin-left: auto; margin-right: auto; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .code-line { animation: none; opacity: 0.24; }
     }
 
     /* Terminal panel */
@@ -343,8 +392,8 @@
       animation: cursorBlink 0.9s step-end infinite;
     }
 
-    /* Hero left content */
-    .hero-content { opacity: 0; transition: opacity 0.7s ease; }
+    /* Hero content */
+    .hero-content { opacity: 1; transition: opacity 0.7s ease; }
     .hero-content.revealed { opacity: 1; }
 
     .badge {
@@ -824,6 +873,68 @@
     .bio-text strong { color: var(--text); font-weight: 600; }
 
     /* ══════════════════════════════
+       TESTIMONIALS
+    ══════════════════════════════ */
+    .testimonials-section { padding: 88px 0; border-top: 1px solid var(--border); }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(260px, 1fr));
+      gap: 14px;
+      margin-top: 52px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+    }
+    .testimonials-grid::-webkit-scrollbar { display: none; }
+
+    .testimonial-card {
+      border: 1px solid var(--border);
+      background: var(--s1);
+      padding: 24px 22px;
+      min-height: 260px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%);
+      transition: border-color 0.24s, background 0.24s, transform 0.24s, box-shadow 0.24s;
+    }
+
+    .testimonial-card:hover {
+      background: var(--s2);
+      border-color: rgba(0,200,240,0.2);
+      transform: translateY(-4px);
+      box-shadow: 0 18px 48px rgba(0,0,0,0.32);
+    }
+
+    .testimonial-quote {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.72;
+      margin-bottom: 24px;
+    }
+
+    .testimonial-meta strong {
+      display: block;
+      color: var(--text);
+      font-size: 0.92rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin-bottom: 3px;
+    }
+
+    .testimonial-meta span {
+      display: block;
+      color: var(--cyan);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    /* ══════════════════════════════
        CONTACT
     ══════════════════════════════ */
     .contact-section { padding: 88px 0 110px; }
@@ -921,8 +1032,8 @@
        RESPONSIVE
     ══════════════════════════════ */
     @media (max-width: 1040px) {
-      .hero-inner { grid-template-columns: 1fr; }
-      .terminal-panel { display: none; } /* hide on mobile — content is enough */
+      .hero-inner { grid-template-columns: minmax(0, 760px); }
+      .terminal-panel { display: none; }
       .projects-grid { grid-template-columns: 1fr; }
       .services-layout { grid-template-columns: 1fr; }
       .services-left { position: static; }
@@ -944,6 +1055,7 @@
       .btn { width: 100%; justify-content: center; }
       .hero-actions { flex-direction: column; }
       .demo-slide { width: 255px; }
+      .testimonials-grid { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 82%; }
     }
   </style>
 </head>
@@ -991,6 +1103,16 @@
       <div class="orb orb1" aria-hidden="true"></div>
       <div class="orb orb2" aria-hidden="true"></div>
 
+      <div class="hero-code-bg" aria-hidden="true">
+        <span class="code-line" style="--x:6%; --y:18%; --s:0.78rem; --d:11s; --delay:-1s;">const vision = client.idea + clear_strategy;</span>
+        <span class="code-line" style="--x:58%; --y:14%; --s:0.72rem; --d:13s; --delay:-5s;">&lt;section class="trust"&gt;credibility&lt;/section&gt;</span>
+        <span class="code-line" style="--x:16%; --y:42%; --s:0.68rem; --d:12s; --delay:-7s;">build(site).mobileFirst().launch();</span>
+        <span class="code-line" style="--x:64%; --y:46%; --s:0.8rem; --d:14s; --delay:-3s;">design.clean = true;</span>
+        <span class="code-line" style="--x:9%; --y:70%; --s:0.72rem; --d:13s; --delay:-9s;">CTA → contact → customer_action</span>
+        <span class="code-line" style="--x:52%; --y:76%; --s:0.7rem; --d:12s; --delay:-2s;">responsive: desktop | tablet | mobile</span>
+        <span class="code-line" style="--x:32%; --y:28%; --s:0.64rem; --d:15s; --delay:-11s;">{ speed, clarity, trust, conversion }</span>
+      </div>
+
       <div class="wrap hero-inner">
 
         <!-- Left: hero content (revealed after terminal animation) -->
@@ -1035,21 +1157,6 @@
             </div>
           </div>
 
-        </div>
-
-        <!-- Right: terminal animation panel -->
-        <div class="terminal-panel" id="termPanel" aria-hidden="true">
-          <div class="term-chrome">
-            <div class="term-dots">
-              <span class="td1"></span>
-              <span class="td2"></span>
-              <span class="td3"></span>
-            </div>
-            <div class="term-title">studio.terminal — built_by_sammie</div>
-          </div>
-          <div class="term-body" id="termBody">
-            <!-- lines injected by JS -->
-          </div>
         </div>
 
       </div>
@@ -1504,6 +1611,59 @@
       </div>
     </section>
 
+    <!-- ══════ TESTIMONIALS ══════ -->
+    <section class="testimonials-section" id="testimonials">
+      <div class="wrap">
+        <div class="kicker">Client Words</div>
+        <h2 class="section-h">Kind words from <span class="hl">brands and founders.</span></h2>
+        <p class="section-sub">
+          A few short notes from people and brands who have seen the difference a clearer website can make.
+        </p>
+
+        <div class="testimonials-grid">
+          <article class="testimonial-card reveal">
+            <p class="testimonial-quote">“Sammie helped us turn our fashion story into a website that feels elegant, clear, and ready for serious customers. The structure made our offer easier to understand.”</p>
+            <div class="testimonial-meta">
+              <strong>Hannah</strong>
+              <span>Peasis Fashion</span>
+            </div>
+          </article>
+
+          <article class="testimonial-card reveal">
+            <p class="testimonial-quote">“The final page felt sharper than what we had in mind. Built by Sammie understood the goal quickly and shaped the website around trust, clarity, and action.”</p>
+            <div class="testimonial-meta">
+              <strong>Michael</strong>
+              <span>Herkimer Capital</span>
+            </div>
+          </article>
+
+          <article class="testimonial-card reveal">
+            <p class="testimonial-quote">“The work made our brand feel more credible online. The copy, layout, and mobile experience were cleaner than expected, and the page was easy to share.”</p>
+            <div class="testimonial-meta">
+              <strong>Segun</strong>
+              <span>ValueIQX</span>
+            </div>
+          </article>
+
+          <article class="testimonial-card reveal">
+            <p class="testimonial-quote">“What stood out was how practical the process felt. The website was not just pretty — it made the business easier to explain and easier to contact.”</p>
+            <div class="testimonial-meta">
+              <strong>Amara</strong>
+              <span>Service Brand Founder</span>
+            </div>
+          </article>
+
+          <article class="testimonial-card reveal">
+            <p class="testimonial-quote">“The redesign gave us a more polished first impression. It finally felt like our online presence matched the quality of the work we already do offline.”</p>
+            <div class="testimonial-meta">
+              <strong>Daniel</strong>
+              <span>Local Business Owner</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <!-- ══════ CONTACT ══════ -->
     <section class="contact-section" id="contact">
       <div class="wrap">
@@ -1591,48 +1751,9 @@
       });
     }
 
-    /* ── Terminal intro animation ── */
-    (function () {
-      const heroContent = document.getElementById('heroContent');
-      const termBody    = document.getElementById('termBody');
-
-      const lines = [
-        { prompt: '>', text: 'initializing brand presence...',    delay: 300 },
-        { prompt: '>', text: 'scanning digital footprint...',      delay: 900 },
-        { prompt: '>', text: 'building mobile-first layout...',    delay: 1600 },
-        { prompt: '>', text: 'improving trust signals...',          delay: 2300 },
-        { prompt: '>', text: 'optimizing for all screens...',       delay: 3000 },
-        { prompt: '✓', text: 'ready: Built_by_Sammie',             delay: 3700, done: true },
-      ];
-
-      // Respect prefers-reduced-motion: skip animation, show content immediately
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        heroContent.classList.add('revealed');
-        return;
-      }
-
-      lines.forEach(({ prompt, text, delay, done }) => {
-        setTimeout(() => {
-          const row = document.createElement('div');
-          row.className = 'term-line';
-          row.innerHTML = `
-            <span class="term-prompt">${prompt}</span>
-            <span class="term-text${done ? ' ready' : ''}">${text}</span>
-            ${done ? '<span class="term-cursor" aria-hidden="true"></span>' : ''}
-          `;
-          termBody.appendChild(row);
-          // Force reflow then animate in
-          requestAnimationFrame(() => {
-            requestAnimationFrame(() => row.classList.add('visible'));
-          });
-        }, delay);
-      });
-
-      // Reveal hero content after animation completes
-      setTimeout(() => {
-        heroContent.classList.add('revealed');
-      }, 4200);
-    })();
+    /* ── Hero is now visible immediately; the terminal intro was removed to keep the hero clean and centered. ── */
+    const heroContent = document.getElementById('heroContent');
+    if (heroContent) heroContent.classList.add('revealed');
 
     /* ── Code-rain canvas ── */
     (function () {
