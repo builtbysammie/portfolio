@@ -7,14 +7,21 @@
   <meta name="description" content="Built by Sammie crafts modern, mobile-first websites for businesses, founders, and growing brands ready to look credible online." />
 
   <!-- ── Open Graph / Social Share ── -->
+  <!-- FIX: OG image now points to a reliable absolute URL you control.
+       Upload your social-images.png to your GitHub repo at this exact path,
+       OR replace this URL with any publicly hosted 1200×630 image. -->
   <meta property="og:title" content="Built by Sammie — Web Design Studio" />
   <meta property="og:description" content="Modern websites for businesses ready to look credible online." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://raw.githubusercontent.com/builtbysammie/portfolio/main/social-images.png" />
+  <meta property="og:url" content="https://builtbysammie.com/" />
+  <meta property="og:image" content="https://raw.githubusercontent.com/builtbysammie/portfolio/refs/heads/main/social-images.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
+  <meta property="og:image:type" content="image/png" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:image" content="https://raw.githubusercontent.com/builtbysammie/portfolio/main/social-images.png" />
+  <meta name="twitter:title" content="Built by Sammie — Web Design Studio" />
+  <meta name="twitter:description" content="Modern websites for businesses ready to look credible online." />
+  <meta name="twitter:image" content="https://raw.githubusercontent.com/builtbysammie/portfolio/refs/heads/main/social-images.png" />
 
   <!-- ── Favicon ── -->
   <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/builtbysammie/portfolio/main/way-logo-sammie-logo.png" />
@@ -67,7 +74,8 @@
 
     .wrap { width: min(100% - 40px, var(--max)); margin: 0 auto; }
 
-    /* Code-rain canvas — always visible, desktop and mobile */
+    /* ── Code-rain canvas ── */
+    /* FIX: Removed ALL display:none / hidden rules. Canvas runs on every screen size. */
     #bgCanvas {
       position: fixed; inset: 0; z-index: 0; pointer-events: none;
       opacity: 0.9;
@@ -271,7 +279,6 @@
       line-height: 1.74; max-width: 520px; margin-top: 14px;
     }
 
-    /* ── Section card container — gives every section a lifted feel ── */
     .section-card {
       background: var(--s1);
       border: 1px solid var(--border);
@@ -288,101 +295,48 @@
     @media (max-width: 680px) { .section-card { padding: 32px 22px; } }
 
     /* ══════════════════════════════
-       HERO
+       HERO — TYPEWRITER VERSION
+       Chips removed. Pure terminal intro.
     ══════════════════════════════ */
     .hero {
-      padding: 86px 0 90px; position: relative; overflow: hidden;
-      min-height: 100vh; display: flex; align-items: center;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
     }
 
+    /* Subtle orbs kept for depth */
     .orb {
       position: absolute; border-radius: 50%; pointer-events: none;
       filter: blur(2px); z-index: 0;
     }
     .orb1 {
       width: 820px; height: 820px;
-      background: radial-gradient(circle, rgba(0,200,240,0.15) 0%, rgba(0,200,240,0.04) 36%, transparent 70%);
+      background: radial-gradient(circle, rgba(0,200,240,0.1) 0%, rgba(0,200,240,0.02) 36%, transparent 70%);
       top: -260px; right: -200px;
       animation: orbPulse 7s ease-in-out infinite;
     }
     .orb2 {
       width: 500px; height: 500px;
-      background: radial-gradient(circle, rgba(59,126,248,0.14) 0%, rgba(59,126,248,0.04) 42%, transparent 70%);
+      background: radial-gradient(circle, rgba(59,126,248,0.09) 0%, rgba(59,126,248,0.02) 42%, transparent 70%);
       bottom: -100px; left: -120px;
       animation: orbPulse 8.5s ease-in-out infinite reverse;
     }
     @keyframes orbPulse { 0%,100%{ transform: scale(1); opacity: .82; } 50%{ transform: scale(1.08); opacity: 1; } }
 
-    /* Floating chips around hero */
-    .hero-chips {
-      position: absolute; inset: 0; pointer-events: none; z-index: 2;
-    }
-    .chip {
-      position: absolute;
-      padding: 6px 13px;
-      border: 1px solid var(--bordercyan);
-      background: rgba(0,200,240,0.05);
-      color: var(--muted);
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.64rem; font-weight: 700;
-      letter-spacing: 0.08em; text-transform: uppercase;
-      clip-path: polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 0 100%);
-      backdrop-filter: blur(6px);
-      opacity: 0;
-    }
-    .chip-1 { top: 18%; left: 4%;  animation: chipEntrance 0.5s 1.4s both ease, chipFloat1 7s 2s ease-in-out infinite; }
-    .chip-2 { top: 28%; right: 3%; animation: chipEntrance 0.5s 1.6s both ease, chipFloat2 6s 2.2s ease-in-out infinite; }
-    .chip-3 { top: 60%; left: 3%;  animation: chipEntrance 0.5s 1.8s both ease, chipFloat1 8s 2.4s ease-in-out infinite; }
-    .chip-4 { top: 72%; right: 4%; animation: chipEntrance 0.5s 2.0s both ease, chipFloat2 7s 2.6s ease-in-out infinite; }
-    .chip-5 { top: 44%; left: 5%;  animation: chipEntrance 0.5s 2.1s both ease, chipFloat1 9s 2.8s ease-in-out infinite; }
-    .chip-6 { top: 50%; right: 5%; animation: chipEntrance 0.5s 2.2s both ease, chipFloat2 6.5s 3s ease-in-out infinite; }
-
-    @keyframes chipEntrance {
-      from { opacity: 0; transform: translateY(8px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes chipFloat1 {
-      0%,100% { transform: translateY(0); }
-      50%     { transform: translateY(-10px); }
-    }
-    @keyframes chipFloat2 {
-      0%,100% { transform: translateY(0); }
-      50%     { transform: translateY(8px); }
-    }
-
-    /* hide chips on small screens to keep it clean */
-    @media (max-width: 768px) { .hero-chips { display: none; } }
-
-    .hero-inner {
-      position: relative; z-index: 4; width: 100%;
-      display: grid; grid-template-columns: minmax(0, 780px);
-      gap: 0; align-items: center; justify-content: center;
+    /* Terminal container */
+    .hero-terminal {
+      position: relative; z-index: 4;
+      width: min(100% - 40px, 780px);
       text-align: center;
+      padding: 40px 20px;
     }
 
-    .hero-content {
-      justify-self: center;
-      max-width: 780px;
-      position: relative; z-index: 5;
-      padding: 18px 0;
-    }
-
-    .hero-actions { justify-content: center; }
-    .hero-stats   { margin-left: auto; margin-right: auto; }
-
-    /* Staggered hero entrance animations */
-    .hero .badge        { animation: heroIn 0.6s 0.15s both ease; }
-    .hero h1            { animation: heroIn 0.7s 0.3s  both ease; }
-    .hero .hero-sub     { animation: heroIn 0.7s 0.5s  both ease; }
-    .hero .hero-actions { animation: heroIn 0.7s 0.68s both ease; }
-    .hero .hero-stats   { animation: heroIn 0.7s 0.84s both ease; }
-
-    @keyframes heroIn {
-      from { opacity: 0; transform: translateY(28px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    .badge {
+    /* Availability badge — fades in after typing is done */
+    .hero-badge {
       display: inline-flex; align-items: center; gap: 9px;
       padding: 7px 14px;
       clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%);
@@ -391,8 +345,11 @@
       font-size: 0.64rem; font-weight: 600;
       letter-spacing: 0.14em; text-transform: uppercase;
       color: var(--cyan); background: var(--cyanfade);
-      margin-bottom: 26px;
+      margin-bottom: 32px;
+      opacity: 0;
+      transition: opacity 0.6s ease;
     }
+    .hero-badge.visible { opacity: 1; }
     .badge-dot {
       width: 6px; height: 6px; border-radius: 50%;
       background: var(--cyan); box-shadow: 0 0 8px var(--cyan);
@@ -400,16 +357,18 @@
     }
     @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
 
-    .hero h1 {
+    /* The main headline typewriter container */
+    .hero-h1-wrap {
       font-family: 'Outfit', sans-serif;
       font-size: clamp(2.9rem, 5.8vw, 6.6rem);
       font-weight: 900; line-height: 0.95;
-      letter-spacing: -0.048em; max-width: 640px;
-      margin-bottom: 22px;
+      letter-spacing: -0.048em;
+      margin-bottom: 24px;
+      min-height: 2em; /* prevents layout jump */
     }
 
-    /* Animated gradient sweep on the highlighted span */
-    .hero h1 .hl {
+    /* Animated gradient on the highlight text */
+    .hero-h1-wrap .hl {
       background: linear-gradient(130deg, var(--cyan) 0%, var(--blue) 50%, var(--cyan) 100%);
       background-size: 200% auto;
       -webkit-background-clip: text;
@@ -422,22 +381,49 @@
       to   { background-position: 200% center; }
     }
 
+    /* Blinking terminal cursor inline with text */
+    .type-cursor {
+      display: inline-block;
+      width: clamp(3px, 0.55vw, 6px);
+      height: 0.88em;
+      background: var(--cyan);
+      margin-left: 2px;
+      vertical-align: middle;
+      box-shadow: 0 0 8px var(--cyan);
+      animation: cursorBlink 0.8s step-end infinite;
+    }
+
+    /* Sub-text and actions — hidden until typed */
+    .hero-sub-wrap {
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .hero-sub-wrap.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     .hero-sub {
       font-size: clamp(0.95rem, 1.6vw, 1.1rem);
       color: var(--muted); max-width: 490px;
       line-height: 1.78; margin-bottom: 34px;
       font-weight: 400;
+      margin-left: auto; margin-right: auto;
     }
     .hero-sub strong { color: var(--text); font-weight: 600; }
 
     .hero-actions {
       display: flex; flex-wrap: wrap; gap: 12px;
+      justify-content: center;
       margin-bottom: 52px;
     }
 
     .hero-stats {
       display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 1px; max-width: 480px;
+      gap: 1px;
+      max-width: 480px;
+      margin: 0 auto;
       background: var(--border);
       border: 1px solid var(--border);
       clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%);
@@ -453,7 +439,7 @@
     .stat-desc  { font-size: 0.6rem; color: var(--muted); line-height: 1.4; }
 
     /* ══════════════════════════════
-       CAPABILITY STRIP — AUTO MARQUEE
+       CAPABILITY STRIP
     ══════════════════════════════ */
     .cap-strip {
       border-top: 1px solid var(--border);
@@ -920,6 +906,24 @@
     @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
 
     /* ══════════════════════════════
+       WHY IT MATTERS — RESPONSIVE FIX
+       The inner grid was missing a mobile breakpoint.
+       Now collapses to single column below 768px.
+    ══════════════════════════════ */
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+    @media (max-width: 768px) {
+      .why-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+    }
+
+    /* ══════════════════════════════
        RESPONSIVE
     ══════════════════════════════ */
     @media (max-width: 1040px) {
@@ -932,7 +936,7 @@
       .nav-links { display: none; }
       .hamburger { display: flex; }
       .mobile-menu { display: flex; }
-      .hero { padding: 68px 0 58px; min-height: auto; }
+      .hero { padding: 0; min-height: 100svh; }
       .hero-stats { grid-template-columns: 1fr; max-width: 100%; }
       .process-grid { grid-template-columns: 1fr; }
       .contact-inner { padding: 28px 22px; }
@@ -947,6 +951,7 @@
 
 <body>
 
+  <!-- Code-rain canvas — visible on ALL screen sizes, desktop and mobile -->
   <canvas id="bgCanvas" aria-hidden="true"></canvas>
 
   <!-- Mobile menu -->
@@ -980,31 +985,34 @@
 
   <main>
 
-    <!-- ══════ HERO ══════ -->
+    <!-- ══════ HERO — TYPEWRITER ══════ -->
+    <!--
+      Chips completely removed.
+      New sequence:
+        1. Code rain runs (canvas behind everything)
+        2. After 600ms: badge fades in
+        3. After 900ms: cursor appears, types line 1 "Your vision."
+        4. After line 1: new line, types highlighted "Built properly."
+        5. After headline done: sub-text fades in
+        6. After sub-text: action buttons fade in
+        7. After buttons: stats fade in
+    -->
     <section class="hero">
       <div class="orb orb1" aria-hidden="true"></div>
       <div class="orb orb2" aria-hidden="true"></div>
 
-      <!-- Floating skill chips — desktop only -->
-      <div class="hero-chips" aria-hidden="true">
-        <span class="chip chip-1">Mobile-First</span>
-        <span class="chip chip-2">Clean Design</span>
-        <span class="chip chip-3">Fast Delivery</span>
-        <span class="chip chip-4">Real Results</span>
-        <span class="chip chip-5">Clear Copy</span>
-        <span class="chip chip-6">Built to Convert</span>
-      </div>
+      <div class="hero-terminal">
 
-      <div class="wrap hero-inner">
-        <div class="hero-content" id="heroContent">
+        <div class="hero-badge" id="heroBadge">
+          <span class="badge-dot" aria-hidden="true"></span>
+          Available for New Projects
+        </div>
 
-          <div class="badge">
-            <span class="badge-dot" aria-hidden="true"></span>
-            Available for New Projects
-          </div>
+        <div class="hero-h1-wrap" id="heroHeadline" aria-live="polite">
+          <!-- JS will write into here -->
+        </div>
 
-          <h1>Your vision.<br><span class="hl">Built properly.</span></h1>
-
+        <div class="hero-sub-wrap" id="heroSubWrap">
           <p class="hero-sub">
             You built the business. <strong>Now give it a website that matches.</strong>
             Clean, mobile-first, and ready to turn visitors into customers.
@@ -1037,8 +1045,8 @@
               <div class="stat-desc">Works on every screen</div>
             </div>
           </div>
-
         </div>
+
       </div>
     </section>
 
@@ -1064,11 +1072,15 @@
       </div>
     </div>
 
-    <!-- ══════ WHY IT MATTERS (simplified positioning) ══════ -->
+    <!-- ══════ WHY IT MATTERS ══════ -->
+    <!--
+      FIX: Replaced inline style grid with .why-grid class that
+      has a proper mobile breakpoint collapsing to 1fr at ≤768px.
+    -->
     <section style="padding: 80px 0;">
       <div class="wrap">
         <div class="section-card reveal">
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;">
+          <div class="why-grid">
 
             <div>
               <div class="kicker">Why It Matters</div>
@@ -1395,7 +1407,7 @@
 
   <!-- ══════ SCRIPTS ══════ -->
   <script>
-    /* ── hamburger ── */
+    /* ── Hamburger ── */
     const hamburger  = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobileMenu');
     function setMenu(open) {
@@ -1408,7 +1420,7 @@
     document.querySelectorAll('.m-nav-link').forEach(a => a.addEventListener('click', () => setMenu(false)));
     document.addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
 
-    /* ── carousel ── */
+    /* ── Carousel ── */
     const slider = document.getElementById('demoSlider');
     const STEP   = 308;
     document.getElementById('nextBtn').addEventListener('click', () => slider.scrollBy({ left: STEP * 2, behavior: 'smooth' }));
@@ -1427,13 +1439,19 @@
       });
     }
 
-    /* ── Code-rain canvas — runs on ALL screen sizes ── */
+    /* ══════════════════════════════════════════════════════
+       CODE-RAIN CANVAS
+       Runs on ALL screen sizes (desktop + mobile).
+       No media-query hiding here — only prefers-reduced-motion
+       is respected (handled by CSS display:none on the canvas).
+    ══════════════════════════════════════════════════════ */
     (function () {
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
       const canvas = document.getElementById('bgCanvas');
-      const ctx    = canvas.getContext('2d');
-      const CHARS  = '{}[]<>/\\=+;:.01#@$%&~^!?|abcdefghijklmnopqrstuvwxyz0123456789'.split('');
-      const FS     = 13;
+      if (!canvas) return;
+      const ctx  = canvas.getContext('2d');
+      const CHARS = '{}[]<>/\\=+;:.01#@$%&~^!?|abcdefghijklmnopqrstuvwxyz0123456789'.split('');
+      const FS   = 13;
       let W, H, cols, drops;
 
       function resize() {
@@ -1443,10 +1461,10 @@
         drops = Array.from({ length: cols }, () => (Math.random() * -H / FS) | 0);
       }
       resize();
-      window.addEventListener('resize', resize);
+      window.addEventListener('resize', resize, { passive: true });
 
       let last = 0;
-      const TICK = 48; /* slightly faster for more energy */
+      const TICK = 48;
 
       function draw(now) {
         requestAnimationFrame(draw);
@@ -1457,12 +1475,11 @@
         ctx.font      = `${FS}px "JetBrains Mono", monospace`;
         ctx.textAlign = 'center';
         for (let i = 0; i < cols; i++) {
-          const char  = CHARS[(Math.random() * CHARS.length) | 0];
-          const x     = i * FS + FS / 2;
-          const y     = drops[i] * FS;
-          /* vary opacity for depth: some bright leading characters, rest faded */
+          const char    = CHARS[(Math.random() * CHARS.length) | 0];
+          const x       = i * FS + FS / 2;
+          const y       = drops[i] * FS;
           const isBright = Math.random() > 0.88;
-          const alpha = isBright ? 0.75 : 0.22 + Math.random() * 0.2;
+          const alpha   = isBright ? 0.75 : 0.22 + Math.random() * 0.2;
           ctx.fillStyle = isBright
             ? `rgba(0,200,240,${alpha})`
             : `rgba(0,160,200,${alpha})`;
@@ -1472,6 +1489,101 @@
         }
       }
       requestAnimationFrame(draw);
+    })();
+
+    /* ══════════════════════════════════════════════════════
+       HERO TYPEWRITER
+       Sequence:
+         0ms   — code rain already visible behind everything
+         500ms — badge fades in
+         900ms — typing starts: "Your vision."
+         after line 1 — brief pause, then new line, types "Built properly."
+         after headline — sub-text + CTAs + stats fade in
+    ══════════════════════════════════════════════════════ */
+    (function () {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        // Reduced motion: show everything immediately
+        document.getElementById('heroBadge').classList.add('visible');
+        const hl = document.getElementById('heroHeadline');
+        hl.innerHTML = 'Your vision.<br><span class="hl">Built properly.</span>';
+        document.getElementById('heroSubWrap').classList.add('visible');
+        return;
+      }
+
+      const badge    = document.getElementById('heroBadge');
+      const headline = document.getElementById('heroHeadline');
+      const subWrap  = document.getElementById('heroSubWrap');
+
+      // Typing speed range (ms per character)
+      const SPEED_MIN = 38;
+      const SPEED_MAX = 88;
+      const rand = (min, max) => min + Math.random() * (max - min);
+
+      // Type a string into a target element, calling done() when finished.
+      // cursorEl is the shared blinking cursor span.
+      function typeInto(targetEl, text, done) {
+        let i = 0;
+        function step() {
+          if (i < text.length) {
+            targetEl.textContent += text[i];
+            i++;
+            setTimeout(step, rand(SPEED_MIN, SPEED_MAX));
+          } else {
+            done();
+          }
+        }
+        step();
+      }
+
+      // STEP 1: badge after 500ms
+      setTimeout(() => {
+        badge.classList.add('visible');
+
+        // STEP 2: start typing after a short pause
+        setTimeout(() => {
+          // Create the cursor element once
+          const cursor = document.createElement('span');
+          cursor.className = 'type-cursor';
+          cursor.setAttribute('aria-hidden', 'true');
+
+          // Line 1 container
+          const line1 = document.createElement('span');
+          line1.className = 'line1';
+          headline.appendChild(line1);
+          headline.appendChild(cursor);
+
+          // Type "Your vision."
+          typeInto(line1, 'Your vision.', () => {
+            // Brief pause at end of line 1
+            setTimeout(() => {
+              // Insert line break + line 2 container
+              const br = document.createElement('br');
+              headline.insertBefore(br, cursor);
+
+              const line2 = document.createElement('span');
+              line2.className = 'hl';
+              headline.insertBefore(line2, cursor);
+
+              // Type "Built properly."
+              typeInto(line2, 'Built properly.', () => {
+                // Remove cursor after a beat
+                setTimeout(() => {
+                  cursor.style.opacity = '0';
+                  cursor.style.transition = 'opacity 0.3s';
+
+                  // Reveal sub content
+                  setTimeout(() => {
+                    cursor.remove();
+                    subWrap.classList.add('visible');
+                  }, 350);
+                }, 700);
+              });
+            }, 420);
+          });
+
+        }, 600); // wait after badge appears before typing
+
+      }, 500); // badge delay
     })();
 
     /* ── Scroll reveal ── */
