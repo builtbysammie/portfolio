@@ -5,11 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Built by Sammie — Modern Websites for Growing Brands</title>
   <meta name="description" content="Built by Sammie crafts modern, mobile-first websites for businesses, founders, and growing brands ready to look credible online." />
+
+  <!-- ── Open Graph / Social Share ── -->
   <meta property="og:title" content="Built by Sammie — Web Design Studio" />
   <meta property="og:description" content="Modern websites for businesses ready to look credible online." />
   <meta property="og:type" content="website" />
-  <link rel="icon" type="image/png" href="ChatGPT Image May 16, 2026, 11_16_39 AM.png" />
-  <link rel="apple-touch-icon" href="ChatGPT Image May 16, 2026, 11_16_39 AM.png" />
+  <meta property="og:image" content="https://raw.githubusercontent.com/builtbysammie/portfolio/main/social-images.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://raw.githubusercontent.com/builtbysammie/portfolio/main/social-images.png" />
+
+  <!-- ── Favicon ── -->
+  <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/builtbysammie/portfolio/main/way-logo-sammie-logo.png" />
+  <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/builtbysammie/portfolio/main/way-logo-sammie-logo.png" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -20,18 +30,19 @@
     ══════════════════════════════ */
     :root {
       --bg:        #03030c;
-      --s1:        #06060f;
-      --s2:        #0a0a18;
-      --s3:        #0f0f22;
-      --border:    rgba(255,255,255,0.06);
-      --borderhi:  rgba(255,255,255,0.11);
+      --s1:        #08081a;
+      --s2:        #0d0d22;
+      --s3:        #121230;
+      --border:    rgba(255,255,255,0.07);
+      --borderhi:  rgba(255,255,255,0.13);
+      --bordercyan: rgba(0,200,240,0.18);
       --text:      #e8eaf2;
-      --muted:     #62627e;
+      --muted:     #8888aa;
       --dim:       #3a3a5a;
       --dimlight:  #7a7a9a;
       --cyan:      #00c8f0;
       --cyanfade:  rgba(0,200,240,0.07);
-      --cyanglow:  rgba(0,200,240,0.2);
+      --cyanglow:  rgba(0,200,240,0.22);
       --blue:      #3b7ef8;
       --bluefade:  rgba(59,126,248,0.08);
       --max:       1200px;
@@ -56,9 +67,10 @@
 
     .wrap { width: min(100% - 40px, var(--max)); margin: 0 auto; }
 
+    /* Code-rain canvas — always visible, desktop and mobile */
     #bgCanvas {
       position: fixed; inset: 0; z-index: 0; pointer-events: none;
-      opacity: 0.78;
+      opacity: 0.9;
       mix-blend-mode: screen;
     }
     @media (prefers-reduced-motion: reduce) { #bgCanvas { display: none; } }
@@ -69,7 +81,7 @@
     ══════════════════════════════ */
     .btn {
       display: inline-flex; align-items: center; gap: 8px;
-      min-height: 50px; padding: 0 26px;
+      min-height: 52px; padding: 0 28px;
       font-family: 'Space Grotesk', sans-serif;
       font-size: 0.82rem; font-weight: 700;
       letter-spacing: 0.06em; text-transform: uppercase;
@@ -84,28 +96,28 @@
       background: linear-gradient(130deg, var(--cyan) 0%, var(--blue) 100%);
       color: #02020c;
       clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%);
-      box-shadow: 0 6px 28px rgba(0,200,240,0.18);
+      box-shadow: 0 6px 28px rgba(0,200,240,0.22);
     }
     .btn-primary::after {
       content: '';
       position: absolute; inset: 0;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.22), transparent);
       transform: translateX(-120%);
       transition: transform 0.5s ease;
     }
-    .btn-primary:hover { box-shadow: 0 10px 40px rgba(0,200,240,0.34); }
+    .btn-primary:hover { box-shadow: 0 12px 44px rgba(0,200,240,0.38); }
     .btn-primary:hover::after { transform: translateX(120%); }
 
     .btn-ghost {
       border: 1px solid var(--borderhi);
       color: var(--text);
       clip-path: polygon(12px 0, 100% 0, 100% 100%, 0 100%, 0 12px);
-      background: rgba(255,255,255,0.02);
+      background: rgba(255,255,255,0.03);
     }
     .btn-ghost:hover {
       border-color: var(--cyan);
       color: var(--cyan);
-      box-shadow: inset 0 0 20px rgba(0,200,240,0.05), 0 0 16px rgba(0,200,240,0.08);
+      box-shadow: inset 0 0 20px rgba(0,200,240,0.06), 0 0 18px rgba(0,200,240,0.1);
     }
 
     /* ══════════════════════════════
@@ -115,7 +127,7 @@
       position: sticky; top: 0; z-index: 200;
       border-bottom: 1px solid var(--border);
       backdrop-filter: blur(28px) saturate(1.5);
-      background: rgba(3,3,12,0.9);
+      background: rgba(3,3,12,0.92);
     }
 
     .nav {
@@ -126,7 +138,6 @@
       min-height: 68px; gap: 16px;
     }
 
-    /* TECHY WORDMARK — JetBrains Mono for code feel */
     .wordmark {
       display: flex; flex-direction: column;
       line-height: 1; flex-shrink: 0;
@@ -138,9 +149,7 @@
       letter-spacing: -0.02em;
       color: var(--text);
     }
-    /* cyan accent on "Sammie" */
     .wordmark-name .accent { color: var(--cyan); }
-    /* subtle underscore cursor blink */
     .wordmark-name .cursor {
       display: inline-block;
       width: 2px; height: 0.9em;
@@ -187,7 +196,6 @@
     .nav-cta:hover { box-shadow: 0 0 18px var(--cyanglow); }
     .nav-cta:hover::after { transform: translateX(100%); }
 
-    /* hamburger */
     .hamburger {
       display: none; flex-direction: column;
       justify-content: center; gap: 5px;
@@ -206,7 +214,6 @@
     .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
     .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
-    /* mobile menu */
     .mobile-menu {
       display: none; position: fixed; inset: 0; z-index: 150;
       background: rgba(3,3,12,0.97); backdrop-filter: blur(24px);
@@ -264,6 +271,22 @@
       line-height: 1.74; max-width: 520px; margin-top: 14px;
     }
 
+    /* ── Section card container — gives every section a lifted feel ── */
+    .section-card {
+      background: var(--s1);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 52px 48px;
+      position: relative;
+      overflow: hidden;
+    }
+    .section-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--bordercyan), transparent);
+    }
+    @media (max-width: 680px) { .section-card { padding: 32px 22px; } }
+
     /* ══════════════════════════════
        HERO
     ══════════════════════════════ */
@@ -274,22 +297,61 @@
 
     .orb {
       position: absolute; border-radius: 50%; pointer-events: none;
-      filter: blur(2px);
-      z-index: 0;
+      filter: blur(2px); z-index: 0;
     }
     .orb1 {
-      width: 760px; height: 760px;
-      background: radial-gradient(circle, rgba(0,200,240,0.13) 0%, rgba(0,200,240,0.035) 36%, transparent 70%);
-      top: -230px; right: -180px;
+      width: 820px; height: 820px;
+      background: radial-gradient(circle, rgba(0,200,240,0.15) 0%, rgba(0,200,240,0.04) 36%, transparent 70%);
+      top: -260px; right: -200px;
       animation: orbPulse 7s ease-in-out infinite;
     }
     .orb2 {
-      width: 470px; height: 470px;
-      background: radial-gradient(circle, rgba(59,126,248,0.12) 0%, rgba(59,126,248,0.03) 42%, transparent 70%);
-      bottom: -90px; left: -100px;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(59,126,248,0.14) 0%, rgba(59,126,248,0.04) 42%, transparent 70%);
+      bottom: -100px; left: -120px;
       animation: orbPulse 8.5s ease-in-out infinite reverse;
     }
     @keyframes orbPulse { 0%,100%{ transform: scale(1); opacity: .82; } 50%{ transform: scale(1.08); opacity: 1; } }
+
+    /* Floating chips around hero */
+    .hero-chips {
+      position: absolute; inset: 0; pointer-events: none; z-index: 2;
+    }
+    .chip {
+      position: absolute;
+      padding: 6px 13px;
+      border: 1px solid var(--bordercyan);
+      background: rgba(0,200,240,0.05);
+      color: var(--muted);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.64rem; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      clip-path: polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 0 100%);
+      backdrop-filter: blur(6px);
+      opacity: 0;
+    }
+    .chip-1 { top: 18%; left: 4%;  animation: chipEntrance 0.5s 1.4s both ease, chipFloat1 7s 2s ease-in-out infinite; }
+    .chip-2 { top: 28%; right: 3%; animation: chipEntrance 0.5s 1.6s both ease, chipFloat2 6s 2.2s ease-in-out infinite; }
+    .chip-3 { top: 60%; left: 3%;  animation: chipEntrance 0.5s 1.8s both ease, chipFloat1 8s 2.4s ease-in-out infinite; }
+    .chip-4 { top: 72%; right: 4%; animation: chipEntrance 0.5s 2.0s both ease, chipFloat2 7s 2.6s ease-in-out infinite; }
+    .chip-5 { top: 44%; left: 5%;  animation: chipEntrance 0.5s 2.1s both ease, chipFloat1 9s 2.8s ease-in-out infinite; }
+    .chip-6 { top: 50%; right: 5%; animation: chipEntrance 0.5s 2.2s both ease, chipFloat2 6.5s 3s ease-in-out infinite; }
+
+    @keyframes chipEntrance {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes chipFloat1 {
+      0%,100% { transform: translateY(0); }
+      50%     { transform: translateY(-10px); }
+    }
+    @keyframes chipFloat2 {
+      0%,100% { transform: translateY(0); }
+      50%     { transform: translateY(8px); }
+    }
+
+    /* hide chips on small screens to keep it clean */
+    @media (max-width: 768px) { .hero-chips { display: none; } }
 
     .hero-inner {
       position: relative; z-index: 4; width: 100%;
@@ -301,80 +363,24 @@
     .hero-content {
       justify-self: center;
       max-width: 780px;
-      position: relative;
-      z-index: 5;
+      position: relative; z-index: 5;
       padding: 18px 0;
     }
 
-    .hero-content .badge { margin-left: auto; margin-right: auto; }
     .hero-actions { justify-content: center; }
-    .hero-stats { margin-left: auto; margin-right: auto; }
+    .hero-stats   { margin-left: auto; margin-right: auto; }
 
-    @media (prefers-reduced-motion: reduce) {
-      .orb1, .orb2 { animation: none !important; }
-      .code-line { opacity: 0.24; }
+    /* Staggered hero entrance animations */
+    .hero .badge        { animation: heroIn 0.6s 0.15s both ease; }
+    .hero h1            { animation: heroIn 0.7s 0.3s  both ease; }
+    .hero .hero-sub     { animation: heroIn 0.7s 0.5s  both ease; }
+    .hero .hero-actions { animation: heroIn 0.7s 0.68s both ease; }
+    .hero .hero-stats   { animation: heroIn 0.7s 0.84s both ease; }
+
+    @keyframes heroIn {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
-
-    /* Terminal panel */
-    .terminal-panel {
-      border: 1px solid var(--borderhi);
-      background: rgba(6,6,15,0.92);
-      clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 0 100%);
-      overflow: hidden;
-      box-shadow: 0 0 60px rgba(0,200,240,0.05), 0 24px 60px rgba(0,0,0,0.5);
-    }
-
-    .term-chrome {
-      background: var(--s2);
-      border-bottom: 1px solid var(--border);
-      padding: 10px 14px;
-      display: flex; align-items: center; gap: 10px;
-    }
-    .term-dots { display: flex; gap: 5px; }
-    .term-dots span { width: 9px; height: 9px; border-radius: 50%; }
-    .td1 { background: #ff5f56; }
-    .td2 { background: #ffbd2e; }
-    .td3 { background: #27c93f; }
-    .term-title {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.64rem; color: var(--muted);
-      letter-spacing: 0.06em;
-    }
-
-    .term-body {
-      padding: 20px 22px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.78rem;
-      line-height: 2.1;
-      min-height: 200px;
-    }
-
-    .term-line {
-      display: flex; gap: 8px; align-items: baseline;
-      opacity: 0;
-      transform: translateY(4px);
-      transition: opacity 0.25s ease, transform 0.25s ease;
-    }
-    .term-line.visible { opacity: 1; transform: translateY(0); }
-
-    .term-prompt { color: var(--cyan); flex-shrink: 0; }
-    .term-text   { color: var(--muted); }
-    .term-text.done { color: #27c93f; }
-    .term-text.ready { color: var(--cyan); font-weight: 600; }
-
-    /* blinking cursor on last line */
-    .term-cursor {
-      display: inline-block;
-      width: 7px; height: 1em;
-      background: var(--cyan);
-      margin-left: 3px;
-      vertical-align: text-bottom;
-      animation: cursorBlink 0.9s step-end infinite;
-    }
-
-    /* Hero content */
-    .hero-content { opacity: 1; transition: opacity 0.7s ease; }
-    .hero-content.revealed { opacity: 1; }
 
     .badge {
       display: inline-flex; align-items: center; gap: 9px;
@@ -396,10 +402,24 @@
 
     .hero h1 {
       font-family: 'Outfit', sans-serif;
-      font-size: clamp(2.8rem, 5.5vw, 6.2rem);
-      font-weight: 900; line-height: 0.96;
-      letter-spacing: -0.045em; max-width: 640px;
+      font-size: clamp(2.9rem, 5.8vw, 6.6rem);
+      font-weight: 900; line-height: 0.95;
+      letter-spacing: -0.048em; max-width: 640px;
       margin-bottom: 22px;
+    }
+
+    /* Animated gradient sweep on the highlighted span */
+    .hero h1 .hl {
+      background: linear-gradient(130deg, var(--cyan) 0%, var(--blue) 50%, var(--cyan) 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: gradientSlide 4s linear infinite;
+    }
+    @keyframes gradientSlide {
+      from { background-position: 0% center; }
+      to   { background-position: 200% center; }
     }
 
     .hero-sub {
@@ -433,34 +453,6 @@
     .stat-desc  { font-size: 0.6rem; color: var(--muted); line-height: 1.4; }
 
     /* ══════════════════════════════
-       POSITIONING
-    ══════════════════════════════ */
-    .positioning-section { padding: 72px 0; border-top: 1px solid var(--border); }
-
-    .pos-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 32px; align-items: start;
-    }
-
-    .pos-left h2 {
-      font-family: 'Outfit', sans-serif;
-      font-size: clamp(1.8rem, 3.5vw, 3rem);
-      font-weight: 800; line-height: 1.08;
-      letter-spacing: -0.035em; margin-bottom: 18px;
-    }
-    .pos-left p { color: var(--muted); font-size: 0.9rem; line-height: 1.8; margin-bottom: 12px; }
-
-    .pos-right {
-      border: 1px solid var(--border);
-      border-left: 2px solid var(--cyan);
-      background: var(--s1);
-      padding: 28px 28px 28px 26px;
-    }
-    .pos-right p { font-size: 0.9rem; line-height: 1.8; color: var(--muted); margin-bottom: 12px; }
-    .pos-right p:last-child { margin-bottom: 0; }
-    .pos-right p strong { color: var(--text); font-weight: 600; }
-
-    /* ══════════════════════════════
        CAPABILITY STRIP — AUTO MARQUEE
     ══════════════════════════════ */
     .cap-strip {
@@ -477,10 +469,7 @@
       display: flex; flex-shrink: 0;
       animation: marquee 26s linear infinite;
     }
-    @keyframes marquee {
-      from { transform: translateX(0); }
-      to   { transform: translateX(-100%); }
-    }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-100%); } }
     @media (prefers-reduced-motion: reduce) { .cap-track { animation: none; } }
 
     .cap-cell {
@@ -499,26 +488,20 @@
       color: var(--muted);
     }
 
-    /* continuous icon animations */
     .ic-web svg path { animation: codeBlink 2.4s ease-in-out infinite; }
     @keyframes codeBlink { 0%,100%{opacity:1} 50%{opacity:0.3} }
-
     .ic-mobile svg { animation: floatPhone 2.8s ease-in-out infinite; }
     @keyframes floatPhone { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-4px)} }
-
     .ic-layout .gsq { animation: gridPop 1.8s ease-in-out infinite both; }
     .ic-layout .gsq:nth-child(1) { animation-delay: 0s; }
     .ic-layout .gsq:nth-child(2) { animation-delay: 0.2s; }
     .ic-layout .gsq:nth-child(3) { animation-delay: 0.4s; }
     .ic-layout .gsq:nth-child(4) { animation-delay: 0.6s; }
     @keyframes gridPop { 0%,100%{opacity:0.35} 50%{opacity:1} }
-
     .ic-clock .clock-hand { animation: spinHand 3s linear infinite; transform-origin: 11px 11px; }
     @keyframes spinHand { to { transform: rotate(360deg); } }
-
     .ic-redesign svg { animation: layerShift 3s ease-in-out infinite; }
     @keyframes layerShift { 0%,100%{transform:translateY(0)} 33%{transform:translateY(-3px)} 66%{transform:translateY(3px)} }
-
     .ic-perf .bar1 { animation: barPulse 2s ease-in-out infinite; }
     .ic-perf .bar2 { animation: barPulse 2s ease-in-out 0.25s infinite; }
     .ic-perf .bar3 { animation: barPulse 2s ease-in-out 0.5s infinite; }
@@ -534,9 +517,7 @@
     }
     .bdots { display: flex; gap: 5px; flex-shrink: 0; }
     .bdots span { width: 9px; height: 9px; border-radius: 50%; }
-    .bd1 { background: #ff5f56; }
-    .bd2 { background: #ffbd2e; }
-    .bd3 { background: #27c93f; }
+    .bd1 { background: #ff5f56; } .bd2 { background: #ffbd2e; } .bd3 { background: #27c93f; }
     .burl {
       flex: 1; background: rgba(255,255,255,0.05);
       border-radius: 4px; padding: 4px 11px;
@@ -565,53 +546,39 @@
     .project-card:hover {
       border-color: rgba(0,200,240,0.22);
       transform: translateY(-5px);
-      box-shadow: 0 24px 60px rgba(0,0,0,0.4), 0 0 40px rgba(0,200,240,0.04);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.4), 0 0 40px rgba(0,200,240,0.05);
     }
 
-    /* TSH screenshot layout */
     .tsh-preview {
       position: relative; background: var(--s2);
       min-height: 260px; overflow: hidden; flex-shrink: 0;
     }
-
     .tsh-preview-inner {
       position: relative; padding: 16px 18px;
       height: 100%; display: flex; align-items: flex-end; gap: 14px;
     }
-
     .tsh-desktop-img {
       width: calc(100% - 72px);
       border-radius: 6px 6px 0 0;
       border: 1px solid rgba(255,255,255,0.1);
-      object-fit: cover; object-position: top;
-      display: block;
+      object-fit: cover; object-position: top; display: block;
       box-shadow: 0 12px 40px rgba(0,0,0,0.5);
       max-height: 220px;
     }
-
     .tsh-mobile-img {
-      width: 58px;
-      border-radius: 8px;
+      width: 58px; border-radius: 8px;
       border: 1px solid rgba(255,255,255,0.1);
-      object-fit: cover; object-position: top;
-      display: block;
+      object-fit: cover; object-position: top; display: block;
       box-shadow: 0 8px 24px rgba(0,0,0,0.5);
-      align-self: flex-end;
+      position: absolute; right: 14px; bottom: 0;
       max-height: 140px;
-      position: absolute;
-      right: 14px; bottom: 0;
     }
-
-    /* TSH fallback (shown if images are missing) */
     .tsh-fallback {
       height: 260px; flex-shrink: 0;
       background: linear-gradient(155deg, #091728 0%, #0d2244 100%);
       position: relative; overflow: hidden;
     }
-    .tsh-fallback-inner {
-      padding: 18px 20px; height: 100%;
-      display: flex; flex-direction: column; gap: 8px;
-    }
+    .tsh-fallback-inner { padding: 18px 20px; height: 100%; display: flex; flex-direction: column; gap: 8px; }
     .tf-nav { display: flex; align-items: center; gap: 6px; }
     .tf-logo { height: 7px; border-radius: 2px; width: 38px; background: rgba(58,110,165,0.8); }
     .tf-links { margin-left: auto; display: flex; gap: 5px; }
@@ -623,7 +590,6 @@
     .tf-cards { display: flex; gap: 7px; margin-top: auto; }
     .tf-card  { flex: 1; height: 36px; border-radius: 5px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.07); }
 
-    /* Peasis iframe */
     .site-iframe-wrap {
       height: 260px; overflow: hidden;
       position: relative; background: var(--s2); flex-shrink: 0;
@@ -639,7 +605,6 @@
       background: linear-gradient(to bottom, transparent 60%, var(--s1) 100%);
       pointer-events: none;
     }
-
     .preview-badge {
       position: absolute; bottom: 12px; right: 12px; z-index: 2;
       padding: 3px 9px;
@@ -649,20 +614,16 @@
       color: rgba(255,255,255,0.55); backdrop-filter: blur(8px);
       clip-path: polygon(0 0, calc(100% - 5px) 0, 100% 5px, 100% 100%, 0 100%);
     }
-
     .project-info { padding: 20px 22px 24px; flex: 1; display: flex; flex-direction: column; }
     .project-info h3 { font-size: 1.35rem; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 6px; }
     .project-info p  { font-size: 0.86rem; color: var(--muted); line-height: 1.65; margin-bottom: 14px; }
-
     .tag-row { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 16px; }
     .tag {
       padding: 3px 9px; border: 1px solid var(--border);
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.62rem; font-weight: 600;
-      letter-spacing: 0.05em; color: var(--muted);
+      font-size: 0.62rem; font-weight: 600; letter-spacing: 0.05em; color: var(--muted);
       clip-path: polygon(0 0, calc(100% - 4px) 0, 100% 4px, 100% 100%, 0 100%);
     }
-
     .visit-link {
       display: inline-flex; align-items: center; gap: 7px;
       font-family: 'Space Grotesk', sans-serif;
@@ -706,7 +667,6 @@
       transform: translateY(-4px);
       box-shadow: 0 18px 48px rgba(0,0,0,0.38);
     }
-
     .demo-iframe-wrap {
       height: 152px; overflow: hidden;
       position: relative; background: var(--s2); flex-shrink: 0;
@@ -729,11 +689,9 @@
       display: flex; align-items: center; justify-content: center;
       font-size: 0.82rem; backdrop-filter: blur(8px);
     }
-
     .demo-info { padding: 14px 16px 18px; flex: 1; display: flex; flex-direction: column; }
     .demo-info h3 { font-size: 0.92rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 5px; }
     .demo-info p  { font-size: 0.76rem; color: var(--muted); line-height: 1.55; flex: 1; margin-bottom: 12px; }
-
     .demo-cta {
       display: inline-flex; align-items: center; gap: 5px;
       font-family: 'Space Grotesk', sans-serif;
@@ -742,7 +700,6 @@
       color: var(--cyan); transition: gap 0.18s;
     }
     .demo-cta:hover { gap: 9px; }
-
     .carousel-nav { display: flex; justify-content: center; gap: 10px; margin-top: 22px; }
     .cnav-btn {
       width: 36px; height: 36px;
@@ -759,16 +716,7 @@
     ══════════════════════════════ */
     .services-section { padding: 88px 0; }
 
-    .services-layout {
-      display: grid; grid-template-columns: 0.78fr 1.22fr;
-      gap: 24px; margin-top: 52px; align-items: start;
-    }
-    .services-left { position: sticky; top: 88px; }
-    .services-left p { color: var(--muted); font-size: 0.9rem; line-height: 1.76; margin-top: 14px; }
-    .services-left p + p { margin-top: 12px; }
-
-    .svc-list { display: flex; flex-direction: column; gap: 2px; }
-
+    .svc-list { display: flex; flex-direction: column; gap: 2px; margin-top: 32px; }
     .svc-item {
       border: 1px solid var(--border);
       padding: 22px 24px; background: var(--s1);
@@ -784,7 +732,6 @@
     }
     .svc-item:hover { background: var(--s2); border-color: var(--borderhi); }
     .svc-item:hover::before { opacity: 1; }
-
     .svc-icon {
       width: 38px; height: 38px; flex-shrink: 0;
       border: 1px solid var(--border); background: var(--cyanfade);
@@ -804,7 +751,6 @@
       display: grid; grid-template-columns: repeat(4, 1fr);
       gap: 14px; margin-top: 52px;
     }
-
     .process-card {
       border: 1px solid var(--border);
       padding: 26px 22px; background: var(--s1);
@@ -826,7 +772,7 @@
     /* ══════════════════════════════
        FOUNDER BIO
     ══════════════════════════════ */
-    .bio-section { padding: 72px 0; border-top: 1px solid var(--border); }
+    .bio-section { padding: 72px 0; }
 
     .bio-box {
       border: 1px solid var(--border);
@@ -835,8 +781,13 @@
       padding: 36px 36px 36px 34px;
       display: grid; grid-template-columns: 1fr 2fr;
       gap: 32px; align-items: start;
+      position: relative; overflow: hidden;
     }
-
+    .bio-box::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--bordercyan), transparent);
+    }
     .bio-label {
       font-family: 'Space Grotesk', sans-serif;
       font-size: 0.6rem; font-weight: 700;
@@ -855,64 +806,32 @@
     /* ══════════════════════════════
        TESTIMONIALS
     ══════════════════════════════ */
-    .testimonials-section { padding: 88px 0; border-top: 1px solid var(--border); }
+    .testimonials-section { padding: 88px 0; }
 
     .testimonials-grid {
       display: grid;
       grid-template-columns: repeat(5, minmax(260px, 1fr));
-      gap: 14px;
-      margin-top: 52px;
-      overflow-x: auto;
-      padding-bottom: 8px;
-      scrollbar-width: none;
-      -webkit-overflow-scrolling: touch;
+      gap: 14px; margin-top: 52px;
+      overflow-x: auto; padding-bottom: 8px;
+      scrollbar-width: none; -webkit-overflow-scrolling: touch;
     }
     .testimonials-grid::-webkit-scrollbar { display: none; }
 
     .testimonial-card {
       border: 1px solid var(--border);
-      background: var(--s1);
-      padding: 24px 22px;
-      min-height: 260px;
-      display: flex;
-      flex-direction: column;
+      background: var(--s1); padding: 24px 22px;
+      min-height: 240px; display: flex; flex-direction: column;
       justify-content: space-between;
       clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%);
       transition: border-color 0.24s, background 0.24s, transform 0.24s, box-shadow 0.24s;
     }
-
     .testimonial-card:hover {
-      background: var(--s2);
-      border-color: rgba(0,200,240,0.2);
-      transform: translateY(-4px);
-      box-shadow: 0 18px 48px rgba(0,0,0,0.32);
+      background: var(--s2); border-color: rgba(0,200,240,0.2);
+      transform: translateY(-4px); box-shadow: 0 18px 48px rgba(0,0,0,0.32);
     }
-
-    .testimonial-quote {
-      font-size: 0.88rem;
-      color: var(--muted);
-      line-height: 1.72;
-      margin-bottom: 24px;
-    }
-
-    .testimonial-meta strong {
-      display: block;
-      color: var(--text);
-      font-size: 0.92rem;
-      font-weight: 700;
-      letter-spacing: -0.01em;
-      margin-bottom: 3px;
-    }
-
-    .testimonial-meta span {
-      display: block;
-      color: var(--cyan);
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.62rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
+    .testimonial-quote { font-size: 0.88rem; color: var(--muted); line-height: 1.72; margin-bottom: 24px; }
+    .testimonial-meta strong { display: block; color: var(--text); font-size: 0.92rem; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 3px; }
+    .testimonial-meta span { display: block; color: var(--cyan); font-family: 'Space Grotesk', sans-serif; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
 
     /* ══════════════════════════════
        CONTACT
@@ -924,9 +843,14 @@
       clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 0 100%);
       background: var(--s1); position: relative; overflow: hidden;
     }
+    .contact-box::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--bordercyan), transparent);
+    }
     .contact-glow {
       position: absolute; width: 500px; height: 500px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(0,200,240,0.055), transparent 65%);
+      background: radial-gradient(circle, rgba(0,200,240,0.06), transparent 65%);
       top: -140px; right: -80px; pointer-events: none;
     }
     .contact-inner {
@@ -941,20 +865,15 @@
       letter-spacing: -0.05em; margin-bottom: 16px;
     }
     .contact-inner > div > p { color: var(--muted); font-size: 0.92rem; line-height: 1.78; max-width: 460px; margin-bottom: 22px; }
-
     .contact-hint-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
     .contact-hint-list li {
       display: flex; align-items: flex-start; gap: 10px;
       font-size: 0.82rem; color: var(--muted); line-height: 1.5;
     }
-    .contact-hint-list li::before {
-      content: '→'; color: var(--cyan); flex-shrink: 0;
-      font-family: 'Space Grotesk', sans-serif; font-weight: 700;
-    }
+    .contact-hint-list li::before { content: '→'; color: var(--cyan); flex-shrink: 0; font-family: 'Space Grotesk', sans-serif; font-weight: 700; }
 
     .clinks { display: flex; flex-direction: column; gap: 10px; }
     .clinks-label { font-family: 'Space Grotesk', sans-serif; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
-
     .clink {
       display: flex; align-items: center; justify-content: space-between;
       padding: 18px 20px; border: 1px solid var(--border);
@@ -967,8 +886,7 @@
       content: '';
       position: absolute; inset: 0;
       background: linear-gradient(90deg, transparent, rgba(0,200,240,0.06), transparent);
-      transform: translateX(-100%);
-      transition: transform 0.4s ease;
+      transform: translateX(-100%); transition: transform 0.4s ease;
     }
     .clink:hover { border-color: var(--cyan); background: var(--cyanfade); transform: translateX(4px); }
     .clink:hover::after { transform: translateX(100%); }
@@ -987,11 +905,7 @@
       display: flex; align-items: center;
       justify-content: space-between; flex-wrap: wrap; gap: 12px;
     }
-    .footer-wordmark {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.88rem; font-weight: 600;
-      letter-spacing: -0.02em; color: var(--dimlight);
-    }
+    .footer-wordmark { font-family: 'JetBrains Mono', monospace; font-size: 0.88rem; font-weight: 600; letter-spacing: -0.02em; color: var(--dimlight); }
     .footer-wordmark .accent { color: var(--cyan); }
     .footer-right { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
     .footer-right span { font-size: 0.72rem; color: var(--dimlight); }
@@ -999,30 +913,21 @@
     .footer-right a:hover { color: var(--cyan); }
 
     /* ══════════════════════════════
-       ANIMATIONS
+       REVEAL ANIMATION
     ══════════════════════════════ */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(18px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
     .reveal { opacity: 0; }
     .reveal.visible { animation: fadeUp 0.52s both; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
 
     /* ══════════════════════════════
        RESPONSIVE
     ══════════════════════════════ */
     @media (max-width: 1040px) {
-      .hero-inner { grid-template-columns: minmax(0, 760px); }
-      .terminal-panel { display: none; }
       .projects-grid { grid-template-columns: 1fr; }
-      .services-layout { grid-template-columns: 1fr; }
-      .services-left { position: static; }
       .process-grid { grid-template-columns: repeat(2, 1fr); }
       .contact-inner { grid-template-columns: 1fr; padding: 38px 32px; }
-      .pos-grid { grid-template-columns: 1fr; }
       .bio-box { grid-template-columns: 1fr; }
     }
-
     @media (max-width: 680px) {
       .nav-links { display: none; }
       .hamburger { display: flex; }
@@ -1056,12 +961,10 @@
   <!-- ══════ HEADER ══════ -->
   <header>
     <nav class="nav" aria-label="Main navigation">
-
       <a href="#" class="wordmark" aria-label="Built by Sammie — Home">
         <span class="wordmark-name">Built_by_<span class="accent">Sammie</span><span class="cursor" aria-hidden="true"></span></span>
         <span class="wordmark-sub">Web Design Studio</span>
       </a>
-
       <div class="nav-links">
         <a href="#work">Work</a>
         <a href="#demos">Demos</a>
@@ -1069,7 +972,6 @@
         <a href="#process">Process</a>
         <a href="#contact" class="nav-cta">Start a Project</a>
       </div>
-
       <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -1083,13 +985,17 @@
       <div class="orb orb1" aria-hidden="true"></div>
       <div class="orb orb2" aria-hidden="true"></div>
 
-
-
-
+      <!-- Floating skill chips — desktop only -->
+      <div class="hero-chips" aria-hidden="true">
+        <span class="chip chip-1">Mobile-First</span>
+        <span class="chip chip-2">Clean Design</span>
+        <span class="chip chip-3">Fast Delivery</span>
+        <span class="chip chip-4">Real Results</span>
+        <span class="chip chip-5">Clear Copy</span>
+        <span class="chip chip-6">Built to Convert</span>
+      </div>
 
       <div class="wrap hero-inner">
-
-        <!-- Left: hero content (revealed after terminal animation) -->
         <div class="hero-content" id="heroContent">
 
           <div class="badge">
@@ -1100,7 +1006,8 @@
           <h1>Your vision.<br><span class="hl">Built properly.</span></h1>
 
           <p class="hero-sub">
-            <strong>Clean, mobile-first websites</strong> for businesses, founders, and growing brands that need to look credible, professional, and ready for customers.
+            You built the business. <strong>Now give it a website that matches.</strong>
+            Clean, mobile-first, and ready to turn visitors into customers.
           </p>
 
           <div class="hero-actions">
@@ -1115,42 +1022,20 @@
 
           <div class="hero-stats">
             <div class="stat">
-              <div class="stat-val">Active</div>
-              <div class="stat-label">Brands</div>
-              <div class="stat-desc">Real projects with real purpose</div>
+              <div class="stat-val">Live</div>
+              <div class="stat-label">Real Projects</div>
+              <div class="stat-desc">Built for real brands</div>
             </div>
             <div class="stat">
               <div class="stat-val">9</div>
               <div class="stat-label">Industries</div>
-              <div class="stat-desc">Clickable business demo sites</div>
+              <div class="stat-desc">Demo sites you can click through</div>
             </div>
             <div class="stat">
               <div class="stat-val">100%</div>
               <div class="stat-label">Mobile-First</div>
-              <div class="stat-desc">Designed for every screen</div>
+              <div class="stat-desc">Works on every screen</div>
             </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ══════ POSITIONING ══════ -->
-    <section class="positioning-section">
-      <div class="wrap">
-        <div class="pos-grid">
-
-          <div class="pos-left">
-            <h2>Helping brands look credible <span class="hl">before they become widely known.</span></h2>
-            <p>The gap between a growing brand and an established one can feel wide — especially when your website is often the first thing people use to judge how serious you are.</p>
-            <p>Built by Sammie closes that gap with clean, mobile-first websites that make your brand feel clear, professional, and ready for customers.</p>
-          </div>
-
-          <div class="pos-right reveal">
-            <p>You do not need a large agency to get a clean, credible website.</p>
-            <p>You need <strong>clear structure, strong visuals, mobile-first execution</strong>, and a site that helps customers understand why they should choose you.</p>
-            <p>That is exactly what we build — websites that feel intentional, load fast, and make your business look like it belongs at the top of your industry.</p>
           </div>
 
         </div>
@@ -1160,129 +1045,105 @@
     <!-- ══════ CAPABILITY STRIP ══════ -->
     <div class="cap-strip" aria-label="Capabilities">
       <div class="cap-track-wrap">
-
         <div class="cap-track" aria-hidden="true">
-          <div class="cap-cell">
-            <div class="cap-icon ic-web">
-              <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="1" y="3" width="20" height="13" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M7 19h8M11 16v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M5.5 9l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 14h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-            </div>
-            <div class="cap-label">Web Design</div>
-          </div>
-          <div class="cap-cell">
-            <div class="cap-icon"><svg class="ic-mobile" width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="7" y="1" width="8" height="16" rx="2" stroke="currentColor" stroke-width="1.5"/><circle cx="11" cy="14.5" r="0.9" fill="currentColor"/><path d="M9 4h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
-            <div class="cap-label">Mobile-First</div>
-          </div>
-          <div class="cap-cell">
-            <div class="cap-icon ic-layout">
-              <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect class="gsq" x="2"  y="2"  width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.5"/><rect class="gsq" x="13" y="2"  width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.5"/><rect class="gsq" x="2"  y="13" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.5"/><rect class="gsq" x="13" y="13" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.5"/></svg>
-            </div>
-            <div class="cap-label">Clean Layout</div>
-          </div>
-          <div class="cap-cell">
-            <div class="cap-icon ic-clock">
-              <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="9" stroke="currentColor" stroke-width="1.5"/><path class="clock-hand" d="M11 6v5.5l3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-            </div>
-            <div class="cap-label">Fast Delivery</div>
-          </div>
-          <div class="cap-cell">
-            <div class="cap-icon"><svg class="ic-redesign" width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2L2 6.5l9 4.5 9-4.5L11 2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M2 15.5l9 4.5 9-4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 11l9 4.5 9-4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-            <div class="cap-label">Redesigns</div>
-          </div>
-          <div class="cap-cell">
-            <div class="cap-icon ic-perf">
-              <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path class="bar1" d="M3 18L3 11" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path class="bar2" d="M9 18L9 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path class="bar3" d="M15 18L15 4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="M21 18L21 9" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" opacity="0.3"/><path d="M1 20h20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-            </div>
-            <div class="cap-label">Performance</div>
-          </div>
+          <div class="cap-cell"><div class="cap-icon ic-web"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="1" y="3" width="20" height="13" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M7 19h8M11 16v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M5.5 9l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 14h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div><div class="cap-label">Web Design</div></div>
+          <div class="cap-cell"><div class="cap-icon"><svg class="ic-mobile" width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="7" y="1" width="8" height="16" rx="2" stroke="currentColor" stroke-width="1.5"/><circle cx="11" cy="14.5" r="0.9" fill="currentColor"/><path d="M9 4h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div><div class="cap-label">Mobile-First</div></div>
+          <div class="cap-cell"><div class="cap-icon ic-layout"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect class="gsq" x="2" y="2" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.5"/><rect class="gsq" x="13" y="2" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.5"/><rect class="gsq" x="2" y="13" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.5"/><rect class="gsq" x="13" y="13" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.5"/></svg></div><div class="cap-label">Clean Layout</div></div>
+          <div class="cap-cell"><div class="cap-icon ic-clock"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="9" stroke="currentColor" stroke-width="1.5"/><path class="clock-hand" d="M11 6v5.5l3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div><div class="cap-label">Fast Delivery</div></div>
+          <div class="cap-cell"><div class="cap-icon"><svg class="ic-redesign" width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2L2 6.5l9 4.5 9-4.5L11 2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M2 15.5l9 4.5 9-4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 11l9 4.5 9-4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cap-label">Redesigns</div></div>
+          <div class="cap-cell"><div class="cap-icon ic-perf"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path class="bar1" d="M3 18L3 11" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path class="bar2" d="M9 18L9 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path class="bar3" d="M15 18L15 4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="M21 18L21 9" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" opacity="0.3"/><path d="M1 20h20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div><div class="cap-label">Performance</div></div>
         </div>
-
-        <!-- Duplicate for seamless loop -->
         <div class="cap-track" aria-hidden="true">
-          <div class="cap-cell">
-            <div class="cap-icon ic-web"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="1" y="3" width="20" height="13" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M7 19h8M11 16v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M5.5 9l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 14h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
-            <div class="cap-label">Web Design</div>
-          </div>
-          <div class="cap-cell">
-            <div class="cap-icon"><svg class="ic-mobile" width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="7" y="1" width="8" height="16" rx="2" stroke="currentColor" stroke-width="1.5"/><circle cx="11" cy="14.5" r="0.9" fill="currentColor"/><path d="M9 4h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
-            <div class="cap-label">Mobile-First</div>
-          </div>
-          <div class="cap-cell">
-            <div class="cap-icon ic-layout"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect class="gsq" x="2"  y="2"  width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.5"/><rect class="gsq" x="13" y="2"  width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.5"/><rect class="gsq" x="2"  y="13" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.5"/><rect class="gsq" x="13" y="13" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.5"/></svg></div>
-            <div class="cap-label">Clean Layout</div>
-          </div>
-          <div class="cap-cell">
-            <div class="cap-icon ic-clock"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="9" stroke="currentColor" stroke-width="1.5"/><path class="clock-hand" d="M11 6v5.5l3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
-            <div class="cap-label">Fast Delivery</div>
-          </div>
-          <div class="cap-cell">
-            <div class="cap-icon"><svg class="ic-redesign" width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2L2 6.5l9 4.5 9-4.5L11 2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M2 15.5l9 4.5 9-4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 11l9 4.5 9-4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-            <div class="cap-label">Redesigns</div>
-          </div>
-          <div class="cap-cell">
-            <div class="cap-icon ic-perf"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path class="bar1" d="M3 18L3 11" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path class="bar2" d="M9 18L9 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path class="bar3" d="M15 18L15 4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="M21 18L21 9" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" opacity="0.3"/><path d="M1 20h20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
-            <div class="cap-label">Performance</div>
-          </div>
+          <div class="cap-cell"><div class="cap-icon ic-web"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="1" y="3" width="20" height="13" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M7 19h8M11 16v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M5.5 9l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 14h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div><div class="cap-label">Web Design</div></div>
+          <div class="cap-cell"><div class="cap-icon"><svg class="ic-mobile" width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="7" y="1" width="8" height="16" rx="2" stroke="currentColor" stroke-width="1.5"/><circle cx="11" cy="14.5" r="0.9" fill="currentColor"/><path d="M9 4h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div><div class="cap-label">Mobile-First</div></div>
+          <div class="cap-cell"><div class="cap-icon ic-layout"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect class="gsq" x="2" y="2" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.5"/><rect class="gsq" x="13" y="2" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.5"/><rect class="gsq" x="2" y="13" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.5"/><rect class="gsq" x="13" y="13" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.5"/></svg></div><div class="cap-label">Clean Layout</div></div>
+          <div class="cap-cell"><div class="cap-icon ic-clock"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="9" stroke="currentColor" stroke-width="1.5"/><path class="clock-hand" d="M11 6v5.5l3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div><div class="cap-label">Fast Delivery</div></div>
+          <div class="cap-cell"><div class="cap-icon"><svg class="ic-redesign" width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2L2 6.5l9 4.5 9-4.5L11 2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M2 15.5l9 4.5 9-4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 11l9 4.5 9-4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="cap-label">Redesigns</div></div>
+          <div class="cap-cell"><div class="cap-icon ic-perf"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path class="bar1" d="M3 18L3 11" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path class="bar2" d="M9 18L9 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path class="bar3" d="M15 18L15 4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="M21 18L21 9" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" opacity="0.3"/><path d="M1 20h20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div><div class="cap-label">Performance</div></div>
         </div>
-
       </div>
     </div>
+
+    <!-- ══════ WHY IT MATTERS (simplified positioning) ══════ -->
+    <section style="padding: 80px 0;">
+      <div class="wrap">
+        <div class="section-card reveal">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;">
+
+            <div>
+              <div class="kicker">Why It Matters</div>
+              <h2 style="font-family:'Outfit',sans-serif; font-size: clamp(1.8rem,3.5vw,3rem); font-weight:800; line-height:1.08; letter-spacing:-0.035em; margin-bottom:18px;">
+                Your website is your <span class="hl">first impression.</span>
+              </h2>
+              <p style="color:var(--muted); font-size:0.95rem; line-height:1.8;">
+                Most people decide in seconds whether to trust a business — and your website is how they decide. If it looks cheap, they leave. If it looks right, they stay.
+              </p>
+            </div>
+
+            <div style="display:flex; flex-direction:column; gap:16px;">
+              <div style="display:flex; gap:14px; align-items:flex-start; padding:18px 20px; border:1px solid var(--border); background:var(--s2);">
+                <span style="color:var(--cyan); font-size:1.1rem; flex-shrink:0; margin-top:2px;">✓</span>
+                <div>
+                  <strong style="font-size:0.9rem; display:block; margin-bottom:3px;">You don't need a big agency</strong>
+                  <span style="font-size:0.82rem; color:var(--muted);">You need clear structure, strong visuals, and a site that makes customers trust you.</span>
+                </div>
+              </div>
+              <div style="display:flex; gap:14px; align-items:flex-start; padding:18px 20px; border:1px solid var(--border); background:var(--s2);">
+                <span style="color:var(--cyan); font-size:1.1rem; flex-shrink:0; margin-top:2px;">✓</span>
+                <div>
+                  <strong style="font-size:0.9rem; display:block; margin-bottom:3px;">Built for your customers, not just your industry</strong>
+                  <span style="font-size:0.82rem; color:var(--muted);">Every page is designed so visitors immediately understand what you do and why they should choose you.</span>
+                </div>
+              </div>
+              <div style="display:flex; gap:14px; align-items:flex-start; padding:18px 20px; border:1px solid var(--border); background:var(--s2);">
+                <span style="color:var(--cyan); font-size:1.1rem; flex-shrink:0; margin-top:2px;">✓</span>
+                <div>
+                  <strong style="font-size:0.9rem; display:block; margin-bottom:3px;">Looks right on every phone</strong>
+                  <span style="font-size:0.82rem; color:var(--muted);">Your customers are on their phones. Your website is built phone-first, every time.</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- ══════ REAL PROJECTS ══════ -->
     <section class="projects-section" id="work">
       <div class="wrap">
         <div class="kicker">Live Work</div>
-        <h2 class="section-h">Websites built for <span class="hl">real brands with real goals.</span></h2>
-        <p class="section-sub">
-          Two live websites, each shaped from a real founder's vision into a site that builds trust, communicates purpose, and helps people take action.
-        </p>
+        <h2 class="section-h">Real websites. <span class="hl">Real brands.</span></h2>
+        <p class="section-sub">Two live websites built from scratch — each shaped around a real founder's vision and built to earn trust fast.</p>
 
         <div class="projects-grid">
 
-          <!-- TSH — screenshot layout -->
+          <!-- TSH -->
           <div class="project-card reveal">
             <div class="browser-top">
               <div class="bdots"><span class="bd1"></span><span class="bd2"></span><span class="bd3"></span></div>
               <div class="burl">twaynesafehaven.org</div>
             </div>
-
-            <!-- Try screenshots first; fallback illustrated mockup if files not present -->
             <div class="tsh-preview">
               <div class="tsh-preview-inner">
-                <img
-                  class="tsh-desktop-img"
-                  src="desktop view tsh.png"
-                  alt="Twayne Safe Haven desktop view"
-                  onerror="this.closest('.tsh-preview').classList.add('no-img')"
-                />
-                <img
-                  class="tsh-mobile-img"
-                  src="mobile view tsh.png"
-                  alt="Twayne Safe Haven mobile view"
-                />
+                <img class="tsh-desktop-img" src="desktop view tsh.png" alt="Twayne Safe Haven desktop view" onerror="this.closest('.tsh-preview').classList.add('no-img')" />
+                <img class="tsh-mobile-img" src="mobile view tsh.png" alt="Twayne Safe Haven mobile view" />
               </div>
               <div class="preview-badge">Live Website</div>
             </div>
-
-            <!-- Fallback illustrated mockup (hidden by default, shown via JS if images fail) -->
             <div class="tsh-fallback" id="tshFallback" style="display:none;">
               <div class="tsh-fallback-inner">
-                <div class="tf-nav">
-                  <div class="tf-logo"></div>
-                  <div class="tf-links"><span></span><span></span><span></span></div>
-                </div>
-                <div class="tf-h1"></div>
-                <div class="tf-h1b"></div>
-                <div class="tf-line" style="width:82%"></div>
-                <div class="tf-line" style="width:64%"></div>
+                <div class="tf-nav"><div class="tf-logo"></div><div class="tf-links"><span></span><span></span><span></span></div></div>
+                <div class="tf-h1"></div><div class="tf-h1b"></div>
+                <div class="tf-line" style="width:82%"></div><div class="tf-line" style="width:64%"></div>
                 <div class="tf-btn"></div>
                 <div class="tf-cards"><div class="tf-card"></div><div class="tf-card"></div><div class="tf-card"></div></div>
               </div>
               <div class="preview-badge">Live Website</div>
             </div>
-
             <div class="project-info">
               <h3>Twayne Safe Haven</h3>
-              <p>A youth-led storytelling and wellbeing community operating across Nigeria. The website was built to communicate mission, trust, and programme impact clearly — and invite real engagement from the people it serves.</p>
+              <p>A youth community in Nigeria needed a website that explained who they are, what they do, and why it matters — in a way real people could connect with instantly.</p>
               <div class="tag-row">
                 <span class="tag">NGO / Community</span>
                 <span class="tag">Site Architecture</span>
@@ -1296,7 +1157,7 @@
             </div>
           </div>
 
-          <!-- Peasis — iframe -->
+          <!-- Peasis -->
           <div class="project-card reveal">
             <div class="browser-top">
               <div class="bdots"><span class="bd1"></span><span class="bd2"></span><span class="bd3"></span></div>
@@ -1308,7 +1169,7 @@
             </div>
             <div class="project-info">
               <h3>Peasis Fashion</h3>
-              <p>A premium womenswear brand shaped around visual storytelling, pricing clarity, and international appeal — designed to attract serious buyers and communicate the craft and quality behind every piece.</p>
+              <p>A premium womenswear brand that needed a website matching the quality of the clothing itself — clear, visual, and built to attract serious buyers.</p>
               <div class="tag-row">
                 <span class="tag">Fashion Brand</span>
                 <span class="tag">Luxury Positioning</span>
@@ -1326,145 +1187,29 @@
       </div>
     </section>
 
-    <!-- ══════ DEMOS — ordered: Roofing first ══════ -->
+    <!-- ══════ DEMOS ══════ -->
     <section class="demos-section" id="demos">
       <div class="wrap">
         <div class="kicker">Demo Concepts</div>
         <h2 class="section-h">9 industries. <span class="hl">One standard.</span></h2>
-        <p class="section-sub">
-          Demo concepts built to show how different industries can look clearer, sharper, and more credible online. Each one is a clickable, fully built page.
-        </p>
+        <p class="section-sub">Don't know what your site could look like? Click through these demos. Each one is a fully built, real page — not a mockup.</p>
       </div>
 
       <div class="slider-wrap" role="region" aria-label="Demo website carousel">
         <div class="slider" id="demoSlider">
-
-          <!-- 1. Roofing -->
-          <a class="demo-slide" href="./roofing/" target="_blank" rel="noopener">
-            <div class="demo-iframe-wrap">
-              <iframe src="./roofing/" loading="lazy" scrolling="no" tabindex="-1" title="Roofing demo"></iframe>
-              <div class="dp-badge" aria-hidden="true">🏠</div>
-            </div>
-            <div class="demo-info">
-              <h3>Roofing &amp; Contractors</h3>
-              <p>Estimate requests, emergency messaging, service areas, and trust signals that convert local traffic.</p>
-              <span class="demo-cta">View Demo <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1 5h8M5.5 1.5l4 3.5-4 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            </div>
-          </a>
-
-          <!-- 2. Food -->
-          <a class="demo-slide" href="./food-restaurant/" target="_blank" rel="noopener">
-            <div class="demo-iframe-wrap">
-              <iframe src="./food-restaurant/" loading="lazy" scrolling="no" tabindex="-1" title="Food & Restaurant demo"></iframe>
-              <div class="dp-badge" aria-hidden="true">🍽️</div>
-            </div>
-            <div class="demo-info">
-              <h3>Food &amp; Restaurant</h3>
-              <p>Menu highlights, ordering CTA, delivery info, and a layout built to bring customers in.</p>
-              <span class="demo-cta">View Demo <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1 5h8M5.5 1.5l4 3.5-4 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            </div>
-          </a>
-
-          <!-- 3. Photography -->
-          <a class="demo-slide" href="./photography/" target="_blank" rel="noopener">
-            <div class="demo-iframe-wrap">
-              <iframe src="./photography/" loading="lazy" scrolling="no" tabindex="-1" title="Photography demo"></iframe>
-              <div class="dp-badge" aria-hidden="true">📷</div>
-            </div>
-            <div class="demo-info">
-              <h3>Photography Studio</h3>
-              <p>Portfolio gallery, session types, packages, and visual-first storytelling.</p>
-              <span class="demo-cta">View Demo <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1 5h8M5.5 1.5l4 3.5-4 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            </div>
-          </a>
-
-          <!-- 4. Event -->
-          <a class="demo-slide" href="./event-decor/" target="_blank" rel="noopener">
-            <div class="demo-iframe-wrap">
-              <iframe src="./event-decor/" loading="lazy" scrolling="no" tabindex="-1" title="Event Decor demo"></iframe>
-              <div class="dp-badge" aria-hidden="true">🎉</div>
-            </div>
-            <div class="demo-info">
-              <h3>Event &amp; Decor</h3>
-              <p>Event styling, gallery, package tiers, social proof, and consultation flow.</p>
-              <span class="demo-cta">View Demo <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1 5h8M5.5 1.5l4 3.5-4 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            </div>
-          </a>
-
-          <!-- 5. Remodeling -->
-          <a class="demo-slide" href="./remodeling/" target="_blank" rel="noopener">
-            <div class="demo-iframe-wrap">
-              <iframe src="./remodeling/" loading="lazy" scrolling="no" tabindex="-1" title="Remodeling demo"></iframe>
-              <div class="dp-badge" aria-hidden="true">🛁</div>
-            </div>
-            <div class="demo-info">
-              <h3>Home Remodeling</h3>
-              <p>Kitchen, bathroom, and renovation sections with project flow and consultation booking.</p>
-              <span class="demo-cta">View Demo <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1 5h8M5.5 1.5l4 3.5-4 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            </div>
-          </a>
-
-          <!-- 6. Spa -->
-          <a class="demo-slide" href="./med-spa/" target="_blank" rel="noopener">
-            <div class="demo-iframe-wrap">
-              <iframe src="./med-spa/" loading="lazy" scrolling="no" tabindex="-1" title="Med Spa demo"></iframe>
-              <div class="dp-badge" aria-hidden="true">💆</div>
-            </div>
-            <div class="demo-info">
-              <h3>Med Spa &amp; Wellness</h3>
-              <p>Treatments, consultation booking, and a premium service presentation.</p>
-              <span class="demo-cta">View Demo <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1 5h8M5.5 1.5l4 3.5-4 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            </div>
-          </a>
-
-          <!-- 7. HVAC -->
-          <a class="demo-slide" href="./hvac/" target="_blank" rel="noopener">
-            <div class="demo-iframe-wrap">
-              <iframe src="./hvac/" loading="lazy" scrolling="no" tabindex="-1" title="HVAC demo"></iframe>
-              <div class="dp-badge" aria-hidden="true">❄️</div>
-            </div>
-            <div class="demo-info">
-              <h3>HVAC &amp; Climate</h3>
-              <p>AC repair, heating, maintenance plans, seasonal offers, and booking-focused layout.</p>
-              <span class="demo-cta">View Demo <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1 5h8M5.5 1.5l4 3.5-4 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            </div>
-          </a>
-
-          <!-- 8. Plumbing -->
-          <a class="demo-slide" href="./plumbing/" target="_blank" rel="noopener">
-            <div class="demo-iframe-wrap">
-              <iframe src="./plumbing/" loading="lazy" scrolling="no" tabindex="-1" title="Plumbing demo"></iframe>
-              <div class="dp-badge" aria-hidden="true">🔧</div>
-            </div>
-            <div class="demo-info">
-              <h3>Plumbing Services</h3>
-              <p>Emergency call section, repairs, water heater services, and a fast quote flow.</p>
-              <span class="demo-cta">View Demo <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1 5h8M5.5 1.5l4 3.5-4 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            </div>
-          </a>
-
-          <!-- 9. Cleaning -->
-          <a class="demo-slide" href="./cleaning/" target="_blank" rel="noopener">
-            <div class="demo-iframe-wrap">
-              <iframe src="./cleaning/" loading="lazy" scrolling="no" tabindex="-1" title="Cleaning demo"></iframe>
-              <div class="dp-badge" aria-hidden="true">🧹</div>
-            </div>
-            <div class="demo-info">
-              <h3>Cleaning Services</h3>
-              <p>Residential and commercial cleaning, recurring plans, quote form, and trust layout.</p>
-              <span class="demo-cta">View Demo <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1 5h8M5.5 1.5l4 3.5-4 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            </div>
-          </a>
-
+          <a class="demo-slide" href="./roofing/" target="_blank" rel="noopener"><div class="demo-iframe-wrap"><iframe src="./roofing/" loading="lazy" scrolling="no" tabindex="-1" title="Roofing demo"></iframe><div class="dp-badge" aria-hidden="true">🏠</div></div><div class="demo-info"><h3>Roofing &amp; Contractors</h3><p>Quote requests, emergency messaging, service areas, and trust signals that convert local traffic.</p><span class="demo-cta">View Demo <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1 5h8M5.5 1.5l4 3.5-4 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></a>
+          <a class="demo-slide" href="./food-restaurant/" target="_blank" rel="noopener"><div class="demo-iframe-wrap"><iframe src="./food-restaurant/" loading="lazy" scrolling="no" tabindex="-1" title="Food demo"></iframe><div class="dp-badge" aria-hidden="true">🍽️</div></div><div class="demo-info"><h3>Food &amp; Restaurant</h3><p>Menu highlights, ordering CTA, delivery info — built to bring customers in.</p><span class="demo-cta">View Demo <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1 5h8M5.5 1.5l4 3.5-4 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></a>
+          <a class="demo-slide" href="./photography/" target="_blank" rel="noopener"><div class="demo-iframe-wrap"><iframe src="./photography/" loading="lazy" scrolling="no" tabindex="-1" title="Photography demo"></iframe><div class="dp-badge" aria-hidden="true">📷</div></div><div class="demo-info"><h3>Photography Studio</h3><p>Portfolio gallery, session types, packages, and a visual-first layout.</p><span class="demo-cta">View Demo <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1 5h8M5.5 1.5l4 3.5-4 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></a>
+          <a class="demo-slide" href="./event-decor/" target="_blank" rel="noopener"><div class="demo-iframe-wrap"><iframe src="./event-decor/" loading="lazy" scrolling="no" tabindex="-1" title="Event demo"></iframe><div class="dp-badge" aria-hidden="true">🎉</div></div><div class="demo-info"><h3>Event &amp; Decor</h3><p>Event styling, gallery, package tiers, social proof, and consultation flow.</p><span class="demo-cta">View Demo <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1 5h8M5.5 1.5l4 3.5-4 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></a>
+          <a class="demo-slide" href="./remodeling/" target="_blank" rel="noopener"><div class="demo-iframe-wrap"><iframe src="./remodeling/" loading="lazy" scrolling="no" tabindex="-1" title="Remodeling demo"></iframe><div class="dp-badge" aria-hidden="true">🛁</div></div><div class="demo-info"><h3>Home Remodeling</h3><p>Kitchen, bathroom, and renovation sections with project flow and booking.</p><span class="demo-cta">View Demo <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1 5h8M5.5 1.5l4 3.5-4 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></a>
+          <a class="demo-slide" href="./med-spa/" target="_blank" rel="noopener"><div class="demo-iframe-wrap"><iframe src="./med-spa/" loading="lazy" scrolling="no" tabindex="-1" title="Spa demo"></iframe><div class="dp-badge" aria-hidden="true">💆</div></div><div class="demo-info"><h3>Med Spa &amp; Wellness</h3><p>Treatments, booking, and a premium presentation that builds confidence.</p><span class="demo-cta">View Demo <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1 5h8M5.5 1.5l4 3.5-4 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></a>
+          <a class="demo-slide" href="./hvac/" target="_blank" rel="noopener"><div class="demo-iframe-wrap"><iframe src="./hvac/" loading="lazy" scrolling="no" tabindex="-1" title="HVAC demo"></iframe><div class="dp-badge" aria-hidden="true">❄️</div></div><div class="demo-info"><h3>HVAC &amp; Climate</h3><p>AC repair, heating, maintenance plans, seasonal offers — built to get calls.</p><span class="demo-cta">View Demo <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1 5h8M5.5 1.5l4 3.5-4 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></a>
+          <a class="demo-slide" href="./plumbing/" target="_blank" rel="noopener"><div class="demo-iframe-wrap"><iframe src="./plumbing/" loading="lazy" scrolling="no" tabindex="-1" title="Plumbing demo"></iframe><div class="dp-badge" aria-hidden="true">🔧</div></div><div class="demo-info"><h3>Plumbing Services</h3><p>Emergency section, repairs, water heater services, and a fast quote flow.</p><span class="demo-cta">View Demo <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1 5h8M5.5 1.5l4 3.5-4 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></a>
+          <a class="demo-slide" href="./cleaning/" target="_blank" rel="noopener"><div class="demo-iframe-wrap"><iframe src="./cleaning/" loading="lazy" scrolling="no" tabindex="-1" title="Cleaning demo"></iframe><div class="dp-badge" aria-hidden="true">🧹</div></div><div class="demo-info"><h3>Cleaning Services</h3><p>Residential and commercial, recurring plans, quote form, and trust layout.</p><span class="demo-cta">View Demo <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1 5h8M5.5 1.5l4 3.5-4 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></a>
         </div>
-
         <div class="carousel-nav">
-          <button class="cnav-btn" id="prevBtn" aria-label="Scroll left">
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M9 10.5L5.5 7 9 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-          <button class="cnav-btn" id="nextBtn" aria-label="Scroll right">
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 3.5L8.5 7 5 10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
+          <button class="cnav-btn" id="prevBtn" aria-label="Scroll left"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M9 10.5L5.5 7 9 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button class="cnav-btn" id="nextBtn" aria-label="Scroll right"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 3.5L8.5 7 5 10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         </div>
       </div>
     </section>
@@ -1473,64 +1218,43 @@
     <section class="services-section" id="services">
       <div class="wrap">
         <div class="kicker">What We Build</div>
-        <h2 class="section-h">Every project, <span class="hl">built to perform.</span></h2>
-        <p class="section-sub">Whether the brief is clear or the idea is still forming, we take every vision seriously and build something clean, credible, and ready to win customers.</p>
+        <h2 class="section-h">Every project, <span class="hl">done right.</span></h2>
+        <p class="section-sub">Whether you have a clear idea or you're starting from scratch — we take care of the design, the words, and the build.</p>
 
-        <div class="services-layout">
-          <div class="services-left">
-            <p>Every business deserves a website that reflects where it is heading. We work with founders, businesses, creatives, and community organisations.</p>
-            <p>We shape rough ideas into polished online presences — and stay involved until the result feels exactly right.</p>
+        <div class="svc-list">
+          <div class="svc-item reveal">
+            <div class="svc-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="1" y="2" width="16" height="11" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="M6 16h6M9 13v3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M4.5 7l2.5 2.5L4.5 12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 12h4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></div>
+            <div class="svc-text">
+              <h3>New Websites — One Page or Multi-Page</h3>
+              <p>A focused single page or a full site with multiple sections. Either way: clean, professional, and easy to contact from the very first scroll.</p>
+            </div>
           </div>
-
-          <div class="svc-list">
-            <div class="svc-item reveal">
-              <div class="svc-icon" aria-hidden="true">
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="1" y="2" width="16" height="11" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="M6 16h6M9 13v3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M4.5 7l2.5 2.5L4.5 12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 12h4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
-              </div>
-              <div class="svc-text">
-                <h3>Business Websites — One-Page &amp; Multi-Page</h3>
-                <p>Whether a focused single page or a full multi-section site, we build websites that make your business look professional, trustworthy, and easy to contact from the first scroll.</p>
-              </div>
+          <div class="svc-item reveal">
+            <div class="svc-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 3h12v12H3z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M7 8.5l2 2 2-2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M1 7V3h4M17 7V3h-4M1 11v4h4M17 11v4h-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></div>
+            <div class="svc-text">
+              <h3>Website Redesigns</h3>
+              <p>Got an old site that no longer feels like you? We clean it up — better layout, better copy, better mobile experience. Looks like you mean business.</p>
             </div>
-
-            <div class="svc-item reveal">
-              <div class="svc-icon" aria-hidden="true">
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 3h12v12H3z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M7 8.5l2 2 2-2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M1 7V3h4M17 7V3h-4M1 11v4h4M17 11v4h-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
-              </div>
-              <div class="svc-text">
-                <h3>Website Redesigns</h3>
-                <p>Got a site that no longer reflects where your business is heading? We improve the structure, messaging, and visual presentation so it matches your actual quality and ambition.</p>
-              </div>
+          </div>
+          <div class="svc-item reveal">
+            <div class="svc-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="4" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="M6 9h6M9 7v4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></div>
+            <div class="svc-text">
+              <h3>Landing Pages</h3>
+              <p>One page, one goal. Built for a specific offer, product, or campaign — so every visitor knows exactly what to do next.</p>
             </div>
-
-            <div class="svc-item reveal">
-              <div class="svc-icon" aria-hidden="true">
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="4" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="M6 9h6M9 7v4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
-              </div>
-              <div class="svc-text">
-                <h3>Landing Pages</h3>
-                <p>Focused pages for specific offers, campaigns, or lead generation — built with one clear action and zero confusion about what visitors should do next.</p>
-              </div>
+          </div>
+          <div class="svc-item reveal">
+            <div class="svc-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="6" y="1" width="6" height="13" rx="2" stroke="currentColor" stroke-width="1.4"/><circle cx="9" cy="11.5" r="0.8" fill="currentColor"/><path d="M7.5 4h3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></div>
+            <div class="svc-text">
+              <h3>Mobile-First Build</h3>
+              <p>We design for phones first, then scale up. Because that's where your customers are looking.</p>
             </div>
-
-            <div class="svc-item reveal">
-              <div class="svc-icon" aria-hidden="true">
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="6" y="1" width="6" height="13" rx="2" stroke="currentColor" stroke-width="1.4"/><circle cx="9" cy="11.5" r="0.8" fill="currentColor"/><path d="M7.5 4h3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
-              </div>
-              <div class="svc-text">
-                <h3>Mobile-First Setup</h3>
-                <p>Most customers encounter a website on a phone first. Every site we build is designed mobile-first and adapts cleanly across tablets and desktops from there.</p>
-              </div>
-            </div>
-
-            <div class="svc-item reveal">
-              <div class="svc-icon" aria-hidden="true">
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7" stroke="currentColor" stroke-width="1.4"/><path d="M9 5v4.5l3 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
-              </div>
-              <div class="svc-text">
-                <h3>Website Updates &amp; Ongoing Management</h3>
-                <p>Edits, content updates, layout improvements, and light maintenance as your business evolves. We keep your site sharp and current.</p>
-              </div>
+          </div>
+          <div class="svc-item reveal">
+            <div class="svc-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7" stroke="currentColor" stroke-width="1.4"/><path d="M9 5v4.5l3 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></div>
+            <div class="svc-text">
+              <h3>Ongoing Updates</h3>
+              <p>Your business changes. We keep your site up to date — edits, new pages, content updates, whatever you need.</p>
             </div>
           </div>
         </div>
@@ -1541,29 +1265,29 @@
     <section class="process-section" id="process">
       <div class="wrap">
         <div class="kicker">How We Work</div>
-        <h2 class="section-h">Simple, <span class="hl">clear process.</span></h2>
-        <p class="section-sub">No jargon. No unnecessary back-and-forth. A focused build process that moves from rough idea to a finished website worth sharing.</p>
+        <h2 class="section-h">Simple process. <span class="hl">No headaches.</span></h2>
+        <p class="section-sub">Four steps from idea to live site. No jargon. No unnecessary meetings. You stay in control the whole way.</p>
 
         <div class="process-grid">
           <div class="process-card reveal">
             <div class="process-num">01</div>
-            <h3>We understand your business</h3>
-            <p>We start by listening — what you offer, who you are reaching, and what matters most. Your ideas, taste, and goals all shape what gets built.</p>
+            <h3>You tell us what you need</h3>
+            <p>Tell us about your business, who your customers are, and what you want people to do when they visit your site. That's where we start.</p>
           </div>
           <div class="process-card reveal">
             <div class="process-num">02</div>
-            <h3>We shape the structure</h3>
-            <p>We map out the sections, the messaging hierarchy, and the page flow — so visitors understand your offer fast and know exactly what to do next.</p>
+            <h3>We plan the structure</h3>
+            <p>We map out the sections and the flow so visitors understand your offer fast — and know exactly what to do next.</p>
           </div>
           <div class="process-card reveal">
             <div class="process-num">03</div>
-            <h3>We build the website</h3>
-            <p>Clean code, mobile-first layout, strong visuals, and the right content sections — assembled into a site that feels made specifically for your business.</p>
+            <h3>We build it</h3>
+            <p>Clean design, mobile-first, strong visuals, clear words. All assembled into a site made specifically for your business.</p>
           </div>
           <div class="process-card reveal">
             <div class="process-num">04</div>
-            <h3>We review and refine</h3>
-            <p>You review it, we adjust. We polish the wording, spacing, and mobile experience until the result feels polished and ready for customers.</p>
+            <h3>You review, we refine</h3>
+            <p>You look it over, share your thoughts. We fix and polish until it feels exactly right — then it goes live.</p>
           </div>
         </div>
       </div>
@@ -1579,7 +1303,7 @@
             <div class="bio-title">Founder, Built by Sammie</div>
           </div>
           <div class="bio-text">
-            Built by Sammie is led by <strong>Sammie Friday</strong>, who brings over ten years of experience in community building, storytelling, and understanding how people connect with brands. That experience shapes our approach to websites: <strong>clear, human, credible, and built to help people trust what they see.</strong>
+            I've spent over a decade building communities, running programmes, and helping organisations communicate clearly. <strong>That experience shapes every website I build</strong> — the goal is always the same: a site that makes people trust what they're looking at, understand what you offer, and take action.
           </div>
         </div>
       </div>
@@ -1589,50 +1313,28 @@
     <section class="testimonials-section" id="testimonials">
       <div class="wrap">
         <div class="kicker">Client Words</div>
-        <h2 class="section-h">Kind words from <span class="hl">brands and founders.</span></h2>
-        <p class="section-sub">
-          A few short notes from people and brands who have seen the difference a clearer website can make.
-        </p>
+        <h2 class="section-h">What clients <span class="hl">actually said.</span></h2>
 
         <div class="testimonials-grid">
           <article class="testimonial-card reveal">
-            <p class="testimonial-quote">“Sammie helped us turn our fashion story into a website that feels elegant, clear, and ready for serious customers. The structure made our offer easier to understand.”</p>
-            <div class="testimonial-meta">
-              <strong>Hannah</strong>
-              <span>Peasis Fashion</span>
-            </div>
+            <p class="testimonial-quote">"Sammie helped us turn our fashion story into a website that feels elegant, clear, and ready for serious customers. The structure made our offer easier to understand."</p>
+            <div class="testimonial-meta"><strong>Hannah</strong><span>Peasis Fashion</span></div>
           </article>
-
           <article class="testimonial-card reveal">
-            <p class="testimonial-quote">“The final page felt sharper than what we had in mind. Built by Sammie understood the goal quickly and shaped the website around trust, clarity, and action.”</p>
-            <div class="testimonial-meta">
-              <strong>Michael</strong>
-              <span>Herkimer Capital</span>
-            </div>
+            <p class="testimonial-quote">"The final page felt sharper than what we had in mind. Built by Sammie understood the goal quickly and shaped the website around trust, clarity, and action."</p>
+            <div class="testimonial-meta"><strong>Michael</strong><span>Herkimer Capital</span></div>
           </article>
-
           <article class="testimonial-card reveal">
-            <p class="testimonial-quote">“The work made our brand feel more credible online. The copy, layout, and mobile experience were cleaner than expected, and the page was easy to share.”</p>
-            <div class="testimonial-meta">
-              <strong>Segun</strong>
-              <span>ValueIQX</span>
-            </div>
+            <p class="testimonial-quote">"The work made our brand feel more credible online. The layout and mobile experience were cleaner than expected, and the page was easy to share with anyone."</p>
+            <div class="testimonial-meta"><strong>Segun</strong><span>ValueIQX</span></div>
           </article>
-
           <article class="testimonial-card reveal">
-            <p class="testimonial-quote">“What stood out was how practical the process felt. The website was not just pretty — it made the business easier to explain and easier to contact.”</p>
-            <div class="testimonial-meta">
-              <strong>Amara</strong>
-              <span>Service Brand Founder</span>
-            </div>
+            <p class="testimonial-quote">"What stood out was how practical the process felt. The website wasn't just pretty — it made the business easier to explain and easier to contact."</p>
+            <div class="testimonial-meta"><strong>Amara</strong><span>Service Brand Founder</span></div>
           </article>
-
           <article class="testimonial-card reveal">
-            <p class="testimonial-quote">“The redesign gave us a more polished first impression. It finally felt like our online presence matched the quality of the work we already do offline.”</p>
-            <div class="testimonial-meta">
-              <strong>Daniel</strong>
-              <span>Local Business Owner</span>
-            </div>
+            <p class="testimonial-quote">"The redesign gave us a more polished first impression. It finally felt like our online presence matched the quality of the work we already do offline."</p>
+            <div class="testimonial-meta"><strong>Daniel</strong><span>Local Business Owner</span></div>
           </article>
         </div>
       </div>
@@ -1646,14 +1348,14 @@
           <div class="contact-inner">
 
             <div>
-              <div class="kicker" style="margin-bottom:14px">Start a Website Project</div>
+              <div class="kicker" style="margin-bottom:14px">Start a Project</div>
               <h2>Ready to build <span class="hl">something serious?</span></h2>
-              <p>Email your business name, current website if you have one, and what you want your site to help you achieve. We will reply with a clear next step.</p>
+              <p>Just send an email. Tell us a bit about your business and what you need — we'll reply with a clear next step, no pressure.</p>
               <ul class="contact-hint-list">
                 <li>Your business name and what you do</li>
                 <li>Your current website, if you have one</li>
                 <li>What you want customers to do on your page</li>
-                <li>Any rough ideas or direction you already have</li>
+                <li>Any ideas or direction you already have</li>
               </ul>
             </div>
 
@@ -1669,7 +1371,7 @@
                   <span class="clink-arrow" aria-hidden="true">→</span>
                 </a>
               </div>
-              <p class="contact-note">Not sure where to start? Just tell us what your business does and what problem your website should solve. That is enough to begin.</p>
+              <p class="contact-note">Not sure where to start? Just say what your business does. That's enough to begin.</p>
             </div>
 
           </div>
@@ -1725,11 +1427,7 @@
       });
     }
 
-    /* ── Hero is now visible immediately; the terminal intro was removed to keep the hero clean and centered. ── */
-    const heroContent = document.getElementById('heroContent');
-    if (heroContent) heroContent.classList.add('revealed');
-
-    /* ── Code-rain canvas ── */
+    /* ── Code-rain canvas — runs on ALL screen sizes ── */
     (function () {
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
       const canvas = document.getElementById('bgCanvas');
@@ -1748,13 +1446,13 @@
       window.addEventListener('resize', resize);
 
       let last = 0;
-      const TICK = 52;
+      const TICK = 48; /* slightly faster for more energy */
 
       function draw(now) {
         requestAnimationFrame(draw);
         if (now - last < TICK) return;
         last = now;
-        ctx.fillStyle = 'rgba(3,3,12,0.075)';
+        ctx.fillStyle = 'rgba(3,3,12,0.072)';
         ctx.fillRect(0, 0, W, H);
         ctx.font      = `${FS}px "JetBrains Mono", monospace`;
         ctx.textAlign = 'center';
@@ -1762,10 +1460,14 @@
           const char  = CHARS[(Math.random() * CHARS.length) | 0];
           const x     = i * FS + FS / 2;
           const y     = drops[i] * FS;
-          const alpha = Math.random() > 0.86 ? 0.7 : 0.24 + Math.random() * 0.18;
-          ctx.fillStyle = `rgba(0,200,240,${alpha})`;
+          /* vary opacity for depth: some bright leading characters, rest faded */
+          const isBright = Math.random() > 0.88;
+          const alpha = isBright ? 0.75 : 0.22 + Math.random() * 0.2;
+          ctx.fillStyle = isBright
+            ? `rgba(0,200,240,${alpha})`
+            : `rgba(0,160,200,${alpha})`;
           ctx.fillText(char, x, y);
-          if (y > H && Math.random() > 0.977) drops[i] = 0;
+          if (y > H && Math.random() > 0.976) drops[i] = 0;
           drops[i]++;
         }
       }
