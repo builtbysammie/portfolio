@@ -521,6 +521,12 @@
       display: grid; grid-template-columns: 1fr 1fr;
       gap: 18px; margin-top: 52px;
     }
+    .projects-grid .project-card:only-child {
+      grid-column: 1 / -1;
+      max-width: 780px;
+      width: 100%;
+      margin: 0 auto;
+    }
 
     .project-card {
       border: 1px solid var(--border);
@@ -1126,7 +1132,7 @@
       <div class="wrap">
         <div class="kicker">Live Work</div>
         <h2 class="section-h">Real websites. <span class="hl">Real brands.</span></h2>
-        <p class="section-sub">Two live websites built from scratch — each shaped around a real founder's vision and built to earn trust fast.</p>
+        <p class="section-sub">A live website built from scratch — shaped around a real founder's vision and built to earn trust fast.</p>
 
         <div class="projects-grid">
 
@@ -1169,31 +1175,6 @@
             </div>
           </div>
 
-          <!-- Peasis -->
-          <div class="project-card reveal">
-            <div class="browser-top">
-              <div class="bdots"><span class="bd1"></span><span class="bd2"></span><span class="bd3"></span></div>
-              <div class="burl">peasis.com</div>
-            </div>
-            <div class="site-iframe-wrap">
-              <iframe src="https://peasis.com/" loading="lazy" scrolling="no" tabindex="-1" title="Peasis Fashion live website"></iframe>
-              <div class="preview-badge">Live Website</div>
-            </div>
-            <div class="project-info">
-              <h3>Peasis Fashion</h3>
-              <p>A premium womenswear brand that needed a website matching the quality of the clothing itself — clear, visual, and built to attract serious buyers.</p>
-              <div class="tag-row">
-                <span class="tag">Fashion Brand</span>
-                <span class="tag">Luxury Positioning</span>
-                <span class="tag">Mobile Experience</span>
-                <span class="tag">Visual Storytelling</span>
-              </div>
-              <a class="visit-link" href="https://peasis.com/" target="_blank" rel="noopener noreferrer">
-                Visit Live Site
-                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </a>
-            </div>
-          </div>
 
         </div>
       </div>
